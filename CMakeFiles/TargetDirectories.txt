@@ -1,0 +1,13 @@
+/home/antidotcb/workspace/match3/CMakeFiles/MyGame.dir
+/home/antidotcb/workspace/match3/CMakeFiles/MyGame_CORE_PRE_BUILD.dir
+/home/antidotcb/workspace/match3/CMakeFiles/MyGame_PRE_BUILD.dir
+/home/antidotcb/workspace/match3/cocos2d/cocos/audio/CMakeFiles/audio.dir
+/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/CMakeFiles/chipmunk_static.dir
+/home/antidotcb/workspace/match3/cocos2d/cocos/CMakeFiles/cocos2d.dir
+/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CMakeFiles/cocosbuilder.dir
+/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CMakeFiles/cocostudio.dir
+/home/antidotcb/workspace/match3/cocos2d/extensions/CMakeFiles/extensions.dir
+/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/spine/CMakeFiles/spine.dir
+/home/antidotcb/workspace/match3/cocos2d/external/tinyxml2/CMakeFiles/tinyxml2.dir
+/home/antidotcb/workspace/match3/cocos2d/external/unzip/CMakeFiles/unzip.dir
+/home/antidotcb/workspace/match3/cocos2d/external/xxhash/CMakeFiles/xxhash.dir
