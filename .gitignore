@@ -31,3 +31,8 @@
 *.includecache
 
 bin
+cocos2d/cocos/platform/android/java/gen
+proj.android/assets
+proj.android/gen
+proj.android/obj
+

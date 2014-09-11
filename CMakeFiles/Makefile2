@@ -56,15 +56,15 @@ CMAKE_BINARY_DIR = /home/antidotcb/workspace/match3
 # Target rules for target CMakeFiles/MyGame.dir
 
 # All Build rule for target.
+CMakeFiles/MyGame.dir/all: cocos2d/external/unzip/CMakeFiles/unzip.dir/all
+CMakeFiles/MyGame.dir/all: cocos2d/external/chipmunk/src/CMakeFiles/chipmunk_static.dir/all
+CMakeFiles/MyGame.dir/all: cocos2d/external/tinyxml2/CMakeFiles/tinyxml2.dir/all
+CMakeFiles/MyGame.dir/all: cocos2d/cocos/audio/CMakeFiles/audio.dir/all
 CMakeFiles/MyGame.dir/all: cocos2d/external/xxhash/CMakeFiles/xxhash.dir/all
 CMakeFiles/MyGame.dir/all: cocos2d/cocos/CMakeFiles/cocos2d.dir/all
 CMakeFiles/MyGame.dir/all: cocos2d/extensions/CMakeFiles/extensions.dir/all
 CMakeFiles/MyGame.dir/all: cocos2d/cocos/editor-support/spine/CMakeFiles/spine.dir/all
 CMakeFiles/MyGame.dir/all: cocos2d/cocos/editor-support/cocosbuilder/CMakeFiles/cocosbuilder.dir/all
-CMakeFiles/MyGame.dir/all: cocos2d/cocos/audio/CMakeFiles/audio.dir/all
-CMakeFiles/MyGame.dir/all: cocos2d/external/chipmunk/src/CMakeFiles/chipmunk_static.dir/all
-CMakeFiles/MyGame.dir/all: cocos2d/external/unzip/CMakeFiles/unzip.dir/all
-CMakeFiles/MyGame.dir/all: cocos2d/external/tinyxml2/CMakeFiles/tinyxml2.dir/all
 CMakeFiles/MyGame.dir/all: cocos2d/cocos/editor-support/cocostudio/CMakeFiles/cocostudio.dir/all
 	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/depend
 	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/build
@@ -431,10 +431,10 @@ cocos2d/cocos/preinstall:
 # Target rules for target cocos2d/cocos/CMakeFiles/cocos2d.dir
 
 # All Build rule for target.
-cocos2d/cocos/CMakeFiles/cocos2d.dir/all: cocos2d/external/xxhash/CMakeFiles/xxhash.dir/all
-cocos2d/cocos/CMakeFiles/cocos2d.dir/all: cocos2d/external/chipmunk/src/CMakeFiles/chipmunk_static.dir/all
 cocos2d/cocos/CMakeFiles/cocos2d.dir/all: cocos2d/external/unzip/CMakeFiles/unzip.dir/all
+cocos2d/cocos/CMakeFiles/cocos2d.dir/all: cocos2d/external/chipmunk/src/CMakeFiles/chipmunk_static.dir/all
 cocos2d/cocos/CMakeFiles/cocos2d.dir/all: cocos2d/external/tinyxml2/CMakeFiles/tinyxml2.dir/all
+cocos2d/cocos/CMakeFiles/cocos2d.dir/all: cocos2d/external/xxhash/CMakeFiles/xxhash.dir/all
 	$(MAKE) -f cocos2d/cocos/CMakeFiles/cocos2d.dir/build.make cocos2d/cocos/CMakeFiles/cocos2d.dir/depend
 	$(MAKE) -f cocos2d/cocos/CMakeFiles/cocos2d.dir/build.make cocos2d/cocos/CMakeFiles/cocos2d.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65
