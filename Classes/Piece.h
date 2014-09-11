@@ -8,37 +8,51 @@
 #ifndef PIECE_H_
 #define PIECE_H_
 
+#include <string>
+#include <CCTexture2D.h>
+
+//Director::getInstance()->getTextureCache()
 namespace match3 {
 
     class PieceColor {
     public:
+        bool operator ==(PieceColorManager & rhs) {
+            return this->value == rhs.value;
+        }
+    private:
+        static uint TotalColors = 0;
+        PieceColor(const char * _ColorName, Texture2D * _Texture) {
+        }
+        std::string name;
+        Texture2D * texture;
+    };
+
+    class PieceColorManager {
+    public:
         static const PieceColor * const red() {
-            return &colors[ColorsIndexes::RED];
+            return &available_colors[ColorsIndexes::RED];
         }
 
         static const PieceColor * const blue() {
-            return &colors[ColorsIndexes::BLUE];
+            return &available_colors[ColorsIndexes::BLUE];
         }
 
         static const PieceColor * const green() {
-            return &colors[ColorsIndexes::GREEN];
+            return &available_colors[ColorsIndexes::GREEN];
         }
 
         static const PieceColor * const yellow() {
-            return &colors[ColorsIndexes::YELLOW];
+            return &available_colors[ColorsIndexes::YELLOW];
         }
 
         static const PieceColor * const purple() {
-            return &colors[ColorsIndexes::PURPLE];
+            return &available_colors[ColorsIndexes::PURPLE];
         }
 
         static const PieceColor * const random() {
-
+            return null;
         }
 
-        bool operator ==(PieceColor & rhs) {
-            return this->value == rhs.value;
-        }
     private:
         enum ColorsIndexes {
             RED = 0,
@@ -50,22 +64,20 @@ namespace match3 {
             TOTAL_COLORS_NUMBER
         };
 
-        PieceColor() :
+        PieceColorManager() :
                 value(0)
         {
             if (!initialized_all_colors) {
                 for (uint color = 0; color < ColorsIndexes::TOTAL_COLORS_NUMBER; color++) {
-                    colors[color].value = color;
+                    available_colors[color].value = color;
                 }
                 initialized_all_colors = true;
             }
         }
 
         static bool initialized_all_colors;
-        static Piece colors[TOTAL_COLORS_NUMBER];
-
-        uint value;
-    };
+        static Piece available_colors[TOTAL_COLORS_NUMBER]
+        };
 
     class Piece {
     public:
@@ -73,7 +85,7 @@ namespace match3 {
                 color(_Color) {
         }
 
-        bool isSameColorAs (Piece & rhs) {
+        bool isSameColorAs(const Piece & rhs) {
             return this->color == rhs.color;
         }
 

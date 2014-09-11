@@ -9,5 +9,5 @@
 
 namespace match3 {
 
-    bool PieceColor::initialized_all_colors = false;
+    bool PieceColorManager::initialized_all_colors = false;
 } /* namespace match3 */
