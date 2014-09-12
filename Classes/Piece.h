@@ -16,15 +16,27 @@ namespace match3 {
 
     class PieceColor {
     public:
+        const std::string & name() const {
+            return name_;
+        }
+
+        Texture2D * texture() const {
+            return texture_;
+        }
+
         bool operator ==(PieceColorManager & rhs) {
-            return this->value == rhs.value;
+            return this->value_ == rhs.value_;
         }
     private:
+        PieceColor(const char * _ColorName, Texture2D * _Texture):
+            value_(TotalColors++), name_(_ColorName), texture_(_Texture)
+        {}
+
         static uint TotalColors = 0;
-        PieceColor(const char * _ColorName, Texture2D * _Texture) {
-        }
-        std::string name;
-        Texture2D * texture;
+        uint value_;
+
+        std::string name_;
+        Texture2D * texture_;
     };
 
     class PieceColorManager {
