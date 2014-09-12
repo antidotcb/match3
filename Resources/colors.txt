@@ -1,0 +1,5 @@
+blue     Blue.png
+green    Green.png
+purple   Purple.png
+red      Red.png
+yellow   Yellow.png
