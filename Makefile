@@ -291,6 +291,54 @@ Classes/AppDelegate.cpp.s:
 	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/AppDelegate.cpp.s
 .PHONY : Classes/AppDelegate.cpp.s
 
+Classes/Board.o: Classes/Board.cpp.o
+.PHONY : Classes/Board.o
+
+# target to build an object file
+Classes/Board.cpp.o:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Board.cpp.o
+.PHONY : Classes/Board.cpp.o
+
+Classes/Board.i: Classes/Board.cpp.i
+.PHONY : Classes/Board.i
+
+# target to preprocess a source file
+Classes/Board.cpp.i:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Board.cpp.i
+.PHONY : Classes/Board.cpp.i
+
+Classes/Board.s: Classes/Board.cpp.s
+.PHONY : Classes/Board.s
+
+# target to generate assembly for a file
+Classes/Board.cpp.s:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Board.cpp.s
+.PHONY : Classes/Board.cpp.s
+
+Classes/Game.o: Classes/Game.cpp.o
+.PHONY : Classes/Game.o
+
+# target to build an object file
+Classes/Game.cpp.o:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Game.cpp.o
+.PHONY : Classes/Game.cpp.o
+
+Classes/Game.i: Classes/Game.cpp.i
+.PHONY : Classes/Game.i
+
+# target to preprocess a source file
+Classes/Game.cpp.i:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Game.cpp.i
+.PHONY : Classes/Game.cpp.i
+
+Classes/Game.s: Classes/Game.cpp.s
+.PHONY : Classes/Game.s
+
+# target to generate assembly for a file
+Classes/Game.cpp.s:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Game.cpp.s
+.PHONY : Classes/Game.cpp.s
+
 Classes/HelloWorldScene.o: Classes/HelloWorldScene.cpp.o
 .PHONY : Classes/HelloWorldScene.o
 
@@ -314,6 +362,102 @@ Classes/HelloWorldScene.s: Classes/HelloWorldScene.cpp.s
 Classes/HelloWorldScene.cpp.s:
 	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.s
 .PHONY : Classes/HelloWorldScene.cpp.s
+
+Classes/Piece.o: Classes/Piece.cpp.o
+.PHONY : Classes/Piece.o
+
+# target to build an object file
+Classes/Piece.cpp.o:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Piece.cpp.o
+.PHONY : Classes/Piece.cpp.o
+
+Classes/Piece.i: Classes/Piece.cpp.i
+.PHONY : Classes/Piece.i
+
+# target to preprocess a source file
+Classes/Piece.cpp.i:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Piece.cpp.i
+.PHONY : Classes/Piece.cpp.i
+
+Classes/Piece.s: Classes/Piece.cpp.s
+.PHONY : Classes/Piece.s
+
+# target to generate assembly for a file
+Classes/Piece.cpp.s:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Piece.cpp.s
+.PHONY : Classes/Piece.cpp.s
+
+Classes/Round.o: Classes/Round.cpp.o
+.PHONY : Classes/Round.o
+
+# target to build an object file
+Classes/Round.cpp.o:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Round.cpp.o
+.PHONY : Classes/Round.cpp.o
+
+Classes/Round.i: Classes/Round.cpp.i
+.PHONY : Classes/Round.i
+
+# target to preprocess a source file
+Classes/Round.cpp.i:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Round.cpp.i
+.PHONY : Classes/Round.cpp.i
+
+Classes/Round.s: Classes/Round.cpp.s
+.PHONY : Classes/Round.s
+
+# target to generate assembly for a file
+Classes/Round.cpp.s:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Round.cpp.s
+.PHONY : Classes/Round.cpp.s
+
+Classes/Score.o: Classes/Score.cpp.o
+.PHONY : Classes/Score.o
+
+# target to build an object file
+Classes/Score.cpp.o:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Score.cpp.o
+.PHONY : Classes/Score.cpp.o
+
+Classes/Score.i: Classes/Score.cpp.i
+.PHONY : Classes/Score.i
+
+# target to preprocess a source file
+Classes/Score.cpp.i:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Score.cpp.i
+.PHONY : Classes/Score.cpp.i
+
+Classes/Score.s: Classes/Score.cpp.s
+.PHONY : Classes/Score.s
+
+# target to generate assembly for a file
+Classes/Score.cpp.s:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Score.cpp.s
+.PHONY : Classes/Score.cpp.s
+
+Classes/Time.o: Classes/Time.cpp.o
+.PHONY : Classes/Time.o
+
+# target to build an object file
+Classes/Time.cpp.o:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Time.cpp.o
+.PHONY : Classes/Time.cpp.o
+
+Classes/Time.i: Classes/Time.cpp.i
+.PHONY : Classes/Time.i
+
+# target to preprocess a source file
+Classes/Time.cpp.i:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Time.cpp.i
+.PHONY : Classes/Time.cpp.i
+
+Classes/Time.s: Classes/Time.cpp.s
+.PHONY : Classes/Time.s
+
+# target to generate assembly for a file
+Classes/Time.cpp.s:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Time.cpp.s
+.PHONY : Classes/Time.cpp.s
 
 proj.linux/main.o: proj.linux/main.cpp.o
 .PHONY : proj.linux/main.o
@@ -363,9 +507,27 @@ help:
 	@echo "... Classes/AppDelegate.o"
 	@echo "... Classes/AppDelegate.i"
 	@echo "... Classes/AppDelegate.s"
+	@echo "... Classes/Board.o"
+	@echo "... Classes/Board.i"
+	@echo "... Classes/Board.s"
+	@echo "... Classes/Game.o"
+	@echo "... Classes/Game.i"
+	@echo "... Classes/Game.s"
 	@echo "... Classes/HelloWorldScene.o"
 	@echo "... Classes/HelloWorldScene.i"
 	@echo "... Classes/HelloWorldScene.s"
+	@echo "... Classes/Piece.o"
+	@echo "... Classes/Piece.i"
+	@echo "... Classes/Piece.s"
+	@echo "... Classes/Round.o"
+	@echo "... Classes/Round.i"
+	@echo "... Classes/Round.s"
+	@echo "... Classes/Score.o"
+	@echo "... Classes/Score.i"
+	@echo "... Classes/Score.s"
+	@echo "... Classes/Time.o"
+	@echo "... Classes/Time.i"
+	@echo "... Classes/Time.s"
 	@echo "... proj.linux/main.o"
 	@echo "... proj.linux/main.i"
 	@echo "... proj.linux/main.s"

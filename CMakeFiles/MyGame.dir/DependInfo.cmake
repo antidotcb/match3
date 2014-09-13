@@ -5,7 +5,13 @@ SET(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/antidotcb/workspace/match3/Classes/AppDelegate.cpp" "/home/antidotcb/workspace/match3/CMakeFiles/MyGame.dir/Classes/AppDelegate.cpp.o"
+  "/home/antidotcb/workspace/match3/Classes/Board.cpp" "/home/antidotcb/workspace/match3/CMakeFiles/MyGame.dir/Classes/Board.cpp.o"
+  "/home/antidotcb/workspace/match3/Classes/Game.cpp" "/home/antidotcb/workspace/match3/CMakeFiles/MyGame.dir/Classes/Game.cpp.o"
   "/home/antidotcb/workspace/match3/Classes/HelloWorldScene.cpp" "/home/antidotcb/workspace/match3/CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o"
+  "/home/antidotcb/workspace/match3/Classes/Piece.cpp" "/home/antidotcb/workspace/match3/CMakeFiles/MyGame.dir/Classes/Piece.cpp.o"
+  "/home/antidotcb/workspace/match3/Classes/Round.cpp" "/home/antidotcb/workspace/match3/CMakeFiles/MyGame.dir/Classes/Round.cpp.o"
+  "/home/antidotcb/workspace/match3/Classes/Score.cpp" "/home/antidotcb/workspace/match3/CMakeFiles/MyGame.dir/Classes/Score.cpp.o"
+  "/home/antidotcb/workspace/match3/Classes/Time.cpp" "/home/antidotcb/workspace/match3/CMakeFiles/MyGame.dir/Classes/Time.cpp.o"
   "/home/antidotcb/workspace/match3/proj.linux/main.cpp" "/home/antidotcb/workspace/match3/CMakeFiles/MyGame.dir/proj.linux/main.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
