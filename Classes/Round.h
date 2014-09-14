@@ -10,6 +10,10 @@
 
 namespace match3 {
 
+    class Board;
+    class Time;
+    class Score;
+
     class Round {
     public:
         Round() {

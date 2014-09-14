@@ -8,27 +8,31 @@
 #ifndef BOARD_H_
 #define BOARD_H_
 
+#include <cstdint>
+
 namespace match3 {
+
+    class Piece;
 
     class Board {
     public:
-        Board(const uint _Width, const uint _Height):
-            width(_Width), height(_Height)
+        Board(const uint8_t _Width = 8, const uint8_t _Height = 8) :
+                width(_Width), height(_Height)
         {
-            const uint size = width * height;
-            pieces = new Piece* [size];
+            const uint8_t size = width * height;
+            pieces = new Piece*[size];
         }
 
-        const uint getWidth() const {
+        const uint8_t getWidth() const {
             return width;
         }
 
-        const uint getHeight() const {
+        const uint8_t getHeight() const {
             return height;
         }
 
         virtual ~Board() {
-            delete []  pieces;
+            delete[] pieces;
         }
 
         bool isCollapsed() const;
@@ -38,8 +42,8 @@ namespace match3 {
     protected:
 
     private:
-        uint width;
-        uint height;
+        uint8_t width;
+        uint8_t height;
 
         Piece** pieces;
     };

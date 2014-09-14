@@ -31,6 +31,9 @@ public:
      @param  the pointer of the application
      */
     virtual void applicationWillEnterForeground();
+
+private:
+    void setupResolutionPolicy(float designW, float designH);
 };
 
 #endif // _APP_DELEGATE_H_

@@ -8,104 +8,63 @@
 #ifndef PIECE_H_
 #define PIECE_H_
 
+#include "cocos2d.h"
+#include <map>
 #include <string>
-#include <CCTexture2D.h>
 
-//Director::getInstance()->getTextureCache()
 namespace match3 {
+
+    class PiecesManager;
 
     class PieceColor {
     public:
-        const std::string & name() const {
-            return name_;
-        }
+        const std::string& name() const;
+        cocos2d::Texture2D* texture() const;
+        uint32_t value() const;
 
-        Texture2D * texture() const {
-            return texture_;
-        }
+        bool operator ==(const PieceColor& _Rhs) const;
 
-        bool operator ==(PieceColorManager & rhs) {
-            return this->value_ == rhs.value_;
-        }
     private:
-        PieceColor(const char * _ColorName, Texture2D * _Texture):
-            value_(TotalColors++), name_(_ColorName), texture_(_Texture)
-        {}
+        PieceColor(uint32_t _Value, const char* _ColorName, cocos2d::Texture2D* _Texture);
 
-        static uint TotalColors = 0;
-        uint value_;
-
+        uint32_t value_;
         std::string name_;
-        Texture2D * texture_;
+        cocos2d::Texture2D * texture_;
+
+        friend class PiecesManager;
     };
 
-    class PieceColorManager {
+    class PiecesManager {
     public:
-        static const PieceColor * const red() {
-            return &available_colors[ColorsIndexes::RED];
-        }
+        PieceColor* random();
+        PieceColor* color(uint32_t _Value);
 
-        static const PieceColor * const blue() {
-            return &available_colors[ColorsIndexes::BLUE];
-        }
+        bool loadPieces(const char* _Filename);
 
-        static const PieceColor * const green() {
-            return &available_colors[ColorsIndexes::GREEN];
-        }
-
-        static const PieceColor * const yellow() {
-            return &available_colors[ColorsIndexes::YELLOW];
-        }
-
-        static const PieceColor * const purple() {
-            return &available_colors[ColorsIndexes::PURPLE];
-        }
-
-        static const PieceColor * const random() {
-            return null;
-        }
+        static PiecesManager* getInstance();
+        static void destroyInstance();
 
     private:
-        enum ColorsIndexes {
-            RED = 0,
-            BLUE,
-            GREEN,
-            YELLOW,
-            PURPLE,
-            // add new colors above
-            TOTAL_COLORS_NUMBER
-        };
+        PiecesManager();
+        PiecesManager(PiecesManager&);
+        PiecesManager& operator =(PiecesManager&);
 
-        PieceColorManager() :
-                value(0)
-        {
-            if (!initialized_all_colors) {
-                for (uint color = 0; color < ColorsIndexes::TOTAL_COLORS_NUMBER; color++) {
-                    available_colors[color].value = color;
-                }
-                initialized_all_colors = true;
-            }
-        }
+        typedef std::map<int, PieceColor*> ColorsMap;
+        ColorsMap colors_;
 
-        static bool initialized_all_colors;
-        static Piece available_colors[TOTAL_COLORS_NUMBER]
-        };
+        static PiecesManager * instance_;
+    };
 
     class Piece {
     public:
-        Piece(PieceColor * _Color) :
-                color(_Color) {
-        }
+        Piece(PieceColor* _Color);
+        virtual ~Piece();
 
-        bool isSameColorAs(const Piece & rhs) {
-            return this->color == rhs.color;
-        }
-
-        virtual ~Piece() {
-        }
+        PieceColor* color() const { return color_; }
+        bool isSameColorAs(const Piece& _Rhs) const;
 
     private:
-        PieceColor *color;
+        PieceColor *color_;
     };
 
 } /* namespace match3 */
