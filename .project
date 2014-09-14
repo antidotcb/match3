@@ -91,7 +91,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.core.errorOutputParser</key>
-					<value>org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;</value>
+					<value>org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;</value>
 				</dictionary>
 			</arguments>
 		</buildCommand>
@@ -144,9 +144,39 @@
 			<location>/home/antidotcb/workspace/match3/Classes/AppDelegate.cpp</location>
 		</link>
 		<link>
+			<name>[Targets]/[exe] MyGame/Source Files/Board.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/Classes/Board.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MyGame/Source Files/Game.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/Classes/Game.cpp</location>
+		</link>
+		<link>
 			<name>[Targets]/[exe] MyGame/Source Files/HelloWorldScene.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/Classes/HelloWorldScene.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MyGame/Source Files/Piece.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/Classes/Piece.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MyGame/Source Files/Round.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/Classes/Round.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MyGame/Source Files/Score.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/Classes/Score.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MyGame/Source Files/Time.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/Classes/Time.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] MyGame/Header Files</name>
