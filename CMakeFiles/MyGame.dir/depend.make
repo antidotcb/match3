@@ -461,7 +461,6 @@ CMakeFiles/MyGame.dir/Classes/Piece.cpp.o: cocos2d/cocos/2d/CCFastTMXTiledMap.h
 CMakeFiles/MyGame.dir/Classes/Piece.cpp.o: cocos2d/cocos/2d/CCFont.h
 CMakeFiles/MyGame.dir/Classes/Piece.cpp.o: cocos2d/cocos/2d/CCFontAtlas.h
 CMakeFiles/MyGame.dir/Classes/Piece.cpp.o: cocos2d/cocos/2d/CCFontFNT.h
-CMakeFiles/MyGame.dir/Classes/Piece.cpp.o: cocos2d/cocos/2d/CCGLBufferedNode.h
 CMakeFiles/MyGame.dir/Classes/Piece.cpp.o: cocos2d/cocos/2d/CCGrabber.h
 CMakeFiles/MyGame.dir/Classes/Piece.cpp.o: cocos2d/cocos/2d/CCGrid.h
 CMakeFiles/MyGame.dir/Classes/Piece.cpp.o: cocos2d/cocos/2d/CCLabel.h
