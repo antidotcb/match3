@@ -184,7 +184,7 @@ cocos2d/external/chipmunk/src/preinstall:
 cocos2d/external/chipmunk/src/CMakeFiles/chipmunk_static.dir/all:
 	$(MAKE) -f cocos2d/external/chipmunk/src/CMakeFiles/chipmunk_static.dir/build.make cocos2d/external/chipmunk/src/CMakeFiles/chipmunk_static.dir/depend
 	$(MAKE) -f cocos2d/external/chipmunk/src/CMakeFiles/chipmunk_static.dir/build.make cocos2d/external/chipmunk/src/CMakeFiles/chipmunk_static.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles  3 4 5 6 7 8 9 10
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles  4 5 6 7 8 9 10 11
 	@echo "Built target chipmunk_static"
 .PHONY : cocos2d/external/chipmunk/src/CMakeFiles/chipmunk_static.dir/all
 
@@ -334,7 +334,7 @@ cocos2d/cocos/audio/preinstall:
 cocos2d/cocos/audio/CMakeFiles/audio.dir/all:
 	$(MAKE) -f cocos2d/cocos/audio/CMakeFiles/audio.dir/build.make cocos2d/cocos/audio/CMakeFiles/audio.dir/depend
 	$(MAKE) -f cocos2d/cocos/audio/CMakeFiles/audio.dir/build.make cocos2d/cocos/audio/CMakeFiles/audio.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles 
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles  3
 	@echo "Built target audio"
 .PHONY : cocos2d/cocos/audio/CMakeFiles/audio.dir/all
 
@@ -344,7 +344,7 @@ all: cocos2d/cocos/audio/CMakeFiles/audio.dir/all
 
 # Build rule for subdir invocation for target.
 cocos2d/cocos/audio/CMakeFiles/audio.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/antidotcb/workspace/match3/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/antidotcb/workspace/match3/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 cocos2d/cocos/audio/CMakeFiles/audio.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/antidotcb/workspace/match3/CMakeFiles 0
 .PHONY : cocos2d/cocos/audio/CMakeFiles/audio.dir/rule
@@ -437,7 +437,7 @@ cocos2d/cocos/CMakeFiles/cocos2d.dir/all: cocos2d/external/tinyxml2/CMakeFiles/t
 cocos2d/cocos/CMakeFiles/cocos2d.dir/all: cocos2d/external/xxhash/CMakeFiles/xxhash.dir/all
 	$(MAKE) -f cocos2d/cocos/CMakeFiles/cocos2d.dir/build.make cocos2d/cocos/CMakeFiles/cocos2d.dir/depend
 	$(MAKE) -f cocos2d/cocos/CMakeFiles/cocos2d.dir/build.make cocos2d/cocos/CMakeFiles/cocos2d.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles  11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles  12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65
 	@echo "Built target cocos2d"
 .PHONY : cocos2d/cocos/CMakeFiles/cocos2d.dir/all
 
@@ -447,7 +447,7 @@ all: cocos2d/cocos/CMakeFiles/cocos2d.dir/all
 
 # Build rule for subdir invocation for target.
 cocos2d/cocos/CMakeFiles/cocos2d.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/antidotcb/workspace/match3/CMakeFiles 65
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/antidotcb/workspace/match3/CMakeFiles 64
 	$(MAKE) -f CMakeFiles/Makefile2 cocos2d/cocos/CMakeFiles/cocos2d.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/antidotcb/workspace/match3/CMakeFiles 0
 .PHONY : cocos2d/cocos/CMakeFiles/cocos2d.dir/rule

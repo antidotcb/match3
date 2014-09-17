@@ -339,29 +339,77 @@ Classes/Game.cpp.s:
 	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Game.cpp.s
 .PHONY : Classes/Game.cpp.s
 
-Classes/HelloWorldScene.o: Classes/HelloWorldScene.cpp.o
-.PHONY : Classes/HelloWorldScene.o
+Classes/Highscores.o: Classes/Highscores.cpp.o
+.PHONY : Classes/Highscores.o
 
 # target to build an object file
-Classes/HelloWorldScene.cpp.o:
-	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o
-.PHONY : Classes/HelloWorldScene.cpp.o
+Classes/Highscores.cpp.o:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o
+.PHONY : Classes/Highscores.cpp.o
 
-Classes/HelloWorldScene.i: Classes/HelloWorldScene.cpp.i
-.PHONY : Classes/HelloWorldScene.i
+Classes/Highscores.i: Classes/Highscores.cpp.i
+.PHONY : Classes/Highscores.i
 
 # target to preprocess a source file
-Classes/HelloWorldScene.cpp.i:
-	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.i
-.PHONY : Classes/HelloWorldScene.cpp.i
+Classes/Highscores.cpp.i:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Highscores.cpp.i
+.PHONY : Classes/Highscores.cpp.i
 
-Classes/HelloWorldScene.s: Classes/HelloWorldScene.cpp.s
-.PHONY : Classes/HelloWorldScene.s
+Classes/Highscores.s: Classes/Highscores.cpp.s
+.PHONY : Classes/Highscores.s
 
 # target to generate assembly for a file
-Classes/HelloWorldScene.cpp.s:
-	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.s
-.PHONY : Classes/HelloWorldScene.cpp.s
+Classes/Highscores.cpp.s:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Highscores.cpp.s
+.PHONY : Classes/Highscores.cpp.s
+
+Classes/Menu.o: Classes/Menu.cpp.o
+.PHONY : Classes/Menu.o
+
+# target to build an object file
+Classes/Menu.cpp.o:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Menu.cpp.o
+.PHONY : Classes/Menu.cpp.o
+
+Classes/Menu.i: Classes/Menu.cpp.i
+.PHONY : Classes/Menu.i
+
+# target to preprocess a source file
+Classes/Menu.cpp.i:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Menu.cpp.i
+.PHONY : Classes/Menu.cpp.i
+
+Classes/Menu.s: Classes/Menu.cpp.s
+.PHONY : Classes/Menu.s
+
+# target to generate assembly for a file
+Classes/Menu.cpp.s:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Menu.cpp.s
+.PHONY : Classes/Menu.cpp.s
+
+Classes/Options.o: Classes/Options.cpp.o
+.PHONY : Classes/Options.o
+
+# target to build an object file
+Classes/Options.cpp.o:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Options.cpp.o
+.PHONY : Classes/Options.cpp.o
+
+Classes/Options.i: Classes/Options.cpp.i
+.PHONY : Classes/Options.i
+
+# target to preprocess a source file
+Classes/Options.cpp.i:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Options.cpp.i
+.PHONY : Classes/Options.cpp.i
+
+Classes/Options.s: Classes/Options.cpp.s
+.PHONY : Classes/Options.s
+
+# target to generate assembly for a file
+Classes/Options.cpp.s:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Options.cpp.s
+.PHONY : Classes/Options.cpp.s
 
 Classes/Piece.o: Classes/Piece.cpp.o
 .PHONY : Classes/Piece.o
@@ -513,9 +561,15 @@ help:
 	@echo "... Classes/Game.o"
 	@echo "... Classes/Game.i"
 	@echo "... Classes/Game.s"
-	@echo "... Classes/HelloWorldScene.o"
-	@echo "... Classes/HelloWorldScene.i"
-	@echo "... Classes/HelloWorldScene.s"
+	@echo "... Classes/Highscores.o"
+	@echo "... Classes/Highscores.i"
+	@echo "... Classes/Highscores.s"
+	@echo "... Classes/Menu.o"
+	@echo "... Classes/Menu.i"
+	@echo "... Classes/Menu.s"
+	@echo "... Classes/Options.o"
+	@echo "... Classes/Options.i"
+	@echo "... Classes/Options.s"
 	@echo "... Classes/Piece.o"
 	@echo "... Classes/Piece.i"
 	@echo "... Classes/Piece.s"

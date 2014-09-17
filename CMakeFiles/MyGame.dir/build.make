@@ -141,32 +141,78 @@ CMakeFiles/MyGame.dir/Classes/Game.cpp.o.provides: CMakeFiles/MyGame.dir/Classes
 
 CMakeFiles/MyGame.dir/Classes/Game.cpp.o.provides.build: CMakeFiles/MyGame.dir/Classes/Game.cpp.o
 
-CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o: CMakeFiles/MyGame.dir/flags.make
-CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o: Classes/HelloWorldScene.cpp
+CMakeFiles/MyGame.dir/Classes/Menu.cpp.o: CMakeFiles/MyGame.dir/flags.make
+CMakeFiles/MyGame.dir/Classes/Menu.cpp.o: Classes/Menu.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles $(CMAKE_PROGRESS_5)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o -c /home/antidotcb/workspace/match3/Classes/HelloWorldScene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/MyGame.dir/Classes/Menu.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/MyGame.dir/Classes/Menu.cpp.o -c /home/antidotcb/workspace/match3/Classes/Menu.cpp
 
-CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/antidotcb/workspace/match3/Classes/HelloWorldScene.cpp > CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.i
+CMakeFiles/MyGame.dir/Classes/Menu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MyGame.dir/Classes/Menu.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/antidotcb/workspace/match3/Classes/Menu.cpp > CMakeFiles/MyGame.dir/Classes/Menu.cpp.i
 
-CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/antidotcb/workspace/match3/Classes/HelloWorldScene.cpp -o CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.s
+CMakeFiles/MyGame.dir/Classes/Menu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MyGame.dir/Classes/Menu.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/antidotcb/workspace/match3/Classes/Menu.cpp -o CMakeFiles/MyGame.dir/Classes/Menu.cpp.s
 
-CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o.requires:
-.PHONY : CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o.requires
+CMakeFiles/MyGame.dir/Classes/Menu.cpp.o.requires:
+.PHONY : CMakeFiles/MyGame.dir/Classes/Menu.cpp.o.requires
 
-CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o.provides: CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o.requires
-	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o.provides.build
-.PHONY : CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o.provides
+CMakeFiles/MyGame.dir/Classes/Menu.cpp.o.provides: CMakeFiles/MyGame.dir/Classes/Menu.cpp.o.requires
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Menu.cpp.o.provides.build
+.PHONY : CMakeFiles/MyGame.dir/Classes/Menu.cpp.o.provides
 
-CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o.provides.build: CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o
+CMakeFiles/MyGame.dir/Classes/Menu.cpp.o.provides.build: CMakeFiles/MyGame.dir/Classes/Menu.cpp.o
+
+CMakeFiles/MyGame.dir/Classes/Options.cpp.o: CMakeFiles/MyGame.dir/flags.make
+CMakeFiles/MyGame.dir/Classes/Options.cpp.o: Classes/Options.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/MyGame.dir/Classes/Options.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/MyGame.dir/Classes/Options.cpp.o -c /home/antidotcb/workspace/match3/Classes/Options.cpp
+
+CMakeFiles/MyGame.dir/Classes/Options.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MyGame.dir/Classes/Options.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/antidotcb/workspace/match3/Classes/Options.cpp > CMakeFiles/MyGame.dir/Classes/Options.cpp.i
+
+CMakeFiles/MyGame.dir/Classes/Options.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MyGame.dir/Classes/Options.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/antidotcb/workspace/match3/Classes/Options.cpp -o CMakeFiles/MyGame.dir/Classes/Options.cpp.s
+
+CMakeFiles/MyGame.dir/Classes/Options.cpp.o.requires:
+.PHONY : CMakeFiles/MyGame.dir/Classes/Options.cpp.o.requires
+
+CMakeFiles/MyGame.dir/Classes/Options.cpp.o.provides: CMakeFiles/MyGame.dir/Classes/Options.cpp.o.requires
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Options.cpp.o.provides.build
+.PHONY : CMakeFiles/MyGame.dir/Classes/Options.cpp.o.provides
+
+CMakeFiles/MyGame.dir/Classes/Options.cpp.o.provides.build: CMakeFiles/MyGame.dir/Classes/Options.cpp.o
+
+CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o: CMakeFiles/MyGame.dir/flags.make
+CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o: Classes/Highscores.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o -c /home/antidotcb/workspace/match3/Classes/Highscores.cpp
+
+CMakeFiles/MyGame.dir/Classes/Highscores.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MyGame.dir/Classes/Highscores.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/antidotcb/workspace/match3/Classes/Highscores.cpp > CMakeFiles/MyGame.dir/Classes/Highscores.cpp.i
+
+CMakeFiles/MyGame.dir/Classes/Highscores.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MyGame.dir/Classes/Highscores.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/antidotcb/workspace/match3/Classes/Highscores.cpp -o CMakeFiles/MyGame.dir/Classes/Highscores.cpp.s
+
+CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o.requires:
+.PHONY : CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o.requires
+
+CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o.provides: CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o.requires
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o.provides.build
+.PHONY : CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o.provides
+
+CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o.provides.build: CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o
 
 CMakeFiles/MyGame.dir/Classes/Piece.cpp.o: CMakeFiles/MyGame.dir/flags.make
 CMakeFiles/MyGame.dir/Classes/Piece.cpp.o: Classes/Piece.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/MyGame.dir/Classes/Piece.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/MyGame.dir/Classes/Piece.cpp.o -c /home/antidotcb/workspace/match3/Classes/Piece.cpp
 
@@ -189,7 +235,7 @@ CMakeFiles/MyGame.dir/Classes/Piece.cpp.o.provides.build: CMakeFiles/MyGame.dir/
 
 CMakeFiles/MyGame.dir/Classes/Round.cpp.o: CMakeFiles/MyGame.dir/flags.make
 CMakeFiles/MyGame.dir/Classes/Round.cpp.o: Classes/Round.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/MyGame.dir/Classes/Round.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/MyGame.dir/Classes/Round.cpp.o -c /home/antidotcb/workspace/match3/Classes/Round.cpp
 
@@ -212,7 +258,7 @@ CMakeFiles/MyGame.dir/Classes/Round.cpp.o.provides.build: CMakeFiles/MyGame.dir/
 
 CMakeFiles/MyGame.dir/Classes/Score.cpp.o: CMakeFiles/MyGame.dir/flags.make
 CMakeFiles/MyGame.dir/Classes/Score.cpp.o: Classes/Score.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/MyGame.dir/Classes/Score.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/MyGame.dir/Classes/Score.cpp.o -c /home/antidotcb/workspace/match3/Classes/Score.cpp
 
@@ -235,7 +281,7 @@ CMakeFiles/MyGame.dir/Classes/Score.cpp.o.provides.build: CMakeFiles/MyGame.dir/
 
 CMakeFiles/MyGame.dir/Classes/Time.cpp.o: CMakeFiles/MyGame.dir/flags.make
 CMakeFiles/MyGame.dir/Classes/Time.cpp.o: Classes/Time.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/antidotcb/workspace/match3/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/MyGame.dir/Classes/Time.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/MyGame.dir/Classes/Time.cpp.o -c /home/antidotcb/workspace/match3/Classes/Time.cpp
 
@@ -262,7 +308,9 @@ MyGame_OBJECTS = \
 "CMakeFiles/MyGame.dir/Classes/AppDelegate.cpp.o" \
 "CMakeFiles/MyGame.dir/Classes/Board.cpp.o" \
 "CMakeFiles/MyGame.dir/Classes/Game.cpp.o" \
-"CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o" \
+"CMakeFiles/MyGame.dir/Classes/Menu.cpp.o" \
+"CMakeFiles/MyGame.dir/Classes/Options.cpp.o" \
+"CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o" \
 "CMakeFiles/MyGame.dir/Classes/Piece.cpp.o" \
 "CMakeFiles/MyGame.dir/Classes/Round.cpp.o" \
 "CMakeFiles/MyGame.dir/Classes/Score.cpp.o" \
@@ -275,7 +323,9 @@ bin/MyGame: CMakeFiles/MyGame.dir/proj.linux/main.cpp.o
 bin/MyGame: CMakeFiles/MyGame.dir/Classes/AppDelegate.cpp.o
 bin/MyGame: CMakeFiles/MyGame.dir/Classes/Board.cpp.o
 bin/MyGame: CMakeFiles/MyGame.dir/Classes/Game.cpp.o
-bin/MyGame: CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o
+bin/MyGame: CMakeFiles/MyGame.dir/Classes/Menu.cpp.o
+bin/MyGame: CMakeFiles/MyGame.dir/Classes/Options.cpp.o
+bin/MyGame: CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o
 bin/MyGame: CMakeFiles/MyGame.dir/Classes/Piece.cpp.o
 bin/MyGame: CMakeFiles/MyGame.dir/Classes/Round.cpp.o
 bin/MyGame: CMakeFiles/MyGame.dir/Classes/Score.cpp.o
@@ -303,7 +353,9 @@ CMakeFiles/MyGame.dir/requires: CMakeFiles/MyGame.dir/proj.linux/main.cpp.o.requ
 CMakeFiles/MyGame.dir/requires: CMakeFiles/MyGame.dir/Classes/AppDelegate.cpp.o.requires
 CMakeFiles/MyGame.dir/requires: CMakeFiles/MyGame.dir/Classes/Board.cpp.o.requires
 CMakeFiles/MyGame.dir/requires: CMakeFiles/MyGame.dir/Classes/Game.cpp.o.requires
-CMakeFiles/MyGame.dir/requires: CMakeFiles/MyGame.dir/Classes/HelloWorldScene.cpp.o.requires
+CMakeFiles/MyGame.dir/requires: CMakeFiles/MyGame.dir/Classes/Menu.cpp.o.requires
+CMakeFiles/MyGame.dir/requires: CMakeFiles/MyGame.dir/Classes/Options.cpp.o.requires
+CMakeFiles/MyGame.dir/requires: CMakeFiles/MyGame.dir/Classes/Highscores.cpp.o.requires
 CMakeFiles/MyGame.dir/requires: CMakeFiles/MyGame.dir/Classes/Piece.cpp.o.requires
 CMakeFiles/MyGame.dir/requires: CMakeFiles/MyGame.dir/Classes/Round.cpp.o.requires
 CMakeFiles/MyGame.dir/requires: CMakeFiles/MyGame.dir/Classes/Score.cpp.o.requires

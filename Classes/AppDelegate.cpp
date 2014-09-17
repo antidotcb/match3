@@ -1,12 +1,5 @@
 #include "AppDelegate.h"
-
-#include <base/CCDirector.h>
-#include <base/CCPlatformMacros.h>
-#include <CCGLView.h>
-#include <CCGLViewProtocol.h>
-#include <math/CCGeometry.h>
-
-#include "HelloWorldScene.h"
+#include "Game.h"
 #include "Piece.h"
 
 USING_NS_CC;

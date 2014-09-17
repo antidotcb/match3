@@ -60,7 +60,10 @@ set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/Board.cpp
   Classes/Game.cpp
-  Classes/HelloWorldScene.cpp
+  Classes/Menu.cpp
+  Classes/Game.cpp
+  Classes/Options.cpp
+  Classes/Highscores.cpp
   Classes/Piece.cpp
   Classes/Round.cpp
   Classes/Score.cpp
@@ -74,7 +77,10 @@ set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/Board.cpp
   Classes/Game.cpp
-  Classes/HelloWorldScene.cpp
+  Classes/Menu.cpp
+  Classes/Game.cpp
+  Classes/Options.cpp
+  Classes/Highscores.cpp
   Classes/Piece.cpp
   Classes/Round.cpp
   Classes/Score.cpp
