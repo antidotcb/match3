@@ -18,16 +18,22 @@ namespace match3 {
             uint16_t height;
         };
 
-        static Gameboard* create(const Size& _Size, IAbstractPieceFactory* _Factory, cocos2d::Layer* _Layer);
-        virtual bool swap(const Coord& _Pos1, const Coord& _Pos2);
+        static Gameboard* create(const cocos2d::Vec2 _Position,const Size& _Size, IAbstractPieceFactory* _Factory, cocos2d::Layer* _Layer);
+        virtual void swap(const Coord& _Pos1, const Coord& _Pos2);
 
         virtual ~Gameboard();
 
-        Piece* pieceAt(Coord _Coord);
+        Piece* getPiece(Coord _Coord);
+        void removePiece(Piece* piece);
+
         Coord screenToCell(const cocos2d::Vec2 _TouchPos);
         cocos2d::Vec2 cellToScreen(const Coord & _Coord);
 
+        void fillup();
+        void getResultsOfLastFill(std::list<std::vector<Piece*> > &_Container);
+
         bool check();
+        void getResultsOfLastCheck(std::list<std::vector<Piece*> > &_Container);
 
         void lock();
         void unlock();
@@ -38,6 +44,7 @@ namespace match3 {
 
         virtual bool init();
 
+        void checkDirection(bool _Horizontal);
         void cleanup();
         bool validate();
 
@@ -47,22 +54,28 @@ namespace match3 {
         typedef Piece* BoardPiece;
         typedef BoardPiece* BoardRow;
 
+        std::list<std::vector<Piece*>> piecesToRemove_;
+        std::list<std::vector<Piece*>> newPieces_;
+
         BoardRow* board_;
         uint16_t width_;
         uint16_t heigth_;
         IAbstractPieceFactory* factory_;
         cocos2d::Layer* layer_;
-
         bool locked_;
+        cocos2d::Vec2 origin_;
 
-        std::vector<cocos2d::Sprite*> sprites;
+        std::vector<cocos2d::Sprite*> sprites_;
 
-        static const cocos2d::Vec2 Origin;
+        static const cocos2d::Vec2 DefaultOrigin;
 
         static const uint8_t FgSpriteLevel = 100;
         static const uint8_t BgSpriteLevel = 50;
         static const uint8_t CellSize = 40;
         static const uint8_t CellPadding = 0;
+
+        static const float FastSpeed;        // 0.2f
+        static const float SlowSpeed;        // 0.5f
 
         static const char* BgSpriteTextureName;        // "background.png"
     };

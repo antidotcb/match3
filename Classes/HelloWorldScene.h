@@ -58,6 +58,8 @@ namespace match3 {
         static const int DefaultBoardSize = 8;
         static const float FastSpeed;        // 0.2f
         static const float SlowSpeed;        // 0.5f
+        static const float FastSpeedLL;        // 0.22f
+        static const float SlowSpeedLL;        // 0.55f
 
         static const int HighlightActionsTag = 50;
     };

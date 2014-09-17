@@ -1,11 +1,15 @@
 #include "HelloWorldScene.h"
 #include "Piece.h"
 #include "Board.h"
+#include <SimpleAudioEngine.h>
+
 USING_NS_CC;
 
 namespace match3 {
     const float GameLayer::FastSpeed = .25f;
     const float GameLayer::SlowSpeed = .5f;
+    const float GameLayer::FastSpeedLL = GameLayer::FastSpeed + (GameLayer::FastSpeed/10.0f);
+    const float GameLayer::SlowSpeedLL = GameLayer::SlowSpeed + (GameLayer::SlowSpeed/10.0f);
 
     void GameLayer::addBackground()
     {
@@ -17,7 +21,8 @@ namespace match3 {
 
     bool GameLayer::addGameboard() {
         Gameboard::Size boardSize = { DefaultBoardSize, DefaultBoardSize };
-        gameboard_ = Gameboard::create(boardSize, PiecesManager::getInstance(), this);
+        Vec2 position;
+        gameboard_ = Gameboard::create(position, boardSize, PiecesManager::getInstance(), this);
 
         if (!gameboard_) {
             CCLOGERROR("Can't create gameboard.");
@@ -51,6 +56,7 @@ namespace match3 {
     }
 
     bool GameLayer::init() {
+
         if (!Layer::init()) {
             return false;
         }
@@ -68,6 +74,10 @@ namespace match3 {
 
         addInputDispatcher();
 
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("music.mp3");
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("move.aif");
+        //CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
+
         return true;
     }
 
@@ -78,7 +88,7 @@ namespace match3 {
         CCLOGINFO("Window [X=%f , Y=%f]", touch_pos.x, touch_pos.y);
         Coord coord = gameboard_->screenToCell(touch_pos);
         CCLOGINFO("Coord [X=%d , Y=%d]", coord.X, coord.Y);
-        Piece* piece = gameboard_->pieceAt(coord);
+        Piece* piece = gameboard_->getPiece(coord);
 
         if (gameboard_->locked() || !piece) {
             return true;
@@ -169,17 +179,30 @@ namespace match3 {
         CCLOG("checkSwapValid: Second arrived, finally can check.");
 
         if (gameboard_->check()) {
-            // TODO: add animation of destoroed items
+
+            // TODO: add animation of destroyed items
+
+            std::list<std::vector<Piece*> > removePieces;
+            gameboard_->getResultsOfLastCheck(removePieces);
+
+            for (auto vec : removePieces) {
+                std::stringstream ss;
+                for (Piece* piece : vec) {
+                    ss << piece->color()->name() << "[" << piece->position().X << "," << piece->position().Y << "] ";
+                    gameboard_->removePiece(piece);
+                    //delete piece;
+                }
+
+                CCLOG("Found %d pieces in row with following colors: %s", vec.size(), ss.str().c_str());
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("remove.wav");
+            }
+
+            gameboard_->fillup();
+
             gameboard_->unlock();
         } else {
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("move.aif");
             swapPieces(firstArrived_, _Piece, CC_CALLBACK_1(GameLayer::swapBack, this));
-
-            DelayTime *delayBeforeUnlock = DelayTime::create(FastSpeed + 0.05f);
-            CallFunc *unlockGameboard = CallFunc::create(CC_CALLBACK_0(Gameboard::unlock, gameboard_));
-
-            Sequence *unlockSequence = Sequence::createWithTwoActions(delayBeforeUnlock, unlockGameboard);
-
-            runAction(unlockSequence);
         }
 
         firstArrived_ = nullptr;
@@ -193,9 +216,10 @@ namespace match3 {
         }
 
         firstArrived_ = nullptr;
-        CCLOG("swapBack: Second arrived, finally can check.");
-    }
 
+        gameboard_->unlock();
+        CCLOG("swapBack: Second arrived, finally can unlock board.");
+    }
 
     void GameLayer::swapPieces(Piece* _First, Piece* _Second, const std::function<void(Piece*)> &cb) {
         Sprite* spriteA = _First->sprite();
@@ -206,9 +230,6 @@ namespace match3 {
 
         CallFunc *checkFuncA = CallFunc::create(std::bind(cb, _First));
         CallFunc *checkFuncB = CallFunc::create(std::bind(cb, _Second));
-
-        //CallFunc *checkFuncA = CallFunc::create(CC_CALLBACK_0(GameLayer::checkSwapValid, this, _First));
-        //CallFunc *checkFuncB = CallFunc::create(CC_CALLBACK_0(GameLayer::checkSwapValid, this, _Second));
 
         MoveTo *moveA = MoveTo::create(FastSpeed, gameboard_->cellToScreen(posB));
         MoveTo *moveB = MoveTo::create(FastSpeed, gameboard_->cellToScreen(posA));
