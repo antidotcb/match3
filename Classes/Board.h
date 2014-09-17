@@ -8,44 +8,63 @@
 #ifndef BOARD_H_
 #define BOARD_H_
 
-#include <cstdint>
+#include "common.h"
 
 namespace match3 {
-
-    class Piece;
-
-    class Board {
+    class Gameboard {
     public:
-        Board(const uint8_t _Width = 8, const uint8_t _Height = 8) :
-                width(_Width), height(_Height)
-        {
-            const uint8_t size = width * height;
-            pieces = new Piece*[size];
-        }
+        struct Size {
+            uint16_t width;
+            uint16_t height;
+        };
 
-        const uint8_t getWidth() const {
-            return width;
-        }
+        static Gameboard* create(const Size& _Size, IAbstractPieceFactory* _Factory, cocos2d::Layer* _Layer);
+        virtual bool swap(const Coord& _Pos1, const Coord& _Pos2);
 
-        const uint8_t getHeight() const {
-            return height;
-        }
+        virtual ~Gameboard();
 
-        virtual ~Board() {
-            delete[] pieces;
-        }
+        Piece* pieceAt(Coord _Coord);
+        Coord screenToCell(const cocos2d::Vec2 _TouchPos);
+        cocos2d::Vec2 cellToScreen(const Coord & _Coord);
 
-        bool isCollapsed() const;
+        bool check();
 
-        bool isSwapValid(Piece * from, Piece * where) const;
+        void lock();
+        void unlock();
+        bool locked() const;
 
     protected:
+        Gameboard(const Size& _Size, IAbstractPieceFactory* _Factory, cocos2d::Layer * _Layer);
+
+        virtual bool init();
+
+        void cleanup();
+        bool validate();
+
+        void setPiece(Coord _Coord, Piece* _Piece);
 
     private:
-        uint8_t width;
-        uint8_t height;
+        typedef Piece* BoardPiece;
+        typedef BoardPiece* BoardRow;
 
-        Piece** pieces;
+        BoardRow* board_;
+        uint16_t width_;
+        uint16_t heigth_;
+        IAbstractPieceFactory* factory_;
+        cocos2d::Layer* layer_;
+
+        bool locked_;
+
+        std::vector<cocos2d::Sprite*> sprites;
+
+        static const cocos2d::Vec2 Origin;
+
+        static const uint8_t FgSpriteLevel = 100;
+        static const uint8_t BgSpriteLevel = 50;
+        static const uint8_t CellSize = 40;
+        static const uint8_t CellPadding = 0;
+
+        static const char* BgSpriteTextureName;        // "background.png"
     };
 
 } /* namespace match3 */

@@ -8,21 +8,24 @@
 #ifndef ROUND_H_
 #define ROUND_H_
 
+#include "common.h"
+
 namespace match3 {
 
     class Board;
     class Time;
     class Score;
 
-    class Round {
+    class BasicRound {
     public:
-        Round() {
-        }
+        BasicRound();
+        virtual ~BasicRound() {}
 
-        virtual ~Round() {
-        }
-
-    private:
+        void startNewRound();
+        bool isRoundFinished();
+        uint16_t resultScore();
+        uint16_t timeLeft();
+        private:
         Board * board;
         Score * score;
         Time * time;

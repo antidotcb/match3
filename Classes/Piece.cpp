@@ -7,12 +7,7 @@
 
 #include "Piece.h"
 
-#include <base/CCDirector.h>
-#include <base/CCPlatformMacros.h>
-#include <CCFileUtils.h>
-#include <renderer/CCTextureCache.h>
-#include <cstdint>
-#include <fstream>
+USING_NS_CC;
 
 namespace match3 {
 
@@ -42,16 +37,13 @@ namespace match3 {
 
     PieceColor* PiecesManager::random() {
         static std::default_random_engine generator;
-        static std::uniform_int_distribution<int> distribution(0, colors_.size()-1);
+        static std::uniform_int_distribution<int> distribution(0, colors_.size() - 1);
 
         ColorsMap::const_iterator item = colors_.begin();
         size_t random = distribution(generator);
         std::advance(item, random);
 
         return item->second;
-    }
-
-    PiecesManager::PiecesManager() {
     }
 
     void PiecesManager::destroyInstance() {
@@ -121,16 +113,109 @@ namespace match3 {
         return true;
     }
 
-    bool Piece::isSameColorAs(const Piece& _Rhs) const {
-        return this->color_ == _Rhs.color_;
-    }
-
     Piece::Piece(PieceColor* _Color) :
-            color_(_Color) {
+            BasicPiece(_Color->value(), Coord(0, 0)), color_(_Color), sprite_(0) {
     }
 
-    Piece::~Piece() {
+    BasicPiece::BasicPiece(uint16_t _Type, const Coord& _Position) :
+            position_(_Position), type_(_Type) {
     }
 
-    PiecesManager* PiecesManager::instance_;
+    const Coord& BasicPiece::position() const {
+        return position_;
+    }
+
+    void BasicPiece::setPosition(const Coord& _Position) {
+        position_ = _Position;
+    }
+
+    bool BasicPiece::isSameTypeAs(const BasicPiece* _Piece) const {
+        return this->type() == _Piece->type();
+    }
+
+    bool BasicPiece::isNextTo(const BasicPiece* _Piece) const {
+        if (this->position().X == _Piece->position().X) {
+            return (this->position().Y - _Piece->position().Y == 1) || (this->position().Y - _Piece->position().Y == -1);
+        } else
+        if (this->position().Y == _Piece->position().Y) {
+            return (this->position().X - _Piece->position().X == 1) || (this->position().X - _Piece->position().X == -1);
+        } else {
+            return false;
+        }
+    }
+
+    uint16_t BasicPiece::type() const {
+        return type_;
+    }
+
+    Piece* PiecesManager::createPiece() {
+        PieceColor* color = random();
+        return Piece::create(color);
+    }
+
+    uint16_t Piece::type() const {
+        return color_->value();
+    }
+
+    PieceColor* Piece::color() const {
+        return color_;
+    }
+
+    bool Piece::init() {
+        sprite_ = Sprite::create();
+        cocos2d::Texture2D* tex = color_->texture();
+        sprite_->setTexture(tex);
+        Rect rect;
+        rect.size.width = tex->getContentSize().width;
+        rect.size.height = tex->getContentSize().height;
+        sprite_->setTextureRect(rect);
+        // TODO: size
+
+        return true;
+    }
+
+    cocos2d::Sprite* Piece::sprite() const {
+        return sprite_;
+    }
+
+    PiecesManager* PiecesManager::instance_ = 0;
+
+    PiecesManager::PiecesManager() {
+    }
+
+    PiecesManager::PiecesManager(PiecesManager&) {
+    }
+
+    PiecesManager& PiecesManager::operator =(const PiecesManager&) {
+        return *this;
+    }
+
+    void Piece::setPosition(const Coord& _Position)
+            {
+        BasicPiece::setPosition(_Position);
+        //TODO: Setup position on screen
+    }
+
+    Piece* Piece::create(PieceColor* _Color) {
+        Piece *pRet = new Piece(_Color);
+        if (pRet && pRet->init()) {
+            pRet->autorelease();
+            return pRet;
+        } else {
+            delete pRet;
+            pRet = NULL;
+            return NULL;
+        }
+    }
+
+    void Piece::autorelease()
+    {
+    }
+
+    Piece::~Piece()
+    {
+        autorelease();
+    }
+
 } /* namespace match3 */
+

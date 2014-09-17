@@ -29,11 +29,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview = GLView::create("match3");
         glview->setFrameSize(800, 600);
         director->setOpenGLView(glview);
-        setupResolutionPolicy(800, 600);
+        adaptResolution(640, 480);
     }
 
     // turn on display FPS
-    // director->setDisplayStats(true);
+    director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
@@ -42,7 +42,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     PiecesManager::getInstance()->loadPieces("colors.txt");
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = GameLayer::wrapIntoScene();
 
     // run
     director->runWithScene(scene);
@@ -50,7 +50,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     return true;
 }
 
-void AppDelegate::setupResolutionPolicy(float designW, float designH) {
+void AppDelegate::adaptResolution(float designW, float designH) {
     Size screenSize =  Director::getInstance()->getOpenGLView()->getFrameSize();
 
     float designRatio = designW / designH;
