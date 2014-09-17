@@ -10,35 +10,15 @@
 			<triggers>clean,full,incremental,</triggers>
 			<arguments>
 				<dictionary>
-					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
-					<value>clean</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.enableCleanBuild</key>
-					<value>true</value>
+					<key>org.eclipse.cdt.core.errorOutputParser</key>
+					<value>org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.append_environment</key>
 					<value>true</value>
 				</dictionary>
 				<dictionary>
-					<key>org.eclipse.cdt.make.core.stopOnError</key>
-					<value>true</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.enabledIncrementalBuild</key>
-					<value>true</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.build.command</key>
-					<value>/usr/bin/make</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.contents</key>
-					<value>org.eclipse.cdt.make.core.activeConfigSettings</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.build.target.inc</key>
+					<key>org.eclipse.cdt.make.core.autoBuildTarget</key>
 					<value>all</value>
 				</dictionary>
 				<dictionary>
@@ -46,52 +26,72 @@
 					<value>-j4</value>
 				</dictionary>
 				<dictionary>
-					<key>org.eclipse.cdt.make.core.buildLocation</key>
-					<value>/home/antidotcb/workspace/match3</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.useDefaultBuildCmd</key>
-					<value>false</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.environment</key>
-					<value>VERBOSE=1|CMAKE_NO_VERBOSE=1|</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.enableFullBuild</key>
-					<value>true</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.build.target.auto</key>
-					<value>all</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
-					<value>false</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.build.target.clean</key>
-					<value>clean</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.fullBuildTarget</key>
-					<value>all</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.buildArguments</key>
-					<value></value>
+					<key>org.eclipse.cdt.make.core.build.command</key>
+					<value>/usr/bin/make</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.build.location</key>
 					<value>/home/antidotcb/workspace/match3</value>
 				</dictionary>
 				<dictionary>
-					<key>org.eclipse.cdt.make.core.autoBuildTarget</key>
+					<key>org.eclipse.cdt.make.core.build.target.auto</key>
 					<value>all</value>
 				</dictionary>
 				<dictionary>
-					<key>org.eclipse.cdt.core.errorOutputParser</key>
-					<value>org.eclipse.cdt.core.GmakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;</value>
+					<key>org.eclipse.cdt.make.core.build.target.clean</key>
+					<value>clean</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.inc</key>
+					<value>MyGame</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildArguments</key>
+					<value></value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildLocation</key>
+					<value>/home/antidotcb/workspace/match3</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
+					<value>clean</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.contents</key>
+					<value>org.eclipse.cdt.make.core.activeConfigSettings</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
+					<value>false</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableCleanBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableFullBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enabledIncrementalBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.environment</key>
+					<value>__CMAKE_NO_VERBOSE=0|__VERBOSE=0|</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.fullBuildTarget</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.stopOnError</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.useDefaultBuildCmd</key>
+					<value>false</value>
 				</dictionary>
 			</arguments>
 		</buildCommand>
@@ -119,12 +119,77 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] MyGame</name>
+			<name>[Targets]/[exe] MyGame/</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] MyGame/</name>
+			<name>[Targets]/[lib] audio/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] extensions/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] spine/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] tinyxml2/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] unzip/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] xxhash/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MyGame/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MyGame/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MyGame/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MyGame/Resources</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -134,9 +199,254 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] MyGame/Source Files/main.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/proj.linux/main.cpp</location>
+			<name>[Targets]/[lib] audio/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] audio/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] audio/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] audio/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] audio/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] extensions/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] extensions/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] extensions/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] extensions/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] extensions/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] spine/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] spine/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] spine/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] spine/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] spine/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] tinyxml2/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] tinyxml2/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] tinyxml2/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] tinyxml2/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] tinyxml2/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] unzip/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] unzip/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] unzip/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] unzip/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] unzip/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] xxhash/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] xxhash/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] xxhash/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] xxhash/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[lib] xxhash/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>[Targets]/[exe] MyGame/Source Files/AppDelegate.cpp</name>
@@ -179,324 +489,9 @@
 			<location>/home/antidotcb/workspace/match3/Classes/Time.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] MyGame/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[exe] MyGame/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[exe] MyGame/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[exe] MyGame/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpArray.c</name>
+			<name>[Targets]/[exe] MyGame/Source Files/main.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpArray.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpCollision.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpCollision.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSpaceComponent.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSpaceComponent.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpVect.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpVect.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSpaceQuery.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSpaceQuery.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSpaceHash.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSpaceHash.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpBBTree.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpBBTree.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpBody.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpBody.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpHashSet.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpHashSet.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/chipmunk.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/chipmunk.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSpaceStep.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSpaceStep.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSpace.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSpace.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSweep1D.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSweep1D.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpShape.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpShape.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpBB.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpBB.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpArbiter.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpArbiter.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpPolyShape.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpPolyShape.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSpatialIndex.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSpatialIndex.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpPinJoint.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpPinJoint.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSimpleMotor.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpSimpleMotor.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpConstraint.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpConstraint.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpRotaryLimitJoint.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpRotaryLimitJoint.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpDampedSpring.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpDampedSpring.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSlideJoint.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpSlideJoint.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpDampedRotarySpring.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpDampedRotarySpring.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpPivotJoint.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpPivotJoint.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpGrooveJoint.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpGrooveJoint.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpRatchetJoint.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpRatchetJoint.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Source Files/cpGearJoint.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpGearJoint.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] chipmunk_static/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] unzip</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] unzip/</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] unzip/Source Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] unzip/Source Files/ioapi.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/unzip/ioapi.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] unzip/Source Files/unzip.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/unzip/unzip.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] unzip/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] unzip/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] unzip/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] unzip/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] tinyxml2</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] tinyxml2/</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] tinyxml2/Source Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] tinyxml2/Source Files/tinyxml2.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/tinyxml2/tinyxml2.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] tinyxml2/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] tinyxml2/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] tinyxml2/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] tinyxml2/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] audio</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] audio/</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] audio/Source Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] audio/Source Files/SimpleAudioEngineFMOD.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/audio/linux/SimpleAudioEngineFMOD.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] audio/Source Files/FmodAudioPlayer.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/audio/linux/FmodAudioPlayer.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] audio/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] audio/Header Files/FmodAudioPlayer.h</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/audio/linux/FmodAudioPlayer.h</location>
+			<location>/home/antidotcb/workspace/match3/proj.linux/main.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] audio/Header Files/AudioPlayer.h</name>
@@ -509,84 +504,174 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/audio/include/Export.h</location>
 		</link>
 		<link>
+			<name>[Targets]/[lib] audio/Header Files/FmodAudioPlayer.h</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/audio/linux/FmodAudioPlayer.h</location>
+		</link>
+		<link>
 			<name>[Targets]/[lib] audio/Header Files/SimpleAudioEngine.h</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/audio/include/SimpleAudioEngine.h</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] audio/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] audio/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] audio/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] xxhash</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] xxhash/</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] xxhash/Source Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] xxhash/Source Files/xxhash.c</name>
+			<name>[Targets]/[lib] audio/Source Files/FmodAudioPlayer.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/xxhash/xxhash.c</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/audio/linux/FmodAudioPlayer.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] xxhash/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] xxhash/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] xxhash/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] xxhash/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/cocos2d.cpp</name>
+			<name>[Targets]/[lib] audio/Source Files/SimpleAudioEngineFMOD.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/cocos2d.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/audio/linux/SimpleAudioEngineFMOD.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/chipmunk.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/chipmunk.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpArbiter.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpArbiter.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpArray.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpArray.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpBB.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpBB.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpBBTree.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpBBTree.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpBody.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpBody.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpCollision.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpCollision.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpConstraint.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpConstraint.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpDampedRotarySpring.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpDampedRotarySpring.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpDampedSpring.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpDampedSpring.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpGearJoint.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpGearJoint.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpGrooveJoint.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpGrooveJoint.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpHashSet.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpHashSet.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpPinJoint.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpPinJoint.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpPivotJoint.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpPivotJoint.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpPolyShape.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpPolyShape.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpRatchetJoint.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpRatchetJoint.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpRotaryLimitJoint.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpRotaryLimitJoint.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpShape.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpShape.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSimpleMotor.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpSimpleMotor.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSlideJoint.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/constraints/cpSlideJoint.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSpace.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSpace.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSpaceComponent.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSpaceComponent.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSpaceHash.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSpaceHash.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSpaceQuery.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSpaceQuery.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSpaceStep.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSpaceStep.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSpatialIndex.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSpatialIndex.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpSweep1D.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpSweep1D.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] chipmunk_static/Source Files/cpVect.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/src/cpVect.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCAction.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCAction.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCActionCamera.cpp</name>
@@ -599,24 +684,19 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCActionCatmullRom.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCAction.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCAction.cpp</location>
-		</link>
-		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCActionEase.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCActionEase.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCActionGrid3D.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCActionGrid3D.cpp</location>
-		</link>
-		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCActionGrid.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCActionGrid.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCActionGrid3D.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCActionGrid3D.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCActionInstant.cpp</name>
@@ -654,284 +734,9 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCActionTween.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCAnimationCache.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCAffineTransform.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCAnimationCache.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCAnimation.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCAnimation.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCAtlasNode.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCAtlasNode.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCClippingNode.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCClippingNode.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCComponentContainer.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCComponentContainer.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCComponent.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCComponent.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCDrawingPrimitives.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCDrawingPrimitives.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCDrawNode.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCDrawNode.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCFastTMXLayer.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFastTMXLayer.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCFastTMXTiledMap.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFastTMXTiledMap.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCFontAtlasCache.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFontAtlasCache.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCFontAtlas.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFontAtlas.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCFontCharMap.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFontCharMap.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCFont.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFont.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCFontFNT.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFontFNT.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCFontFreeType.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFontFreeType.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCGLBufferedNode.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCGLBufferedNode.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCGrabber.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCGrabber.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCGrid.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCGrid.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCLabelAtlas.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCLabelAtlas.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCLabelBMFont.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCLabelBMFont.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCLabel.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCLabel.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCLabelTextFormatter.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCLabelTextFormatter.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCLabelTTF.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCLabelTTF.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCLayer.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCLayer.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCMenu.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCMenu.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCMenuItem.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCMenuItem.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCMotionStreak.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCMotionStreak.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCNode.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCNode.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCNodeGrid.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCNodeGrid.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCParallaxNode.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCParallaxNode.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCParticleBatchNode.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCParticleBatchNode.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCParticleExamples.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCParticleExamples.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCParticleSystem.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCParticleSystem.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCParticleSystemQuad.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCParticleSystemQuad.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCProgressTimer.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCProgressTimer.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCRenderTexture.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCRenderTexture.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCScene.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCScene.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCSpriteBatchNode.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCSpriteBatchNode.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCSprite.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCSprite.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCSpriteFrameCache.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCSpriteFrameCache.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCSpriteFrame.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCSpriteFrame.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCTextFieldTTF.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTextFieldTTF.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCTileMapAtlas.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTileMapAtlas.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCTMXLayer.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTMXLayer.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCTMXObjectGroup.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTMXObjectGroup.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCTMXTiledMap.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTMXTiledMap.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCTMXXMLParser.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTMXXMLParser.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCTransition.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTransition.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCTransitionPageTurn.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTransitionPageTurn.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCTransitionProgress.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTransitionProgress.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCTweenFunction.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTweenFunction.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCMesh.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCMesh.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCObjLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCObjLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCSprite3D.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCSprite3D.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCSprite3DMaterial.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCSprite3DMaterial.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/CCAffineTransform.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCAnimate3D.cpp</name>
@@ -939,84 +744,19 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCAnimate3D.cpp</location>
 		</link>
 		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCAnimation.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCAnimation.cpp</location>
+		</link>
+		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCAnimation3D.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCAnimation3D.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCBundle3D.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCAnimationCache.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCBundle3D.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCMeshSkin.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCMeshSkin.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCBundleReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCBundleReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCSAXParser.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/CCSAXParser.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCThread.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/CCThread.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCGLViewProtocol.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/CCGLViewProtocol.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCFileUtils.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/CCFileUtils.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCImage.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/CCImage.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCGLView.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/desktop/CCGLView.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/edtaa3func.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/edtaa3func/edtaa3func.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/ConvertUTFWrapper.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/ConvertUTF/ConvertUTFWrapper.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/ConvertUTF.c</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/external/ConvertUTF/ConvertUTF.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCStdC.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/linux/CCStdC.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCFileUtilsLinux.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/linux/CCFileUtilsLinux.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCCommon.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/linux/CCCommon.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCAnimationCache.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCApplication.cpp</name>
@@ -1024,14 +764,54 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/linux/CCApplication.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCDevice.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCArray.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/linux/CCDevice.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/deprecated/CCArray.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCAtlasNode.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCAtlasNode.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCAutoreleasePool.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCAutoreleasePool.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCBatchCommand.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCBatchCommand.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCBundle3D.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCBundle3D.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCBundleReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCBundleReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCClippingNode.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCClippingNode.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCCommon.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/linux/CCCommon.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCComponent.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCComponent.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCComponentContainer.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCComponentContainer.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCConfiguration.cpp</name>
@@ -1044,6 +824,11 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCConsole.cpp</location>
 		</link>
 		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCCustomCommand.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCCustomCommand.cpp</location>
+		</link>
+		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCData.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCData.cpp</location>
@@ -1054,9 +839,34 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCDataVisitor.cpp</location>
 		</link>
 		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCDeprecated.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/deprecated/CCDeprecated.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCDevice.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/linux/CCDevice.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCDictionary.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/deprecated/CCDictionary.cpp</location>
+		</link>
+		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCDirector.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCDirector.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCDrawNode.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCDrawNode.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCDrawingPrimitives.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCDrawingPrimitives.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCEvent.cpp</name>
@@ -1134,9 +944,179 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCEventTouch.cpp</location>
 		</link>
 		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCFastTMXLayer.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFastTMXLayer.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCFastTMXTiledMap.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFastTMXTiledMap.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCFileUtils.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/CCFileUtils.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCFileUtilsLinux.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/linux/CCFileUtilsLinux.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCFont.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFont.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCFontAtlas.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFontAtlas.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCFontAtlasCache.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFontAtlasCache.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCFontCharMap.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFontCharMap.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCFontFNT.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFontFNT.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCFontFreeType.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCFontFreeType.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCGLBufferedNode.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCGLBufferedNode.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCGLProgram.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCGLProgram.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCGLProgramCache.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCGLProgramCache.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCGLProgramState.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCGLProgramState.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCGLProgramStateCache.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCGLProgramStateCache.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCGLView.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/desktop/CCGLView.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCGLViewProtocol.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/CCGLViewProtocol.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCGeometry.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/CCGeometry.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCGrabber.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCGrabber.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCGrid.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCGrid.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCGroupCommand.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCGroupCommand.cpp</location>
+		</link>
+		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCIMEDispatcher.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCIMEDispatcher.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCImage.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/CCImage.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCLabel.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCLabel.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCLabelAtlas.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCLabelAtlas.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCLabelBMFont.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCLabelBMFont.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCLabelTTF.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCLabelTTF.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCLabelTextFormatter.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCLabelTextFormatter.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCLayer.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCLayer.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCMenu.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCMenu.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCMenuItem.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCMenuItem.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCMesh.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCMesh.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCMeshCommand.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCMeshCommand.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCMeshSkin.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCMeshSkin.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCMotionStreak.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCMotionStreak.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCNS.cpp</name>
@@ -1144,14 +1124,149 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCNS.cpp</location>
 		</link>
 		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCNode.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCNode.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCNodeGrid.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCNodeGrid.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCNotificationCenter.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/deprecated/CCNotificationCenter.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCObjLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCObjLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCParallaxNode.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCParallaxNode.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCParticleBatchNode.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCParticleBatchNode.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCParticleExamples.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCParticleExamples.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCParticleSystem.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCParticleSystem.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCParticleSystemQuad.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCParticleSystemQuad.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsBody.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/CCPhysicsBody.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsBodyInfo_chipmunk.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/chipmunk/CCPhysicsBodyInfo_chipmunk.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsContact.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/CCPhysicsContact.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsContactInfo_chipmunk.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/chipmunk/CCPhysicsContactInfo_chipmunk.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsJoint.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/CCPhysicsJoint.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsJointInfo_chipmunk.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/chipmunk/CCPhysicsJointInfo_chipmunk.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsShape.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/CCPhysicsShape.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsShapeInfo_chipmunk.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/chipmunk/CCPhysicsShapeInfo_chipmunk.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsWorld.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/CCPhysicsWorld.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsWorldInfo_chipmunk.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/chipmunk/CCPhysicsWorldInfo_chipmunk.cpp</location>
+		</link>
+		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCProfiling.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCProfiling.cpp</location>
 		</link>
 		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCProgressTimer.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCProgressTimer.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCProtectedNode.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/CCProtectedNode.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCQuadCommand.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCQuadCommand.cpp</location>
+		</link>
+		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCRef.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCRef.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCRenderCommand.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCRenderCommand.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCRenderTexture.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCRenderTexture.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCRenderer.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCRenderer.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCSAXParser.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/CCSAXParser.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCScene.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCScene.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCScheduler.cpp</name>
@@ -1164,149 +1279,74 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCScriptSupport.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCTouch.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCSet.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCTouch.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/deprecated/CCSet.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCUserDefault.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCSprite.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCUserDefault.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCSprite.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCUserDefaultAndroid.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCSprite3D.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCUserDefaultAndroid.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCSprite3D.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCValue.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCSprite3DMaterial.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCValue.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/3d/CCSprite3DMaterial.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/TGAlib.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCSpriteBatchNode.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/TGAlib.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCSpriteBatchNode.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/ZipUtils.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCSpriteFrame.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ZipUtils.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCSpriteFrame.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/atitc.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCSpriteFrameCache.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/atitc.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCSpriteFrameCache.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/base64.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCStdC.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/base64.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/linux/CCStdC.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/ccCArray.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCString.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ccCArray.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/deprecated/CCString.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/ccFPSImages.c</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCTMXLayer.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ccFPSImages.c</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTMXLayer.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/ccTypes.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCTMXObjectGroup.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ccTypes.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTMXObjectGroup.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/ccUTF8.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCTMXTiledMap.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ccUTF8.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTMXTiledMap.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/ccUtils.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCTMXXMLParser.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ccUtils.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTMXXMLParser.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/etc1.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCTextFieldTTF.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/etc1.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/s3tc.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/s3tc.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/ObjectFactory.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ObjectFactory.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCBatchCommand.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCBatchCommand.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCCustomCommand.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCCustomCommand.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCMeshCommand.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCMeshCommand.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCGLProgramCache.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCGLProgramCache.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCGLProgram.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCGLProgram.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCGLProgramStateCache.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCGLProgramStateCache.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCGLProgramState.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCGLProgramState.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/ccGLStateCache.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/ccGLStateCache.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCGroupCommand.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCGroupCommand.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCQuadCommand.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCQuadCommand.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCRenderCommand.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCRenderCommand.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCRenderer.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCRenderer.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/ccShaders.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/ccShaders.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTextFieldTTF.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCTexture2D.cpp</name>
@@ -1324,19 +1364,84 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/CCTextureCache.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCAffineTransform.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCThread.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/CCAffineTransform.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/platform/CCThread.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCGeometry.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCTileMapAtlas.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/CCGeometry.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTileMapAtlas.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCTouch.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCTouch.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCTransition.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTransition.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCTransitionPageTurn.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTransitionPageTurn.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCTransitionProgress.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTransitionProgress.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCTweenFunction.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/2d/CCTweenFunction.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCUserDefault.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCUserDefault.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCUserDefaultAndroid.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCUserDefaultAndroid.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CCValue.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/CCValue.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/CCVertex.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/CCVertex.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/CocosGUI.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/CocosGUI.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/ConvertUTF.c</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/ConvertUTF/ConvertUTF.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/ConvertUTFWrapper.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/ConvertUTF/ConvertUTFWrapper.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/HttpClient.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/network/HttpClient.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/LocalStorage.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/storage/local-storage/LocalStorage.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/Mat4.cpp</name>
@@ -1349,89 +1454,29 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/MathUtil.cpp</location>
 		</link>
 		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/ObjectFactory.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ObjectFactory.cpp</location>
+		</link>
+		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/Quaternion.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/Quaternion.cpp</location>
 		</link>
 		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/SocketIO.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/network/SocketIO.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/TGAlib.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/TGAlib.cpp</location>
+		</link>
+		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/TransformUtils.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/TransformUtils.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/Vec2.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/Vec2.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/Vec3.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/Vec3.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/Vec4.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/Vec4.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsContactInfo_chipmunk.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/chipmunk/CCPhysicsContactInfo_chipmunk.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsJointInfo_chipmunk.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/chipmunk/CCPhysicsJointInfo_chipmunk.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsShapeInfo_chipmunk.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/chipmunk/CCPhysicsShapeInfo_chipmunk.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsBodyInfo_chipmunk.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/chipmunk/CCPhysicsBodyInfo_chipmunk.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsWorldInfo_chipmunk.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/chipmunk/CCPhysicsWorldInfo_chipmunk.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsBody.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/CCPhysicsBody.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsContact.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/CCPhysicsContact.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsShape.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/CCPhysicsShape.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsJoint.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/CCPhysicsJoint.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCPhysicsWorld.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/physics/CCPhysicsWorld.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCProtectedNode.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/CCProtectedNode.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CocosGUI.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/CocosGUI.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/UIButton.cpp</name>
@@ -1442,6 +1487,11 @@
 			<name>[Targets]/[lib] cocos2d/Source Files/UICheckBox.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UICheckBox.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/UIDeprecated.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UIDeprecated.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/UIHBox.cpp</name>
@@ -1464,14 +1514,14 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UILayout.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/UILayoutParameter.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UILayoutParameter.cpp</location>
-		</link>
-		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/UILayoutManager.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UILayoutManager.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/UILayoutParameter.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UILayoutParameter.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/UIListView.cpp</name>
@@ -1509,6 +1559,11 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UISlider.cpp</location>
 		</link>
 		<link>
+			<name>[Targets]/[lib] cocos2d/Source Files/UIText.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UIText.cpp</location>
+		</link>
+		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/UITextAtlas.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UITextAtlas.cpp</location>
@@ -1517,11 +1572,6 @@
 			<name>[Targets]/[lib] cocos2d/Source Files/UITextBMFont.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UITextBMFont.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/UIText.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UIText.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/UITextField.cpp</name>
@@ -1539,19 +1589,19 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UIWidget.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/UIDeprecated.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/Vec2.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/ui/UIDeprecated.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/Vec2.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/HttpClient.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/Vec3.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/network/HttpClient.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/Vec3.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/SocketIO.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/Vec4.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/network/SocketIO.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/math/Vec4.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] cocos2d/Source Files/WebSocket.cpp</name>
@@ -1559,74 +1609,454 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/network/WebSocket.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/LocalStorage.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/ZipUtils.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/storage/local-storage/LocalStorage.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ZipUtils.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCArray.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/atitc.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/deprecated/CCArray.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/atitc.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCDeprecated.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/base64.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/deprecated/CCDeprecated.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/base64.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCDictionary.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/ccCArray.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/deprecated/CCDictionary.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ccCArray.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCNotificationCenter.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/ccFPSImages.c</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/deprecated/CCNotificationCenter.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ccFPSImages.c</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCSet.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/ccGLStateCache.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/deprecated/CCSet.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/ccGLStateCache.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Source Files/CCString.cpp</name>
+			<name>[Targets]/[lib] cocos2d/Source Files/ccShaders.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/deprecated/CCString.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/renderer/ccShaders.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[lib] cocos2d/Source Files/ccTypes.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ccTypes.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[lib] cocos2d/Source Files/ccUTF8.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ccUTF8.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[lib] cocos2d/Source Files/ccUtils.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/ccUtils.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocos2d/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[lib] cocos2d/Source Files/cocos2d.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/cocos2d.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] extensions</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[lib] cocos2d/Source Files/edtaa3func.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/edtaa3func/edtaa3func.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] extensions/</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[lib] cocos2d/Source Files/etc1.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/etc1.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] extensions/Source Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[lib] cocos2d/Source Files/s3tc.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/base/s3tc.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCBAnimationManager.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCBAnimationManager.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCBFileLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCBFileLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCBKeyframe.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCBKeyframe.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCBReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCBReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCBSequence.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCBSequence.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCBSequenceProperty.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCBSequenceProperty.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCControlButtonLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCControlButtonLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCControlLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCControlLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCLabelBMFontLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCLabelBMFontLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCLabelTTFLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCLabelTTFLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCLayerColorLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCLayerColorLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCLayerGradientLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCLayerGradientLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCLayerLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCLayerLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCMenuItemImageLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCMenuItemImageLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCMenuItemLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCMenuItemLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCNode+CCBRelativePositioning.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCNode+CCBRelativePositioning.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCNodeLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCNodeLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCNodeLoaderLibrary.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCNodeLoaderLibrary.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCParticleSystemQuadLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCParticleSystemQuadLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCScale9SpriteLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCScale9SpriteLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCScrollViewLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCScrollViewLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocosbuilder/Source Files/CCSpriteLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCSpriteLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/ButtonReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/ButtonReader/ButtonReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCActionFrame.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCActionFrame.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCActionFrameEasing.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCActionFrameEasing.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCActionManagerEx.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCActionManagerEx.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCActionNode.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCActionNode.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCActionObject.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCActionObject.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCActionTimeline.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CCActionTimeline.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCActionTimelineCache.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CCActionTimelineCache.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCArmature.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCArmature.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCArmatureAnimation.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCArmatureAnimation.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCArmatureDataManager.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCArmatureDataManager.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCArmatureDefine.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCArmatureDefine.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCBatchNode.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCBatchNode.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCBone.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCBone.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCColliderDetector.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCColliderDetector.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCComAttribute.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCComAttribute.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCComAudio.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCComAudio.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCComController.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCComController.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCComRender.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCComRender.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCDataReaderHelper.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCDataReaderHelper.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCDatas.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCDatas.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCDecorativeDisplay.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCDecorativeDisplay.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCDisplayFactory.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCDisplayFactory.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCDisplayManager.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCDisplayManager.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCFrame.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CCFrame.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCInputDelegate.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCInputDelegate.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCNodeReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CCNodeReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCProcessBase.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCProcessBase.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCSGUIReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCSGUIReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCSSceneReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCSSceneReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCSkin.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCSkin.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCSpriteFrameCacheHelper.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCSpriteFrameCacheHelper.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCTimeLine.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CCTimeLine.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCTransformHelp.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCTransformHelp.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCTween.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCTween.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CCUtilMath.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCUtilMath.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CheckBoxReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/CheckBoxReader/CheckBoxReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/CocoLoader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CocoLoader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/DictionaryHelper.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/DictionaryHelper.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/ImageViewReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/ImageViewReader/ImageViewReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/LayoutReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/LayoutReader/LayoutReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/ListViewReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/ListViewReader/ListViewReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/LoadingBarReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/LoadingBarReader/LoadingBarReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/PageViewReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/PageViewReader/PageViewReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/ScrollViewReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/ScrollViewReader/ScrollViewReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/SliderReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/SliderReader/SliderReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/TextAtlasReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/TextAtlasReader/TextAtlasReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/TextBMFontReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/TextBMFontReader/TextBMFontReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/TextFieldReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/TextFieldReader/TextFieldReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/TextReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/TextReader/TextReader.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/TriggerBase.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/TriggerBase.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/TriggerMng.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/TriggerMng.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/TriggerObj.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/TriggerObj.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] cocostudio/Source Files/WidgetReader.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/WidgetReader.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] extensions/Source Files/AssetsManager.cpp</name>
@@ -1684,16 +2114,6 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/GUI/CCControlExtension/CCControlUtils.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] extensions/Source Files/CCInvocation.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/GUI/CCControlExtension/CCInvocation.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] extensions/Source Files/CCScale9Sprite.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/GUI/CCControlExtension/CCScale9Sprite.cpp</location>
-		</link>
-		<link>
 			<name>[Targets]/[lib] extensions/Source Files/CCEditBox.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/GUI/CCEditBox/CCEditBox.cpp</location>
@@ -1714,6 +2134,26 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/GUI/CCEditBox/CCEditBoxImplWin.cpp</location>
 		</link>
 		<link>
+			<name>[Targets]/[lib] extensions/Source Files/CCInvocation.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/GUI/CCControlExtension/CCInvocation.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] extensions/Source Files/CCPhysicsDebugNode.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/physics-nodes/CCPhysicsDebugNode.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] extensions/Source Files/CCPhysicsSprite.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/physics-nodes/CCPhysicsSprite.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] extensions/Source Files/CCScale9Sprite.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/GUI/CCControlExtension/CCScale9Sprite.cpp</location>
+		</link>
+		<link>
 			<name>[Targets]/[lib] extensions/Source Files/CCScrollView.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/GUI/CCScrollView/CCScrollView.cpp</location>
@@ -1727,51 +2167,6 @@
 			<name>[Targets]/[lib] extensions/Source Files/CCTableViewCell.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/GUI/CCScrollView/CCTableViewCell.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] extensions/Source Files/CCPhysicsDebugNode.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/physics-nodes/CCPhysicsDebugNode.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] extensions/Source Files/CCPhysicsSprite.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/extensions/physics-nodes/CCPhysicsSprite.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] extensions/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] extensions/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] extensions/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] extensions/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] spine</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] spine/</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] spine/Source Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>[Targets]/[lib] spine/Source Files/Animation.cpp</name>
@@ -1822,6 +2217,16 @@
 			<name>[Targets]/[lib] spine/Source Files/BoundingBoxAttachment.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/spine/BoundingBoxAttachment.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] spine/Source Files/CCSkeleton.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/spine/CCSkeleton.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[lib] spine/Source Files/CCSkeletonAnimation.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/spine/CCSkeletonAnimation.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[lib] spine/Source Files/Event.cpp</name>
@@ -1889,484 +2294,24 @@
 			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/spine/spine-cocos2dx.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] spine/Source Files/CCSkeleton.cpp</name>
+			<name>[Targets]/[lib] tinyxml2/Source Files/tinyxml2.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/spine/CCSkeleton.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/tinyxml2/tinyxml2.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] spine/Source Files/CCSkeletonAnimation.cpp</name>
+			<name>[Targets]/[lib] unzip/Source Files/ioapi.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/spine/CCSkeletonAnimation.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/unzip/ioapi.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] spine/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] spine/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] spine/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] spine/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCBFileLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCBFileLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCMenuItemImageLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCMenuItemImageLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCBReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCBReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCMenuItemLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCMenuItemLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCControlButtonLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCControlButtonLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCNodeLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCNodeLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCControlLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCControlLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCNodeLoaderLibrary.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCNodeLoaderLibrary.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCLabelBMFontLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCLabelBMFontLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCParticleSystemQuadLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCParticleSystemQuadLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCLabelTTFLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCLabelTTFLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCScale9SpriteLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCScale9SpriteLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCLayerColorLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCLayerColorLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCScrollViewLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCScrollViewLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCLayerGradientLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCLayerGradientLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCSpriteLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCSpriteLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCLayerLoader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCLayerLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCBAnimationManager.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCBAnimationManager.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCBKeyframe.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCBKeyframe.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCBSequence.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCBSequence.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCBSequenceProperty.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCBSequenceProperty.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Source Files/CCNode+CCBRelativePositioning.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocosbuilder/CCNode+CCBRelativePositioning.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocosbuilder/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCActionFrame.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCActionFrame.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCActionFrameEasing.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCActionFrameEasing.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCActionManagerEx.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCActionManagerEx.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCActionNode.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCActionNode.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCActionObject.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCActionObject.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCArmature.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCArmature.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCBone.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCBone.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCArmatureAnimation.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCArmatureAnimation.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCProcessBase.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCProcessBase.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCTween.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCTween.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCDatas.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCDatas.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCBatchNode.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCBatchNode.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCDecorativeDisplay.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCDecorativeDisplay.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCDisplayFactory.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCDisplayFactory.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCDisplayManager.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCDisplayManager.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCSkin.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCSkin.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCColliderDetector.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCColliderDetector.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCArmatureDataManager.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCArmatureDataManager.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCArmatureDefine.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCArmatureDefine.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCDataReaderHelper.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCDataReaderHelper.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCSpriteFrameCacheHelper.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCSpriteFrameCacheHelper.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCTransformHelp.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCTransformHelp.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCUtilMath.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCUtilMath.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCComAttribute.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCComAttribute.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCComAudio.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCComAudio.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCComController.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCComController.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCComRender.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCComRender.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCInputDelegate.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCInputDelegate.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/DictionaryHelper.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/DictionaryHelper.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCSGUIReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCSGUIReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCSSceneReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CCSSceneReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/TriggerBase.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/TriggerBase.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/TriggerMng.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/TriggerMng.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/TriggerObj.cpp</name>
+			<name>[Targets]/[lib] unzip/Source Files/unzip.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/TriggerObj.cpp</location>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/unzip/unzip.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CocoLoader.cpp</name>
+			<name>[Targets]/[lib] xxhash/Source Files/xxhash.c</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/CocoLoader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/WidgetReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/WidgetReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/ButtonReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/ButtonReader/ButtonReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CheckBoxReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/CheckBoxReader/CheckBoxReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/ImageViewReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/ImageViewReader/ImageViewReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/LayoutReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/LayoutReader/LayoutReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/ListViewReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/ListViewReader/ListViewReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/LoadingBarReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/LoadingBarReader/LoadingBarReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/PageViewReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/PageViewReader/PageViewReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/ScrollViewReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/ScrollViewReader/ScrollViewReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/SliderReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/SliderReader/SliderReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/TextAtlasReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/TextAtlasReader/TextAtlasReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/TextBMFontReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/TextBMFontReader/TextBMFontReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/TextFieldReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/TextFieldReader/TextFieldReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/TextReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/WidgetReader/TextReader/TextReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCActionTimeline.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CCActionTimeline.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCActionTimelineCache.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CCActionTimelineCache.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCFrame.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CCFrame.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCNodeReader.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CCNodeReader.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Source Files/CCTimeLine.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/cocos2d/cocos/editor-support/cocostudio/ActionTimeline/CCTimeLine.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[lib] cocostudio/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<location>/home/antidotcb/workspace/match3/cocos2d/external/xxhash/xxhash.c</location>
 		</link>
 	</linkedResources>
 </projectDescription>
