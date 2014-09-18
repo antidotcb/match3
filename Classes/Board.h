@@ -24,12 +24,12 @@ namespace match3 {
         virtual ~Gameboard();
 
         Piece* getPiece(Coord _Coord);
-        void removePiece(Piece* piece);
+        void remove(Piece* piece);
 
         Coord screenToCell(const cocos2d::Vec2 _TouchPos);
         cocos2d::Vec2 cellToScreen(const Coord & _Coord);
 
-        void fillup();
+        float fillup();
         void getResultsOfLastFill(std::list<std::vector<Piece*> > &_Container);
 
         bool check();
@@ -38,6 +38,8 @@ namespace match3 {
         void lock();
         void unlock();
         bool locked() const;
+
+        static const float FalldownSpeed;        // 0.2f
 
     protected:
         Gameboard(const Size& _Size, IAbstractPieceFactory* _Factory, cocos2d::Layer * _Layer);
@@ -55,7 +57,7 @@ namespace match3 {
         typedef BoardPiece* BoardRow;
 
         std::list<std::vector<Piece*>> piecesToRemove_;
-        std::list<std::vector<Piece*>> newPieces_;
+        std::vector<Piece*> newPieces_;
 
         BoardRow* board_;
         uint16_t width_;
@@ -74,8 +76,7 @@ namespace match3 {
         static const uint8_t CellSize = 40;
         static const uint8_t CellPadding = 0;
 
-        static const float FastSpeed;        // 0.2f
-        static const float SlowSpeed;        // 0.5f
+
 
         static const char* BgSpriteTextureName;        // "background.png"
     };

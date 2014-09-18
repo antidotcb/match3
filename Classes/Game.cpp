@@ -1,24 +1,92 @@
-#include <SimpleAudioEngine.h>
-
 #include "Game.h"
-#include "Piece.h"
-#include "Board.h"
 
+#include <2d/CCAction.h>
+#include <2d/CCActionInstant.h>
+#include <2d/CCActionInterval.h>
+#include <2d/CCLabelTTF.h>
+#include <2d/CCScene.h>
+#include <2d/CCSprite.h>
+#include <base/ccMacros.h>
+#include <base/ccTypes.h>
+#include <base/CCDirector.h>
+#include <base/CCEventDispatcher.h>
+#include <base/CCEventListenerTouch.h>
+#include <base/CCPlatformMacros.h>
+#include <base/CCTouch.h>
+#include <math/CCGeometry.h>
+#include <math/Vec2.h>
+#include <sys/types.h>
+#include <SimpleAudioEngine.h>
+#include <list>
+#include <sstream>
+#include <string>
+#include <vector>
+
+#include "Board.h"
+#include "Piece.h"
 
 USING_NS_CC;
 
 namespace match3 {
+    const int GameLayer::DefaultBoardSize = 8;
+    const int GameLayer::BackgroundLayerLevel = -100;
+    const int GameLayer::HighlightActionsTag = 50;
+
     const float GameLayer::FastSpeed = .25f;
     const float GameLayer::SlowSpeed = .5f;
-    const float GameLayer::FastSpeedLL = GameLayer::FastSpeed + (GameLayer::FastSpeed/10.0f);
-    const float GameLayer::SlowSpeedLL = GameLayer::SlowSpeed + (GameLayer::SlowSpeed/10.0f);
+    const float GameLayer::DissapearSpeed = .1f;
+    //const float Gameboard::SlowSpeed = .25f;
+
+    const float GameLayer::FastSpeedLL = GameLayer::FastSpeed + (GameLayer::FastSpeed / 10.0f);
+    const float GameLayer::SlowSpeedLL = GameLayer::SlowSpeed + (GameLayer::SlowSpeed / 10.0f);
+
+    const char* GameLayer::BackgroundTextureName = "bg.png";
+
+    Scene* GameLayer::wrapIntoScene() {
+        auto scene = Scene::create();
+        auto layer = GameLayer::create();
+        scene->addChild(layer);
+        return scene;
+    }
+
+    GameLayer::GameLayer() :
+            gameboard_(0), selected_(0), firstArrived_(0) {
+        visibleSize_ = Size { 0, 0 };
+        origin_ = Vec2(0, 0);
+    }
+
+    bool GameLayer::init() {
+        if (!Layer::init()) {
+            return false;
+        }
+
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("music.mp3");
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("move.aif");
+
+        visibleSize_ = Director::getInstance()->getVisibleSize();
+        origin_ = Director::getInstance()->getVisibleOrigin();
+
+        addInputDispatcher();
+        addGameboard();
+        addBackground();
+
+        /*
+         //if (!addGameboard()) {
+         // TODO:
+         //   CCLOGERROR("Can't init gameboard.");
+         //   return false;
+         //}
+         //CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
+         * */
+        return true;
+    }
 
     void GameLayer::addBackground()
     {
-        Sprite* sprite = Sprite::create("bg.png");
+        Sprite* sprite = Sprite::create(BackgroundTextureName);
         sprite->setPosition(Vec2(visibleSize_.width / 2 + origin_.x,
                 visibleSize_.height / 2 + origin_.y));
-        this->addChild(sprite, -100);
+        this->addChild(sprite, BackgroundLayerLevel);
     }
 
     bool GameLayer::addGameboard() {
@@ -34,128 +102,262 @@ namespace match3 {
         return true;
     }
 
-    Scene* GameLayer::wrapIntoScene() {
-        auto scene = Scene::create();        // 'scene' is an autorelease object
-        auto layer = GameLayer::create();        // 'layer' is an autorelease object
-        scene->addChild(layer);
-        return scene;
-    }
-
-    GameLayer::GameLayer() :
-            gameboard_(0), selectedPiece_(0), firstArrived_(0) {
-        visibleSize_ = Size { 0, 0 };
-        origin_ = Vec2(0, 0);
-    }
-
     void GameLayer::addInputDispatcher()
     {
         EventListenerTouchOneByOne* listener = EventListenerTouchOneByOne::create();
+
         listener->onTouchBegan = CC_CALLBACK_2(GameLayer::onTouchBegan, this);
-        //listener->onTouchMoved = CC_CALLBACK_2(GameLayer::onTouchMoved, this);
-        //listener->onTouchEnded = CC_CALLBACK_2(GameLayer::onTouchEnded, this);
-        //listener->onTouchCancelled = CC_CALLBACK_2(GameLayer::onTouchCancelled, this);
+        listener->onTouchMoved = CC_CALLBACK_2(GameLayer::onTouchMoved, this);
+
         _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
-    }
-
-    bool GameLayer::init() {
-
-        if (!Layer::init()) {
-            return false;
-        }
-
-        visibleSize_ = Director::getInstance()->getVisibleSize();
-        origin_ = Director::getInstance()->getVisibleOrigin();
-
-        // add "Play" splash screen
-        addBackground();
-
-        if (!addGameboard()) {
-            CCLOGERROR("Can't init gameboard.");
-            return false;
-        }
-
-        addInputDispatcher();
-
-        CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("music.mp3");
-        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("move.aif");
-        //CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
-
-        return true;
     }
 
     bool GameLayer::onTouchBegan(cocos2d::Touch *_Touch, cocos2d::Event *_Event) {
         Vec2 touch_pos = _Touch->getLocation();
-        CCLOGINFO("Touch [X=%f , Y=%f]", touch_pos.x, touch_pos.y);
-        Vec2 window_pos = Director::getInstance()->convertToGL(touch_pos);
-        CCLOGINFO("Window [X=%f , Y=%f]", touch_pos.x, touch_pos.y);
         Coord coord = gameboard_->screenToCell(touch_pos);
-        CCLOGINFO("Coord [X=%d , Y=%d]", coord.X, coord.Y);
         Piece* piece = gameboard_->getPiece(coord);
 
         if (gameboard_->locked() || !piece) {
             return true;
         }
 
-        CCLOG("piece color: %s", piece->color()->name().c_str());
+        CCLOG("Piece [X=%d , Y=%d], Color: %s", coord.X, coord.Y, piece->color()->name().c_str());
 
-        if (selectedPiece_ && selectedPiece_->isNextTo(piece)) {
-            gameboard_->lock();
-            Piece* first = selectedPiece_;
-            deselectPiece();
-            swapPieces(first, piece, CC_CALLBACK_1(GameLayer::checkSwapValid, this));
+        if (selected_ && selected_->isNextTo(piece)) {
+            swapPieces(selected_, piece);
         } else {
-            selectPiece(piece);
+            select(piece);
         }
 
         return true;
     }
 
-    void GameLayer::selectPiece(Piece* _Piece) {
-        if (selectedPiece_) {
-            deselectPiece();
-        }
+    void GameLayer::onTouchMoved(cocos2d::Touch* _Touch, cocos2d::Event* _Event) {
+        Vec2 touch_pos = _Touch->getLocation();
+        Coord coord = gameboard_->screenToCell(touch_pos);
+        Piece* piece = gameboard_->getPiece(coord);
 
-        Sequence* selectSequence;
-        FadeTo* fadeIn = FadeTo::create(SlowSpeed, 192);
-        FadeTo* fadeOut = FadeTo::create(SlowSpeed, 255);
-
-        selectSequence = Sequence::createWithTwoActions(
-                fadeIn,
-                fadeOut);
-
-        RepeatForever *pulsation = RepeatForever::create(selectSequence);
-        pulsation->setTag(HighlightActionsTag);
-
-        _Piece->sprite()->runAction(pulsation);
-
-        selectedPiece_ = _Piece;
-    }
-
-    void GameLayer::deselectPiece() {
-        if (!selectedPiece_) {
+        if (gameboard_->locked() || !piece) {
             return;
         }
 
-        //selectedPiece_->sprite()->stopAction(selectedPulseAction_);
-        selectedPiece_->sprite()->stopActionByTag(HighlightActionsTag);
+        CCLOG("Piece [X=%d , Y=%d], Color: %s", coord.X, coord.Y, piece->color()->name().c_str());
 
-        FadeTo* fadeOut = FadeTo::create(.0f, 255);
-        selectedPiece_->sprite()->runAction(fadeOut);
+        if (selected_ && selected_->isNextTo(piece)) {
+            swapPieces(selected_, piece);
+        }
+    }
 
-        selectedPiece_ = nullptr;
+    void GameLayer::select(Piece* _Piece) {
+        if (selected_) {
+            deselect();
+        }
+
+        selected_ = _Piece;
+
+        auto selectSequence = Sequence::create(
+                FadeTo::create(SlowSpeed, 192),
+                FadeTo::create(SlowSpeed, 255),
+                nullptr);
+
+        auto pulsation = RepeatForever::create(selectSequence);
+        pulsation->setTag(HighlightActionsTag);
+
+        selected_->sprite()->runAction(pulsation);
+    }
+
+    void GameLayer::deselect() {
+        if (!selected_) {
+            return;
+        }
+
+        selected_->sprite()->stopActionByTag(HighlightActionsTag);
+        selected_->sprite()->runAction(FadeTo::create(.0f, 255));
+        selected_ = nullptr;
+    }
+
+    void GameLayer::afterSwap(Node* _Node) {
+        if (firstArrived_ == nullptr) {
+            CCLOG("checkSwapValid: First arrived, proceed further.");
+            firstArrived_ = _Node;
+            return;
+        }
+
+        firstArrived_ = nullptr;
+
+        CCLOG("checkSwapValid: Second arrived, finally can check.");
+
+        std::list<std::vector<Piece*> > removePieces;
+        gameboard_->getResultsOfLastCheck(removePieces);
+
+        uint score = 0;
+        uint group_bonus = 0;
+        const uint pieceScore = 10;
+
+        for (auto vec : removePieces) {
+            CCLOG("Found %d pieces in row", vec.size());
+            group_bonus += 5;
+            for (Piece* piece : vec) {
+                gameboard_->remove(piece);
+
+                uint scoreValue = pieceScore * vec.size() + group_bonus;
+                score += scoreValue;
+
+                addScoreLabel(scoreValue, piece->sprite()->getPosition());
+
+                dissapear(piece);
+            }
+
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("remove.wav");
+        }
+
+        float longestAnimationTime = gameboard_->fillup();
+        float waitFalldownToComplete = longestAnimationTime + FastSpeed;
+
+        if (!gameboard_->check()) {
+            auto waitToUnlock = Sequence::create(
+                    DelayTime::create(waitFalldownToComplete),
+                    CallFunc::create(CC_CALLBACK_0(Gameboard::unlock, gameboard_)),
+                    nullptr);
+            runAction(waitToUnlock);
+        } else {
+            std::function<void(Node*)> cb;
+            cb = CC_CALLBACK_1(GameLayer::afterSwap, this);
+
+            // Hack - need to call it twice to make it do the job
+            auto waitToRecheck = Sequence::create(
+                    DelayTime::create(waitFalldownToComplete ),
+                    CallFuncN::create(cb),
+                    CallFuncN::create(cb),
+                    nullptr);
+
+            runAction(waitToRecheck);
+        }
+    }
+
+    void ScoreToString(uint _Score, std::string& _Str) {
+        std::stringstream ss;
+        ss << _Score;
+        ss >> _Str;
+    }
+
+    void GameLayer::addScoreLabel(uint _Score, const Vec2 & _Position) {
+        std::string scoreText;
+        ScoreToString(_Score, scoreText);
+        CCLOG("Score %d == %s", _Score, scoreText.c_str());
+
+        auto label = Label::createWithSystemFont(scoreText, "Impact", 18);
+
+        label->setColor(Color3B::YELLOW);
+        label->enableShadow(Color4B::BLACK, Size(2.f, 2.f), 5);
+        //label->enableOutline(Color4B::RED, 1);
+
+        addChild(label, ScoreLabelsLayerLevel);
+
+        label->setPosition(_Position);
+
+        auto dissapear = Spawn::create(
+                MoveBy::create(SlowSpeed, Vec2(0, 20)),
+                FadeTo::create(SlowSpeed, 0.2f),
+                ScaleBy::create(SlowSpeed, 0.3f),
+                nullptr);
+
+        auto seq = Sequence::create(
+                DelayTime::create(DissapearSpeed),
+                dissapear,
+                RemoveSelf::create(true),
+                nullptr);
+
+        label->runAction(seq);
+    }
+
+    void GameLayer::afterSwapBack(Node* _Node) {
+        if (firstArrived_ == nullptr) {
+            CCLOG("swapBack: First arrived, proceed further.");
+            firstArrived_ = _Node;
+            return;
+        }
+
+        firstArrived_ = nullptr;
+
+        gameboard_->unlock();
+        CCLOG("swapBack: Second arrived, finally can unlock board.");
+    }
+
+    void GameLayer::swapPieces(Piece* _First, Piece* _Second) {
+        std::function<void(Node*)> cb;
+
+        gameboard_->lock();
+        deselect();
+
+        Sprite* spriteA = _First->sprite();
+        Sprite* spriteB = _Second->sprite();
+
+        Coord posA = _First->position();
+        Coord posB = _Second->position();
+
+        auto thereA = MoveTo::create(FastSpeed, spriteB->getPosition());
+        auto thereB = MoveTo::create(FastSpeed, spriteA->getPosition());
+
+        gameboard_->swap(posA, posB);
+
+        if (gameboard_->check()) {
+            cb = CC_CALLBACK_1(GameLayer::afterSwap, this);
+
+            auto callbackA = CallFuncN::create(cb);
+            auto callbackB = CallFuncN::create(cb);
+
+            auto seqA = Sequence::create(thereA, callbackA, nullptr);
+            auto seqB = Sequence::create(thereB, callbackB, nullptr);
+
+            spriteA->runAction(seqA);
+            spriteB->runAction(seqB);
+        } else {
+            cb = CC_CALLBACK_1(GameLayer::afterSwapBack, this);
+
+            gameboard_->swap(posA, posB);
+
+            auto callbackA = CallFuncN::create(cb);
+            auto callbackB = CallFuncN::create(cb);
+
+            auto backA = thereB->clone();
+            auto backB = thereA->clone();
+
+            auto seqA = Sequence::create(thereA, backA, callbackA, nullptr);
+            auto seqB = Sequence::create(thereB, backB, callbackB, nullptr);
+
+            spriteA->runAction(seqA);
+            spriteB->runAction(seqB);
+
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("move.aif");
+        }
+
     }
 
     void GameLayer::cleanup()
     {
+        Layer::cleanup();
         if (gameboard_) {
             delete gameboard_;
-            gameboard_ = 0;
+            gameboard_ = nullptr;
         }
     }
 
     GameLayer::~GameLayer()
     {
         cleanup();
+    }
+
+    void GameLayer::dissapear(Piece * _Piece) {
+        _Piece->sprite()->stopAllActions();
+        _Piece->sprite()->setLocalZOrder(0);
+        auto dissapear = Sequence::create(
+                ScaleTo::create(Gameboard::FalldownSpeed, 0.0f),
+                RemoveSelf::create(true),
+                // TODO:
+                ///CallFunc::create(CC_CALLBACK_0()), //delete piece;
+                nullptr);
+        _Piece->sprite()->runAction(dissapear);
     }
 
 //void GameLayer::menuCloseCallback(Ref* pSender) {
@@ -170,79 +372,4 @@ namespace match3 {
 //    exit(0);
 //#endif
 //}
-
-    void GameLayer::checkSwapValid(Piece* _Piece) {
-        if (firstArrived_ == nullptr) {
-            CCLOG("checkSwapValid: First arrived, proceed further.");
-            firstArrived_ = _Piece;
-            return;
-        }
-
-        CCLOG("checkSwapValid: Second arrived, finally can check.");
-
-        if (gameboard_->check()) {
-
-            // TODO: add animation of destroyed items
-
-            std::list<std::vector<Piece*> > removePieces;
-            gameboard_->getResultsOfLastCheck(removePieces);
-
-            for (auto vec : removePieces) {
-                std::stringstream ss;
-                for (Piece* piece : vec) {
-                    ss << piece->color()->name() << "[" << piece->position().X << "," << piece->position().Y << "] ";
-                    gameboard_->removePiece(piece);
-                    //delete piece;
-                }
-
-                CCLOG("Found %d pieces in row with following colors: %s", vec.size(), ss.str().c_str());
-                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("remove.wav");
-            }
-
-            gameboard_->fillup();
-
-            gameboard_->unlock();
-        } else {
-            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("move.aif");
-            swapPieces(firstArrived_, _Piece, CC_CALLBACK_1(GameLayer::swapBack, this));
-        }
-
-        firstArrived_ = nullptr;
-    }
-
-    void GameLayer::swapBack(Piece* _Piece) {
-        if (firstArrived_ == nullptr) {
-            CCLOG("swapBack: First arrived, proceed further.");
-            firstArrived_ = _Piece;
-            return;
-        }
-
-        firstArrived_ = nullptr;
-
-        gameboard_->unlock();
-        CCLOG("swapBack: Second arrived, finally can unlock board.");
-    }
-
-    void GameLayer::swapPieces(Piece* _First, Piece* _Second, const std::function<void(Piece*)> &cb) {
-        Sprite* spriteA = _First->sprite();
-        Sprite* spriteB = _Second->sprite();
-
-        Coord posA = _First->position();
-        Coord posB = _Second->position();
-
-        CallFunc *checkFuncA = CallFunc::create(std::bind(cb, _First));
-        CallFunc *checkFuncB = CallFunc::create(std::bind(cb, _Second));
-
-        MoveTo *moveA = MoveTo::create(FastSpeed, gameboard_->cellToScreen(posB));
-        MoveTo *moveB = MoveTo::create(FastSpeed, gameboard_->cellToScreen(posA));
-
-        Sequence *sequenceA = Sequence::createWithTwoActions(moveA, checkFuncA);
-        Sequence *sequenceB = Sequence::createWithTwoActions(moveB, checkFuncB);
-
-        spriteA->runAction(sequenceA);
-        spriteB->runAction(sequenceB);
-
-        gameboard_->swap(posA, posB);
-    }
-
 }

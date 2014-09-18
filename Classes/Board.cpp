@@ -25,12 +25,13 @@
 USING_NS_CC;
 
 namespace match3 {
-    const float Gameboard::FastSpeed = .1f;
-    const float Gameboard::SlowSpeed = .25f;
+    const float Gameboard::FalldownSpeed = .2f;
+
     const char* Gameboard::BgSpriteTextureName = "background.png";
     const cocos2d::Vec2 Gameboard::DefaultOrigin(120, 120);
 
-    void Gameboard::fillup() {
+    float Gameboard::fillup() {
+        float longestAnimation = 0;
         static const float ElasticModifier = 3.0f;
         newPieces_.clear();
 
@@ -51,9 +52,18 @@ namespace match3 {
 
                         Vec2 screenPos = cellToScreen(newPos);
                         uint16_t distance = y - emptyY;
-                        piece->sprite()->runAction(EaseIn::create(MoveTo::create(FastSpeed * distance, screenPos), ElasticModifier));
+                        float animationTime = FalldownSpeed * distance;
+
+                        auto movedown = MoveTo::create(animationTime, screenPos);
+                        auto falldown = EaseIn::create(movedown, ElasticModifier);
+
+                        piece->sprite()->runAction(falldown);
 
                         empty[x].push(y);
+
+                        newPieces_.push_back(piece);
+
+                        longestAnimation = (longestAnimation < animationTime) ? animationTime : longestAnimation ;
                     }
                 }
             }
@@ -62,11 +72,11 @@ namespace match3 {
 
             uint16_t newlyCreated = 0;
             uint16_t emptySlots = empty[x].size();
-            while(!empty[x].empty()) {
+            while (!empty[x].empty()) {
                 uint16_t y = empty[x].front();
                 empty[x].pop();
                 Coord pos(x, y);
-                Coord ontop = Coord(x, heigth_+newlyCreated++);
+                Coord ontop = Coord(x, heigth_ + newlyCreated++);
 
                 Piece* piece = factory_->createPiece();
 
@@ -77,14 +87,25 @@ namespace match3 {
                 Vec2 targetPos = cellToScreen(pos);
                 Vec2 startPos = cellToScreen(ontop);
 
+                float animationTime = FalldownSpeed * emptySlots;
+
+                auto movedown = MoveTo::create(animationTime, targetPos);
+                auto falldown = EaseIn::create(movedown, ElasticModifier);
+
                 piece->sprite()->setPosition(startPos);
-                piece->sprite()->runAction(EaseIn::create(MoveTo::create(FastSpeed * emptySlots, targetPos), ElasticModifier));
+                piece->sprite()->runAction(falldown);
+
+                newPieces_.push_back(piece);
+
+                longestAnimation = (longestAnimation < animationTime) ? animationTime : longestAnimation ;
 
             }
         }
+
+        return longestAnimation;
     }
 
-    void Gameboard::removePiece(Piece* _Piece) {
+    void Gameboard::remove(Piece* _Piece) {
         if (!_Piece) {
             // TODO:
             return;
@@ -92,14 +113,7 @@ namespace match3 {
 
         Piece * piece = getPiece(_Piece->position());
         if (piece == _Piece) {
-            Sprite *sprite = piece->sprite();
             setPiece(piece->position(), nullptr);
-
-            Sequence *removalSequence;
-            ScaleTo *disappear = ScaleTo::create(SlowSpeed, 0.0f);
-            RemoveSelf * removeSelf = RemoveSelf::create(true);
-            removalSequence = Sequence::createWithTwoActions(disappear, removeSelf);
-            sprite->runAction(removalSequence);
         }
     }
 
@@ -325,16 +339,16 @@ namespace match3 {
 
     Piece* Gameboard::getPiece(Coord _Coord) {
         if ((_Coord.X >= width_) || (_Coord.Y >= heigth_)) {
-            // TODO: Exception situation - out of range
+            // TODO
             return nullptr;
         }
-        // TODO:
+
         return (board_[_Coord.Y][_Coord.X]);
     }
 
     void Gameboard::setPiece(Coord _Coord, Piece* _Piece) {
         if ((_Coord.X >= width_) || (_Coord.Y >= heigth_)) {
-            // TODO: Exceptional situation - out of range
+            // TODO
         }
         board_[_Coord.Y][_Coord.X] = _Piece;
         if (_Piece) {
