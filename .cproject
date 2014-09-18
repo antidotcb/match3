@@ -8323,8 +8323,6 @@
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="org.eclipse.cdt.core.pathentry">
-		<pathentry excluding="**/CMakeFiles/" kind="out" path=""/>
-		<pathentry kind="src" path=""/>
 		<pathentry kind="mac" name="CC_ENABLE_CHIPMUNK_INTEGRATION" path="" value="1"/>
 		<pathentry kind="mac" name="LINUX" path="" value=""/>
 		<pathentry kind="mac" name="__STDC__" path="" value="1"/>
@@ -8574,7 +8572,6 @@
 		<pathentry kind="mac" name="__EXCEPTIONS" path="" value="1"/>
 		<pathentry kind="mac" name="_GNU_SOURCE" path="" value="1"/>
 		<pathentry include="/usr/local/include/GLFW" kind="inc" path="" system="true"/>
-		<pathentry include="/usr/include/GLFW" kind="inc" path="" system="true"/>
 		<pathentry include="/home/antidotcb/workspace/match3/cocos2d" kind="inc" path="" system="true"/>
 		<pathentry include="/home/antidotcb/workspace/match3/cocos2d/cocos" kind="inc" path="" system="true"/>
 		<pathentry include="/home/antidotcb/workspace/match3/cocos2d/cocos/audio/include" kind="inc" path="" system="true"/>
@@ -8592,11 +8589,9 @@
 		<pathentry include="/home/antidotcb/workspace/match3/cocos2d/external/unzip" kind="inc" path="" system="true"/>
 		<pathentry include="/home/antidotcb/workspace/match3/cocos2d/external/freetype2/include/linux" kind="inc" path="" system="true"/>
 		<pathentry include="/home/antidotcb/workspace/match3/cocos2d/external/websockets/include/linux" kind="inc" path="" system="true"/>
-		<pathentry include="/home/antidotcb/workspace/match3/cocos2d/external/spidermonkey/include/linux" kind="inc" path="" system="true"/>
 		<pathentry include="/home/antidotcb/workspace/match3/cocos2d/external/linux-specific/fmod/include/64-bit" kind="inc" path="" system="true"/>
 		<pathentry include="/home/antidotcb/workspace/match3/cocos2d/external/xxhash" kind="inc" path="" system="true"/>
 		<pathentry include="/home/antidotcb/workspace/match3/cocos2d/external/chipmunk/include/chipmunk" kind="inc" path="" system="true"/>
-		<pathentry include="/include/chipmunk" kind="inc" path="" system="true"/>
 		<pathentry include="/home/antidotcb/workspace/match3/cocos2d/external/ConvertUTF" kind="inc" path="" system="true"/>
 		<pathentry include="/usr/lib/gcc/x86_64-linux-gnu/4.8/include" kind="inc" path="" system="true"/>
 		<pathentry include="/usr/local/include" kind="inc" path="" system="true"/>
@@ -8606,5 +8601,7 @@
 		<pathentry include="/usr/include/c++/4.8" kind="inc" path="" system="true"/>
 		<pathentry include="/usr/include/x86_64-linux-gnu/c++/4.8" kind="inc" path="" system="true"/>
 		<pathentry include="/usr/include/c++/4.8/backward" kind="inc" path="" system="true"/>
+		<pathentry excluding="**/CMakeFiles/" kind="out" path=""/>
+		<pathentry kind="src" path=""/>
 	</storageModule>
 </cproject>
