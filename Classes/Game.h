@@ -25,6 +25,7 @@ namespace match3 {
         void addInputDispatcher();
         void addBackground();
         bool addGameboard();
+        void addProgressTimer();
         void addScoreLabel(uint _Score, const cocos2d::Vec2 & _Position);
 
         void select(Piece* _Piece);
@@ -41,7 +42,12 @@ namespace match3 {
 
 
     private:
+        void onProgressTimer();
+        void onTimeExpires();
+
+
         Gameboard * gameboard_;
+        cocos2d::ProgressTimer *timer_;
 
         cocos2d::Size visibleSize_;
         cocos2d::Vec2 origin_;
@@ -49,6 +55,10 @@ namespace match3 {
         Piece *selected_;
         Node  *firstArrived_;
 
+        float delayTime;
+        float time;
+
+        static const float TotalGameTime;
         static const float FastSpeed;
         static const float SlowSpeed;
         static const float DissapearSpeed;
@@ -56,12 +66,15 @@ namespace match3 {
         static const float FastSpeedLL;
         static const float SlowSpeedLL;
 
-        static const int DefaultBoardSize;
-        static const int BackgroundLayerLevel;
         static const int HighlightActionsTag;
 
+        static const int DefaultBoardSize;
+
+        static const int BackgroundLayerLevel;
         static const char* BackgroundTextureName;
         static const int ScoreLabelsLayerLevel = 1000;
+        static const int UILayerLevel = 2000;
+
     };
 
 }

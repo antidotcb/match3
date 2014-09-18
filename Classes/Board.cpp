@@ -198,8 +198,10 @@ namespace match3 {
         CCLOG("Gameboard created");
     }
 
-    bool Gameboard::init() {
+    bool Gameboard::init(const Vec2 & _Position) {
         CCLOGINFO("Init started");
+
+        origin_ = _Position;
 
         if (board_) {
             CCLOGINFO("Board existed. Remove existing board.");
@@ -256,7 +258,7 @@ namespace match3 {
 
     Gameboard* Gameboard::create(const cocos2d::Vec2 _Position, const Size& _Size, IAbstractPieceFactory* _Factory, cocos2d::Layer* _Layer) {
         Gameboard* pRet = new Gameboard(_Size, _Factory, _Layer);
-        if (pRet && pRet->init()) {
+        if (pRet && pRet->init(_Position)) {
             //TODO: correct
             //pRet->cleanup();
             return pRet;

@@ -1,33 +1,12 @@
 #include "Game.h"
-
-#include <2d/CCAction.h>
-#include <2d/CCActionInstant.h>
-#include <2d/CCActionInterval.h>
-#include <2d/CCLabelTTF.h>
-#include <2d/CCScene.h>
-#include <2d/CCSprite.h>
-#include <base/ccMacros.h>
-#include <base/ccTypes.h>
-#include <base/CCDirector.h>
-#include <base/CCEventDispatcher.h>
-#include <base/CCEventListenerTouch.h>
-#include <base/CCPlatformMacros.h>
-#include <base/CCTouch.h>
-#include <math/CCGeometry.h>
-#include <math/Vec2.h>
-#include <sys/types.h>
-#include <SimpleAudioEngine.h>
-#include <list>
-#include <sstream>
-#include <string>
-#include <vector>
-
 #include "Board.h"
 #include "Piece.h"
 
 USING_NS_CC;
 
 namespace match3 {
+    const float GameLayer::TotalGameTime = 60;
+
     const int GameLayer::DefaultBoardSize = 8;
     const int GameLayer::BackgroundLayerLevel = -100;
     const int GameLayer::HighlightActionsTag = 50;
@@ -35,12 +14,11 @@ namespace match3 {
     const float GameLayer::FastSpeed = .25f;
     const float GameLayer::SlowSpeed = .5f;
     const float GameLayer::DissapearSpeed = .1f;
-    //const float Gameboard::SlowSpeed = .25f;
 
     const float GameLayer::FastSpeedLL = GameLayer::FastSpeed + (GameLayer::FastSpeed / 10.0f);
     const float GameLayer::SlowSpeedLL = GameLayer::SlowSpeed + (GameLayer::SlowSpeed / 10.0f);
 
-    const char* GameLayer::BackgroundTextureName = "bg.png";
+    const char* GameLayer::BackgroundTextureName = "bg3.png";
 
     Scene* GameLayer::wrapIntoScene() {
         auto scene = Scene::create();
@@ -50,9 +28,14 @@ namespace match3 {
     }
 
     GameLayer::GameLayer() :
-            gameboard_(0), selected_(0), firstArrived_(0) {
-        visibleSize_ = Size { 0, 0 };
-        origin_ = Vec2(0, 0);
+            gameboard_(0)
+                    , timer_(nullptr)
+                    , visibleSize_(Size { 0, 0 })
+                    , origin_(Vec2 { 0, 0 })
+                    , selected_(nullptr)
+                    , firstArrived_(nullptr)
+    {
+
     }
 
     bool GameLayer::init() {
@@ -69,6 +52,7 @@ namespace match3 {
         addInputDispatcher();
         addGameboard();
         addBackground();
+        addProgressTimer();
 
         /*
          //if (!addGameboard()) {
@@ -76,8 +60,10 @@ namespace match3 {
          //   CCLOGERROR("Can't init gameboard.");
          //   return false;
          //}
-         //CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
+         CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
          * */
+
+        CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
         return true;
     }
 
@@ -91,7 +77,8 @@ namespace match3 {
 
     bool GameLayer::addGameboard() {
         Gameboard::Size boardSize = { DefaultBoardSize, DefaultBoardSize };
-        Vec2 position;
+        Vec2 position = Vec2(visibleSize_.width / 2 + origin_.x,
+                visibleSize_.height / 2 + origin_.y);
         gameboard_ = Gameboard::create(position, boardSize, PiecesManager::getInstance(), this);
 
         if (!gameboard_) {
@@ -195,7 +182,8 @@ namespace match3 {
         const uint pieceScore = 10;
 
         for (auto vec : removePieces) {
-            CCLOG("Found %d pieces in row", vec.size());
+            uint32_t size = vec.size();
+            CCLOG("Found %d pieces in row", size);
             group_bonus += 5;
             for (Piece* piece : vec) {
                 gameboard_->remove(piece);
@@ -226,7 +214,7 @@ namespace match3 {
 
             // Hack - need to call it twice to make it do the job
             auto waitToRecheck = Sequence::create(
-                    DelayTime::create(waitFalldownToComplete ),
+                    DelayTime::create(waitFalldownToComplete),
                     CallFuncN::create(cb),
                     CallFuncN::create(cb),
                     nullptr);
@@ -239,6 +227,46 @@ namespace match3 {
         std::stringstream ss;
         ss << _Score;
         ss >> _Str;
+    }
+
+    void GameLayer::onProgressTimer() {
+        time += delayTime;
+        float percent = 100 - (time / TotalGameTime) * 100;
+        CCLOG("Progress bar: %d%%", int(percent));
+        timer_->setPercentage(percent);
+    }
+
+    void GameLayer::onTimeExpires() {
+        CCLOG("Time is out");
+    }
+
+    void GameLayer::addProgressTimer() {
+        timer_ = ProgressTimer::create(Sprite::create("ver_progress_yellow.png"));
+
+        timer_->setPosition(634 - 224 / 2, 30 + 370 / 2);
+        timer_->setType(ProgressTimerType::BAR);
+        timer_->setMidpoint( { -1, 0 });
+        timer_->setBarChangeRate( { 0, 1 });
+        timer_->setScale(1.0f, 350.0f);
+
+        timer_->setPercentage(100);
+        addChild(timer_, UILayerLevel);
+
+        delayTime = 1.0f / (350.0f / TotalGameTime);
+        delayTime = (1.f / 30.f > delayTime) ? 1.f / 30.f : delayTime;
+        CCLOG("Progress bar update freq: ", delayTime);
+
+        auto time_seq = Sequence::create(
+                DelayTime::create(delayTime),
+                CallFunc::create(CC_CALLBACK_0(GameLayer::onProgressTimer, this)),
+                nullptr);
+
+        auto final_seq = Sequence::create(
+                Repeat::create(time_seq, TotalGameTime / delayTime + 2),
+                CallFunc::create(CC_CALLBACK_0(GameLayer::onTimeExpires, this)),
+                nullptr);
+
+        runAction(final_seq);
     }
 
     void GameLayer::addScoreLabel(uint _Score, const Vec2 & _Position) {

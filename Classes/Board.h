@@ -44,7 +44,7 @@ namespace match3 {
     protected:
         Gameboard(const Size& _Size, IAbstractPieceFactory* _Factory, cocos2d::Layer * _Layer);
 
-        virtual bool init();
+        virtual bool init(const cocos2d::Vec2 & _Position);
 
         void checkDirection(bool _Horizontal);
         void cleanup();
