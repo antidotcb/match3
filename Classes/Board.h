@@ -29,7 +29,7 @@ namespace match3 {
         Coord wolrd2coord(const cocos2d::Vec2& _TouchPos);
         cocos2d::Vec2 coord2world(const Coord & _Coord);
 
-        float fillup(IAbstractPieceFactory* _PieceFactory);
+        float fillup(IAbstractPieceFactory* _PieceFactory, bool animate = true);
         void getResultsOfLastFill(std::list<std::vector<Piece*> > &_Container);
 
         bool check();

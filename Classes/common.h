@@ -20,18 +20,16 @@
 #include <list>
 #include <vector>
 #include <functional>
-//#include <base/CCDirector.h>
-//#include <base/CCPlatformMacros.h>
-//#include <CCFileUtils.h>
-//#include <renderer/CCTextureCache.h>
+
 namespace match3 {
 
-    struct Coord {
+    class Coord {
+    public:
         uint16_t x;
         uint16_t y;
 
-        Coord(uint16_t _X, uint16_t _Y) :
-                x(_X), y(_Y) {
+        Coord(uint16_t X, uint16_t Y) :
+                x(X), y(Y) {
         }
     };
 
@@ -50,7 +48,7 @@ namespace match3 {
 
     class IAbstractPieceFactory {
     public:
-        virtual Piece* createPiece() = 0;
+        virtual Piece* createPiece(const Coord& _Position) = 0;
         virtual ~IAbstractPieceFactory() {
         }
     };

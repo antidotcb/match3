@@ -8,88 +8,55 @@
 #ifndef PIECE_H_
 #define PIECE_H_
 
+#include <cstdint>
+#include <map>
+
 #include "common.h"
 
 namespace match3 {
 
-    class BasicPiece {
+    class Piece: public cocos2d::Node {
     public:
-        BasicPiece(uint16_t _Type, const Coord& _Position);
-        const virtual Coord& coord() const;
-        virtual void setPosition(const Coord& _Position);
-        virtual bool isSameTypeAs(const BasicPiece* _Piece) const;
-        virtual bool isNextTo(const BasicPiece* _Piece) const;
-        virtual uint16_t type() const;
-        virtual ~BasicPiece() {
-        }
-    private:
-        Coord position_;
-        uint16_t type_;
-    };
-
-    class PiecesManager;
-
-    class PieceColor {
-    public:
-        const std::string& name() const;
-        cocos2d::Texture2D* texture() const;
-        uint32_t value() const;
-
-        bool operator ==(const PieceColor& _Rhs) const;
-
-    private:
-        PieceColor(uint32_t _Value, const char* _ColorName, cocos2d::Texture2D* _Texture);
-
-        uint32_t value_;
-        std::string name_;
-        cocos2d::Texture2D * texture_;
-
-        friend class PiecesManager;
-    };
-
-    class Piece: public BasicPiece {
-    public:
-        static Piece* create(PieceColor* _Color);
-
-        cocos2d::Sprite* sprite() const;
+        static Piece* create(uint16_t _Type, const Coord& _Position);
 
         virtual bool init();
-        virtual void autorelease();
+
+        virtual uint16_t type() const;
+        virtual const Coord& coord() const;
+        virtual cocos2d::Sprite* sprite() const;
 
         virtual void setPosition(const Coord& _Position);
-        virtual uint16_t type() const;
+        virtual bool isSameTypeAs(const Piece* _Piece) const;
+        virtual bool isNextTo(const Piece* _Piece) const;
 
-        PieceColor* color() const;
-
-        virtual ~Piece();
-        protected:
-
+        virtual ~Piece() {}
     private:
-        Piece(PieceColor* _Color);
+        Piece(uint16_t _Type, const Coord& _Position);
 
-        PieceColor *color_;
-        cocos2d::Sprite* sprite_;
+        Coord position_;
+        uint16_t type_;
+        cocos2d::Sprite* sprite_ = nullptr;
     };
 
     class PiecesManager: public IAbstractPieceFactory {
     public:
-        PieceColor* random();
-        PieceColor* color(uint32_t _Value);
-
-        virtual Piece* createPiece();
-
-        bool loadPieces(const char* _Filename);
-
         static PiecesManager* getInstance();
         static void destroyInstance();
+
+        virtual Piece* createPiece(const Coord& _Position);
+        cocos2d::Texture2D* texture(uint32_t _Value);
+        bool loadTextures();
+
+    protected:
+        uint32_t random();
 
     private:
         PiecesManager();
         PiecesManager(PiecesManager&);
         PiecesManager& operator =(const PiecesManager&);
 
-        typedef std::map<int, PieceColor*> ColorsMap;
-        ColorsMap colors_;
+        typedef std::vector<cocos2d::Texture2D*> TextureMap;
+        TextureMap textures_;
 
         static PiecesManager * instance_;
     };

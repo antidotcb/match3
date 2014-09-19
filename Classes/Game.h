@@ -1,17 +1,28 @@
 #ifndef __HELLOWORLD_SCENE_H__
 #define __HELLOWORLD_SCENE_H__
 
-#include "common.h"
+#include <base/CCPlatformMacros.h>
+#include <math/CCGeometry.h>
+#include <math/Vec2.h>
+#include <sys/types.h>
+
+#include "Score.h"
+
+namespace cocos2d {
+    class Label;
+    class ProgressTimer;
+}
+
 
 namespace match3 {
     class Gameboard;
     class Piece;
+    class Score;
 
     class GameLayer: public cocos2d::Layer {
     public:
         static cocos2d::Scene* wrapIntoScene();
 
-        GameLayer();
         virtual ~GameLayer();
         virtual bool init();
 
@@ -24,9 +35,11 @@ namespace match3 {
 
         void addInputDispatcher();
         void addBackground();
-        bool addGameboard();
+        void addScores();
+        void addGameboard();
         void addProgressTimer();
         void addScoreLabel(uint _Score, const cocos2d::Vec2 & _Position);
+        void addSomeStars(const cocos2d::Vec2 & _Position);
 
         void select(Piece* _Piece);
         void deselect();
@@ -44,17 +57,20 @@ namespace match3 {
         void onProgressTimer();
         void onTimeExpires();
 
-        Gameboard * gameboard_;
-        cocos2d::ProgressTimer *timer_;
+        Score * score_;
 
-        cocos2d::Size visibleSize_;
-        cocos2d::Vec2 origin_;
+        Gameboard * gameboard_ = nullptr;
+        cocos2d::ProgressTimer *timer_ = nullptr;
+        cocos2d::Label *scoreLabel_ = nullptr;
 
-        Piece *selected_;
-        Node *firstArrived_;
+        cocos2d::Size visibleSize_ = {0,0};
+        cocos2d::Vec2 origin_ = {0,0};
 
-        float delayTime;
-        float time;
+        Piece *selected_ = nullptr;
+        Node *firstArrived_ = nullptr;
+
+        float delayTime = 0.0f;
+        float time = 0.0f;
 
         static const float TotalGameTime;
         static const float FastSpeed;

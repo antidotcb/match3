@@ -1,3 +1,10 @@
+#include <SimpleAudioEngine.h>
+#include <cstdint>
+#include <iostream>
+#include <list>
+#include <string>
+#include <vector>
+
 #include "Game.h"
 #include "Board.h"
 #include "Piece.h"
@@ -27,17 +34,6 @@ namespace match3 {
         return scene;
     }
 
-    GameLayer::GameLayer() :
-            gameboard_(0)
-                    , timer_(nullptr)
-                    , visibleSize_(Size { 0, 0 })
-                    , origin_(Vec2 { 0, 0 })
-                    , selected_(nullptr)
-                    , firstArrived_(nullptr)
-    {
-
-    }
-
     bool GameLayer::init() {
         if (!Layer::init()) {
             return false;
@@ -53,17 +49,10 @@ namespace match3 {
         addGameboard();
         addBackground();
         addProgressTimer();
+        addScores();
+        //addUIElements();
 
-        /*
-         //if (!addGameboard()) {
-         // TODO:
-         //   CCLOGERROR("Can't init gameboard.");
-         //   return false;
-         //}
-         CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
-         * */
-
-        CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
+        //CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
         return true;
     }
 
@@ -72,10 +61,29 @@ namespace match3 {
         Sprite* sprite = Sprite::create(BackgroundTextureName);
         sprite->setPosition(Vec2(visibleSize_.width / 2 + origin_.x,
                 visibleSize_.height / 2 + origin_.y));
-        this->addChild(sprite, BackgroundLayerLevel);
+        addChild(sprite, BackgroundLayerLevel);
+
+        auto backgroundPS = ParticleRain::createWithTotalParticles(50);
+        auto texture = Director::getInstance()->getTextureCache()->addImage("stars.png");
+        backgroundPS->setTexture(texture);
+        addChild(backgroundPS, BackgroundLayerLevel + 1);
     }
 
-    bool GameLayer::addGameboard() {
+    void GameLayer::addScores()
+    {
+        scoreLabel_ = Label::createWithBMFont("fonts/font.fnt", "0", TextHAlignment::CENTER);
+        scoreLabel_->setPosition(Vec2(visibleSize_.width / 2 + origin_.x,
+                visibleSize_.height - scoreLabel_->getContentSize().height - 2));
+
+        addChild(scoreLabel_);
+
+        score_ = new Score();
+        score_->setLabel(scoreLabel_);
+
+        addChild(score_);
+    }
+
+    void GameLayer::addGameboard() {
         Gameboard::Size boardSize = { DefaultBoardSize, DefaultBoardSize };
         Vec2 pos(visibleSize_.width / 2 + origin_.x,
                 visibleSize_.height / 2 + origin_.y);
@@ -84,14 +92,20 @@ namespace match3 {
         gameboard_->setPosition(pos);
         addChild(gameboard_);
 
-        gameboard_->fillup(PiecesManager::getInstance());
+        gameboard_->fillup(PiecesManager::getInstance(), false);
 
-        if (!gameboard_) {
-            CCLOGERROR("Can't create gameboard.");
-            return false;
+        while (gameboard_->check()) {
+            std::list<std::vector<Piece*> > removePieces;
+            gameboard_->getResultsOfLastCheck(removePieces);
+            for (auto vec : removePieces) {
+                for (Piece* piece : vec) {
+                    gameboard_->remove(piece);
+                    piece->sprite()->removeFromParentAndCleanup(true);
+                    //delete piece;
+                }
+            }
+            gameboard_->fillup(PiecesManager::getInstance(), false);
         }
-
-        return true;
     }
 
     void GameLayer::addInputDispatcher()
@@ -116,7 +130,7 @@ namespace match3 {
             return true;
         }
 
-        CCLOG("Piece Color: %s", piece->color()->name().c_str());
+        CCLOG("Piece Type: %d", piece->type());
 
         if (selected_ && selected_->isNextTo(piece)) {
             swapPieces(selected_, piece);
@@ -139,7 +153,7 @@ namespace match3 {
             return;
         }
 
-        CCLOG("Piece Color: %s", piece->color()->name().c_str());
+        CCLOGINFO("Piece Type: %d", piece->type());
 
         if (selected_ && selected_->isNextTo(piece)) {
             swapPieces(selected_, piece);
@@ -188,22 +202,18 @@ namespace match3 {
         std::list<std::vector<Piece*> > removePieces;
         gameboard_->getResultsOfLastCheck(removePieces);
 
-        uint score = 0;
-        uint group_bonus = 0;
-        const uint pieceScore = 10;
-
+        score_->newSequence(removePieces.size());
         for (auto vec : removePieces) {
             uint32_t size = vec.size();
             CCLOG("Found %d pieces in row", size);
-            group_bonus += 5;
+
+            uint scoreValue = score_->addGroup(vec.size());
             for (Piece* piece : vec) {
                 gameboard_->remove(piece);
 
-                uint scoreValue = pieceScore * vec.size() + group_bonus;
-                score += scoreValue;
-
                 Vec2 pos = gameboard_->coord2world(piece->coord());
                 addScoreLabel(scoreValue, pos);
+                addSomeStars(pos);
 
                 dissapear(piece);
             }
@@ -235,6 +245,19 @@ namespace match3 {
         }
     }
 
+    void GameLayer::afterSwapBack(Node* _Node) {
+        if (firstArrived_ == nullptr) {
+            CCLOG("swapBack: First arrived, proceed further.");
+            firstArrived_ = _Node;
+            return;
+        }
+
+        firstArrived_ = nullptr;
+
+        gameboard_->unlock();
+        CCLOG("swapBack: Second arrived, finally can unlock board.");
+    }
+
     void ScoreToString(uint _Score, std::string& _Str) {
         std::stringstream ss;
         ss << _Score;
@@ -254,7 +277,6 @@ namespace match3 {
     void GameLayer::addProgressTimer() {
         timer_ = ProgressTimer::create(Sprite::create("hor_progress_yellow.png"));
 
-
         timer_->setPosition(origin_.x + visibleSize_.width / 2.f, origin_.y + 10);
 
         timer_->setType(ProgressTimerType::BAR);
@@ -265,8 +287,7 @@ namespace match3 {
         timer_->setPercentage(100);
         addChild(timer_, UILayerLevel);
 
-        delayTime = 1.0f / (350.0f / TotalGameTime);
-        delayTime = (1.f / 30.f > delayTime) ? 1.f / 30.f : delayTime;
+        delayTime = 1.0f / (visibleSize_.width / TotalGameTime);
         CCLOG("Progress bar update freq: %f", delayTime);
 
         auto time_seq = Sequence::create(
@@ -275,11 +296,26 @@ namespace match3 {
                 nullptr);
 
         auto final_seq = Sequence::create(
-                Repeat::create(time_seq, TotalGameTime / delayTime + 2),
+                Repeat::create(time_seq, TotalGameTime / delayTime),
                 CallFunc::create(CC_CALLBACK_0(GameLayer::onTimeExpires, this)),
                 nullptr);
 
         runAction(final_seq);
+    }
+
+    void GameLayer::addSomeStars(const Vec2 & _Position) {
+        auto ps = ParticleExplosion::createWithTotalParticles(5);
+        auto texture = Director::getInstance()->getTextureCache()->addImage("stars2.png");
+        ps->setPosition(_Position);
+        ps->setTexture(texture);
+        ps->setOpacity(127);
+        addChild(ps, ScoreLabelsLayerLevel - 1);
+
+        auto removeAfterDelay = Sequence::create(
+                FadeOut::create(SlowSpeed),
+                RemoveSelf::create(true),
+                nullptr);
+        ps->runAction(removeAfterDelay);
     }
 
     void GameLayer::addScoreLabel(uint _Score, const Vec2 & _Position) {
@@ -287,7 +323,7 @@ namespace match3 {
         ScoreToString(_Score, scoreText);
         CCLOG("Score %d == %s", _Score, scoreText.c_str());
 
-        auto label = Label::createWithSystemFont(scoreText, "Impact", 18);
+        auto label = Label::createWithBMFont("fonts/overlay.fnt", scoreText, TextHAlignment::CENTER);
 
         label->setColor(Color3B::YELLOW);
         label->enableShadow(Color4B::BLACK, Size(2.f, 2.f), 5);
@@ -299,7 +335,7 @@ namespace match3 {
 
         auto dissapear = Spawn::create(
                 MoveBy::create(SlowSpeed, Vec2(0, 20)),
-                FadeTo::create(SlowSpeed, 0.2f),
+                FadeTo::create(SlowSpeed, 64),
                 ScaleBy::create(SlowSpeed, 0.3f),
                 nullptr);
 
@@ -310,19 +346,6 @@ namespace match3 {
                 nullptr);
 
         label->runAction(seq);
-    }
-
-    void GameLayer::afterSwapBack(Node* _Node) {
-        if (firstArrived_ == nullptr) {
-            CCLOG("swapBack: First arrived, proceed further.");
-            firstArrived_ = _Node;
-            return;
-        }
-
-        firstArrived_ = nullptr;
-
-        gameboard_->unlock();
-        CCLOG("swapBack: Second arrived, finally can unlock board.");
     }
 
     void GameLayer::swapPieces(Piece* _First, Piece* _Second) {
@@ -343,6 +366,8 @@ namespace match3 {
         gameboard_->swap(posA, posB);
 
         if (gameboard_->check()) {
+            score_->newTurn();
+
             cb = CC_CALLBACK_1(GameLayer::afterSwap, this);
 
             auto callbackA = CallFuncN::create(cb);

@@ -20,7 +20,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if (!glview) {
         glview = GLView::create("match3");
-        glview->setFrameSize(800, 600);
+        //glview->setFrameSize(1920, 1080);
         director->setOpenGLView(glview);
         adaptResolution(640, 480);
     }
@@ -32,7 +32,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     // load images
-    PiecesManager::getInstance()->loadPieces("colors.txt");
+    PiecesManager::getInstance()->loadTextures();
 
     // create a scene. it's an autorelease object
     auto scene = GameLayer::wrapIntoScene();

@@ -38,7 +38,8 @@ namespace match3 {
         return center;
     }
 
-    float Gameboard::fillup(IAbstractPieceFactory* _PieceFactory) {
+    float Gameboard::fillup(IAbstractPieceFactory* _PieceFactory, bool animate) {
+        // FIX: move animation out of there as Gameboard isn't responsible for this
         float longestAnimation = 0;
         static const float ElasticModifier = 3.0f;
         newPieces_.clear();
@@ -47,16 +48,16 @@ namespace match3 {
         empty.resize(width_);
         for (uint16_t x = 0; x < width_; x++) {
             for (uint16_t y = 0; y < height_; y++) {
-                Coord pos(x, y);
-                Piece* piece = getPiece(pos);
+                Coord coord(x, y);
+                Piece* piece = getPiece(coord);
                 if (!piece) {
                     empty[x].push(y);
                 } else {
                     if (!empty[x].empty()) {
                         uint16_t emptyY = empty[x].front();
-                        empty[x].pop();
+
                         Coord newPos(x, emptyY);
-                        swap(pos, newPos);
+                        swap(coord, newPos);
 
                         Vec2 screenPos = coord2local(newPos);
                         uint16_t distance = y - emptyY;
@@ -65,13 +66,16 @@ namespace match3 {
                         auto movedown = MoveTo::create(animationTime, screenPos);
                         auto falldown = EaseIn::create(movedown, ElasticModifier);
 
-                        piece->sprite()->runAction(falldown);
+                        if (animate) {
+                            piece->sprite()->runAction(falldown);
+                        } else {
+                            piece->sprite()->setPosition(screenPos);
+                        }
 
                         empty[x].push(y);
 
                         newPieces_.push_back(piece);
-
-                        longestAnimation = (longestAnimation < animationTime) ? animationTime : longestAnimation;
+                        empty[x].pop();
                     }
                 }
             }
@@ -83,29 +87,32 @@ namespace match3 {
             while (!empty[x].empty()) {
                 uint16_t y = empty[x].front();
                 empty[x].pop();
-                Coord pos(x, y);
+                Coord coord(x, y);
                 Coord ontop = Coord(x, height_ + newlyCreated++);
 
-                Piece* piece = _PieceFactory->createPiece();
+                Piece* piece = _PieceFactory->createPiece(coord);
 
-                setPiece(pos, piece);
+                setPiece(coord, piece);
 
                 addChild(piece->sprite(), FgSpriteLevel);
 
-                Vec2 targetPos = coord2local(pos);
+                Vec2 targetPos = coord2local(coord);
                 Vec2 startPos = coord2local(ontop);
 
                 float animationTime = FalldownSpeed * emptySlots;
+                longestAnimation = (longestAnimation < animationTime) ? animationTime : longestAnimation;
 
                 auto movedown = MoveTo::create(animationTime, targetPos);
                 auto falldown = EaseIn::create(movedown, ElasticModifier);
 
-                piece->sprite()->setPosition(startPos);
-                piece->sprite()->runAction(falldown);
+                if (animate) {
+                    piece->sprite()->setPosition(startPos);
+                    piece->sprite()->runAction(falldown);
+                } else {
+                    piece->sprite()->setPosition(targetPos);
+                }
 
                 newPieces_.push_back(piece);
-
-                longestAnimation = (longestAnimation < animationTime) ? animationTime : longestAnimation;
             }
         }
 
@@ -135,18 +142,17 @@ namespace match3 {
             for (uint16_t j = 0; j < c_size; j++) {
                 const uint16_t & x = _Horizontal ? j : i;
                 const uint16_t & y = _Horizontal ? i : j;
-                Coord pos(x, y);
-                Piece* piece = getPiece(pos);
+                Coord coord(x, y);
+                Piece* piece = getPiece(coord);
                 if (piece->type() == lastType && j != 0) {
                     typeInRow++;
                     if (typeInRow > 3) {
                         container.push_back(piece);
                     } else if (typeInRow == 3) {
                         for (uint16_t before = 0; before < 3; before++) {
-                            const uint16_t & bx = _Horizontal ? x - before : x;
-                            const uint16_t & by = _Horizontal ? y : y - before;
-                            Coord pos3(bx, by);
-                            container.push_back(getPiece(pos3));
+                            coord.x = _Horizontal ? x - before : x;
+                            coord.y = _Horizontal ? y : y - before;
+                            container.push_back(getPiece(coord));
                         }
                     }
                 } else {
@@ -275,19 +281,19 @@ namespace match3 {
             for (uint16_t y = 0; y < height_; y++) {
                 if (board_[y]) {
                     for (uint16_t x = 0; x < width_; x++) {
-                        Coord pos(x, y);
-                        Piece* piece = getPiece(pos);
+                        Coord coord(x, y);
+                        Piece* piece = getPiece(coord);
                         if (piece) {
                             delete piece;
-                            setPiece(pos, 0);
+                            setPiece(coord, nullptr);
                         }
                     }
                     delete[] board_[y];
-                    board_[y] = 0;
+                    board_[y] = nullptr;
                 }
             }
             delete[] board_;
-            board_ = 0;
+            board_ = nullptr;
         }
     }
 
