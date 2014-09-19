@@ -39,7 +39,7 @@ namespace match3 {
         void addGameboard();
         void addProgressTimer();
         void addScoreLabel(uint _Score, const cocos2d::Vec2 & _Position);
-        void addSomeStars(const cocos2d::Vec2 & _Position);
+        void addSomeEffects(const cocos2d::Vec2 & _Position);
 
         void select(Piece* _Piece);
         void deselect();

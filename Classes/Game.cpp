@@ -52,7 +52,7 @@ namespace match3 {
         addScores();
         //addUIElements();
 
-        //CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
+        CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music.mp3", true);
         return true;
     }
 
@@ -63,9 +63,11 @@ namespace match3 {
                 visibleSize_.height / 2 + origin_.y));
         addChild(sprite, BackgroundLayerLevel);
 
-        auto backgroundPS = ParticleRain::createWithTotalParticles(50);
-        auto texture = Director::getInstance()->getTextureCache()->addImage("stars.png");
-        backgroundPS->setTexture(texture);
+        auto backgroundPS = ParticleSnow::createWithTotalParticles(200);
+        auto texture = Director::getInstance()->getTextureCache()->addImage("stars2.png");
+        auto rect = Rect(0,0,texture->getContentSize().width, texture->getContentSize().height);
+        backgroundPS->setTextureWithRect(texture, rect);
+
         addChild(backgroundPS, BackgroundLayerLevel + 1);
     }
 
@@ -213,7 +215,7 @@ namespace match3 {
 
                 Vec2 pos = gameboard_->coord2world(piece->coord());
                 addScoreLabel(scoreValue, pos);
-                addSomeStars(pos);
+                addSomeEffects(pos);
 
                 dissapear(piece);
             }
@@ -303,9 +305,9 @@ namespace match3 {
         runAction(final_seq);
     }
 
-    void GameLayer::addSomeStars(const Vec2 & _Position) {
+    void GameLayer::addSomeEffects(const Vec2 & _Position) {
         auto ps = ParticleExplosion::createWithTotalParticles(5);
-        auto texture = Director::getInstance()->getTextureCache()->addImage("stars2.png");
+        auto texture = Director::getInstance()->getTextureCache()->addImage("stars.png");
         ps->setPosition(_Position);
         ps->setTexture(texture);
         ps->setOpacity(127);
