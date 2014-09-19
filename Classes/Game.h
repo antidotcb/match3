@@ -15,8 +15,8 @@ namespace match3 {
         virtual ~GameLayer();
         virtual bool init();
 
-        CREATE_FUNC(GameLayer);
-
+        CREATE_FUNC(GameLayer)
+        ;
 
     protected:
         void afterSwap(Node* _Node);
@@ -40,11 +40,9 @@ namespace match3 {
         bool onTouchBegan(cocos2d::Touch* _Touch, cocos2d::Event* _Event);
         void onTouchMoved(cocos2d::Touch* _Touch, cocos2d::Event* _Event);
 
-
     private:
         void onProgressTimer();
         void onTimeExpires();
-
 
         Gameboard * gameboard_;
         cocos2d::ProgressTimer *timer_;
@@ -53,7 +51,7 @@ namespace match3 {
         cocos2d::Vec2 origin_;
 
         Piece *selected_;
-        Node  *firstArrived_;
+        Node *firstArrived_;
 
         float delayTime;
         float time;

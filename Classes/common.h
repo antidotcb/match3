@@ -27,11 +27,12 @@
 namespace match3 {
 
     struct Coord {
-        uint16_t X;
-        uint16_t Y;
+        uint16_t x;
+        uint16_t y;
 
         Coord(uint16_t _X, uint16_t _Y) :
-                X(_X), Y(_Y) {}
+                x(_X), y(_Y) {
+        }
     };
 
 //    class IPiece {

@@ -19,7 +19,8 @@ namespace match3 {
     class BasicRound {
     public:
         BasicRound();
-        virtual ~BasicRound() {}
+        virtual ~BasicRound() {
+        }
 
         void startNewRound();
         bool isRoundFinished();

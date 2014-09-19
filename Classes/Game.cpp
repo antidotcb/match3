@@ -77,9 +77,14 @@ namespace match3 {
 
     bool GameLayer::addGameboard() {
         Gameboard::Size boardSize = { DefaultBoardSize, DefaultBoardSize };
-        Vec2 position = Vec2(visibleSize_.width / 2 + origin_.x,
+        Vec2 pos(visibleSize_.width / 2 + origin_.x,
                 visibleSize_.height / 2 + origin_.y);
-        gameboard_ = Gameboard::create(position, boardSize, PiecesManager::getInstance(), this);
+
+        gameboard_ = Gameboard::create(boardSize);
+        gameboard_->setPosition(pos);
+        addChild(gameboard_);
+
+        gameboard_->fillup(PiecesManager::getInstance());
 
         if (!gameboard_) {
             CCLOGERROR("Can't create gameboard.");
@@ -100,15 +105,18 @@ namespace match3 {
     }
 
     bool GameLayer::onTouchBegan(cocos2d::Touch *_Touch, cocos2d::Event *_Event) {
-        Vec2 touch_pos = _Touch->getLocation();
-        Coord coord = gameboard_->screenToCell(touch_pos);
+        Vec2 touch = _Touch->getLocation();
+        Coord coord = gameboard_->wolrd2coord(touch);
         Piece* piece = gameboard_->getPiece(coord);
+
+        CCLOG("Touch: [x=%f, y=%f], Piece: [x=%d, y=%d]",
+                touch.x, touch.y, coord.x, coord.y);
 
         if (gameboard_->locked() || !piece) {
             return true;
         }
 
-        CCLOG("Piece [X=%d , Y=%d], Color: %s", coord.X, coord.Y, piece->color()->name().c_str());
+        CCLOG("Piece Color: %s", piece->color()->name().c_str());
 
         if (selected_ && selected_->isNextTo(piece)) {
             swapPieces(selected_, piece);
@@ -120,15 +128,18 @@ namespace match3 {
     }
 
     void GameLayer::onTouchMoved(cocos2d::Touch* _Touch, cocos2d::Event* _Event) {
-        Vec2 touch_pos = _Touch->getLocation();
-        Coord coord = gameboard_->screenToCell(touch_pos);
+        Vec2 touch = _Touch->getLocation();
+        Coord coord = gameboard_->wolrd2coord(touch);
         Piece* piece = gameboard_->getPiece(coord);
+
+        CCLOG("Touch: [x=%f, y=%f], Piece: [x=%d, y=%d]",
+                touch.x, touch.y, coord.x, coord.y);
 
         if (gameboard_->locked() || !piece) {
             return;
         }
 
-        CCLOG("Piece [X=%d , Y=%d], Color: %s", coord.X, coord.Y, piece->color()->name().c_str());
+        CCLOG("Piece Color: %s", piece->color()->name().c_str());
 
         if (selected_ && selected_->isNextTo(piece)) {
             swapPieces(selected_, piece);
@@ -191,7 +202,8 @@ namespace match3 {
                 uint scoreValue = pieceScore * vec.size() + group_bonus;
                 score += scoreValue;
 
-                addScoreLabel(scoreValue, piece->sprite()->getPosition());
+                Vec2 pos = gameboard_->coord2world(piece->coord());
+                addScoreLabel(scoreValue, pos);
 
                 dissapear(piece);
             }
@@ -199,7 +211,7 @@ namespace match3 {
             CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("remove.wav");
         }
 
-        float longestAnimationTime = gameboard_->fillup();
+        float longestAnimationTime = gameboard_->fillup(PiecesManager::getInstance());
         float waitFalldownToComplete = longestAnimationTime + FastSpeed;
 
         if (!gameboard_->check()) {
@@ -232,7 +244,6 @@ namespace match3 {
     void GameLayer::onProgressTimer() {
         time += delayTime;
         float percent = 100 - (time / TotalGameTime) * 100;
-        CCLOG("Progress bar: %d%%", int(percent));
         timer_->setPercentage(percent);
     }
 
@@ -241,20 +252,22 @@ namespace match3 {
     }
 
     void GameLayer::addProgressTimer() {
-        timer_ = ProgressTimer::create(Sprite::create("ver_progress_yellow.png"));
+        timer_ = ProgressTimer::create(Sprite::create("hor_progress_yellow.png"));
 
-        timer_->setPosition(634 - 224 / 2, 30 + 370 / 2);
+
+        timer_->setPosition(origin_.x + visibleSize_.width / 2.f, origin_.y + 10);
+
         timer_->setType(ProgressTimerType::BAR);
-        timer_->setMidpoint( { -1, 0 });
-        timer_->setBarChangeRate( { 0, 1 });
-        timer_->setScale(1.0f, 350.0f);
+        timer_->setMidpoint( { 0, -1 });
+        timer_->setBarChangeRate( { 1, 0 });
+        timer_->setScale(visibleSize_.width, 0.5f);
 
         timer_->setPercentage(100);
         addChild(timer_, UILayerLevel);
 
         delayTime = 1.0f / (350.0f / TotalGameTime);
         delayTime = (1.f / 30.f > delayTime) ? 1.f / 30.f : delayTime;
-        CCLOG("Progress bar update freq: ", delayTime);
+        CCLOG("Progress bar update freq: %f", delayTime);
 
         auto time_seq = Sequence::create(
                 DelayTime::create(delayTime),
@@ -321,8 +334,8 @@ namespace match3 {
         Sprite* spriteA = _First->sprite();
         Sprite* spriteB = _Second->sprite();
 
-        Coord posA = _First->position();
-        Coord posB = _Second->position();
+        Coord posA = _First->coord();
+        Coord posB = _Second->coord();
 
         auto thereA = MoveTo::create(FastSpeed, spriteB->getPosition());
         auto thereB = MoveTo::create(FastSpeed, spriteA->getPosition());

@@ -15,12 +15,13 @@ namespace match3 {
     class BasicPiece {
     public:
         BasicPiece(uint16_t _Type, const Coord& _Position);
-        const virtual Coord& position() const;
+        const virtual Coord& coord() const;
         virtual void setPosition(const Coord& _Position);
         virtual bool isSameTypeAs(const BasicPiece* _Piece) const;
         virtual bool isNextTo(const BasicPiece* _Piece) const;
         virtual uint16_t type() const;
-        virtual ~BasicPiece() {}
+        virtual ~BasicPiece() {
+        }
     private:
         Coord position_;
         uint16_t type_;
@@ -45,7 +46,6 @@ namespace match3 {
 
         friend class PiecesManager;
     };
-
 
     class Piece: public BasicPiece {
     public:
@@ -93,7 +93,6 @@ namespace match3 {
 
         static PiecesManager * instance_;
     };
-
 
 } /* namespace match3 */
 

@@ -28,9 +28,17 @@ namespace match3 {
     const float Gameboard::FalldownSpeed = .2f;
 
     const char* Gameboard::BgSpriteTextureName = "background.png";
-    const cocos2d::Vec2 Gameboard::DefaultOrigin(120, 120);
+    const float Gameboard::CellSize = 40;
+    const float Gameboard::HalfCellSize = CellSize / 2.f;
 
-    float Gameboard::fillup() {
+    Vec2 Gameboard::center() const
+    {
+        // FIX: in case of dynamic size it won't work, but now it's ok
+        static Vec2 center(width_ * CellSize / 2.f, height_ * CellSize / 2.f);
+        return center;
+    }
+
+    float Gameboard::fillup(IAbstractPieceFactory* _PieceFactory) {
         float longestAnimation = 0;
         static const float ElasticModifier = 3.0f;
         newPieces_.clear();
@@ -38,7 +46,7 @@ namespace match3 {
         std::vector<std::queue<uint16_t> > empty;
         empty.resize(width_);
         for (uint16_t x = 0; x < width_; x++) {
-            for (uint16_t y = 0; y < heigth_; y++) {
+            for (uint16_t y = 0; y < height_; y++) {
                 Coord pos(x, y);
                 Piece* piece = getPiece(pos);
                 if (!piece) {
@@ -50,7 +58,7 @@ namespace match3 {
                         Coord newPos(x, emptyY);
                         swap(pos, newPos);
 
-                        Vec2 screenPos = cellToScreen(newPos);
+                        Vec2 screenPos = coord2local(newPos);
                         uint16_t distance = y - emptyY;
                         float animationTime = FalldownSpeed * distance;
 
@@ -63,7 +71,7 @@ namespace match3 {
 
                         newPieces_.push_back(piece);
 
-                        longestAnimation = (longestAnimation < animationTime) ? animationTime : longestAnimation ;
+                        longestAnimation = (longestAnimation < animationTime) ? animationTime : longestAnimation;
                     }
                 }
             }
@@ -76,16 +84,16 @@ namespace match3 {
                 uint16_t y = empty[x].front();
                 empty[x].pop();
                 Coord pos(x, y);
-                Coord ontop = Coord(x, heigth_ + newlyCreated++);
+                Coord ontop = Coord(x, height_ + newlyCreated++);
 
-                Piece* piece = factory_->createPiece();
+                Piece* piece = _PieceFactory->createPiece();
 
                 setPiece(pos, piece);
 
-                layer_->addChild(piece->sprite(), FgSpriteLevel);
+                addChild(piece->sprite(), FgSpriteLevel);
 
-                Vec2 targetPos = cellToScreen(pos);
-                Vec2 startPos = cellToScreen(ontop);
+                Vec2 targetPos = coord2local(pos);
+                Vec2 startPos = coord2local(ontop);
 
                 float animationTime = FalldownSpeed * emptySlots;
 
@@ -97,8 +105,7 @@ namespace match3 {
 
                 newPieces_.push_back(piece);
 
-                longestAnimation = (longestAnimation < animationTime) ? animationTime : longestAnimation ;
-
+                longestAnimation = (longestAnimation < animationTime) ? animationTime : longestAnimation;
             }
         }
 
@@ -106,22 +113,17 @@ namespace match3 {
     }
 
     void Gameboard::remove(Piece* _Piece) {
-        if (!_Piece) {
-            // TODO:
-            return;
-        }
-
-        Piece * piece = getPiece(_Piece->position());
+        Piece * piece = getPiece(_Piece->coord());
         if (piece == _Piece) {
-            setPiece(piece->position(), nullptr);
+            setPiece(piece->coord(), nullptr);
         }
     }
 
     void Gameboard::checkDirection(bool _Horizontal) {
         std::vector<Piece*> container;
 
-        const uint16_t & c_size = _Horizontal ? width_ : heigth_;
-        const uint16_t & r_size = _Horizontal ? heigth_ : width_;
+        const uint16_t & c_size = _Horizontal ? width_ : height_;
+        const uint16_t & r_size = _Horizontal ? height_ : width_;
         container.reserve(c_size);
 
         for (uint16_t i = 0; i < r_size; i++) {
@@ -193,15 +195,13 @@ namespace match3 {
         return locked_;
     }
 
-    Gameboard::Gameboard(const Size& _Size, IAbstractPieceFactory* _Factory, cocos2d::Layer * _Layer) :
-            board_(0), width_(_Size.width), heigth_(_Size.height), factory_(_Factory), layer_(_Layer), locked_(false) {
+    Gameboard::Gameboard(const Size& _Size) :
+            board_(0), width_(_Size.width), height_(_Size.height), locked_(false) {
         CCLOG("Gameboard created");
     }
 
-    bool Gameboard::init(const Vec2 & _Position) {
+    bool Gameboard::init() {
         CCLOGINFO("Init started");
-
-        origin_ = _Position;
 
         if (board_) {
             CCLOGINFO("Board existed. Remove existing board.");
@@ -213,14 +213,14 @@ namespace match3 {
             return false;
         }
 
-        board_ = new BoardRow[heigth_];
+        board_ = new BoardRow[height_];
         if (!board_) {
             CCLOGERROR("Cannot allocate memory for board rows.");
             return false;
         }
 
-        memset(board_, 0, sizeof(BoardRow) * heigth_);
-        for (uint16_t y = 0; y < heigth_; y++) {
+        memset(board_, 0, sizeof(BoardRow) * height_);
+        for (uint16_t y = 0; y < height_; y++) {
             board_[y] = new BoardPiece[width_];
             if (!board_[y]) {
                 CCLOGERROR("Cannot allocate memory for board pieces.");
@@ -229,26 +229,14 @@ namespace match3 {
             }
             memset(board_[y], 0, sizeof(BoardPiece) * width_);
             for (uint16_t x = 0; x < width_; x++) {
-                Coord pos(x, y);
-                Piece* piece = factory_->createPiece();
-                if (!piece) {
-                    CCLOGERROR("Cannot create piece.");
-                    cleanup();
-                    return false;
-                }
-                setPiece(pos, piece);
+                Coord coord(x, y);
+                Vec2 pos = coord2local(coord);
 
-                Vec2 layerPos = cellToScreen(pos);
-
-                piece->sprite()->setPosition(layerPos);
-                layer_->addChild(piece->sprite(), FgSpriteLevel);
+                setPiece(coord, nullptr);
 
                 Sprite* bgSprite = Sprite::create(BgSpriteTextureName);
-
-                bgSprite->setPosition(layerPos);
-                layer_->addChild(bgSprite, BgSpriteLevel);
-
-                sprites_.push_back(bgSprite);
+                bgSprite->setPosition(pos);
+                addChild(bgSprite, BgSpriteLevel);
             }
         }
 
@@ -256,9 +244,9 @@ namespace match3 {
         return true;
     }
 
-    Gameboard* Gameboard::create(const cocos2d::Vec2 _Position, const Size& _Size, IAbstractPieceFactory* _Factory, cocos2d::Layer* _Layer) {
-        Gameboard* pRet = new Gameboard(_Size, _Factory, _Layer);
-        if (pRet && pRet->init(_Position)) {
+    Gameboard* Gameboard::create(const Size& _Size) {
+        Gameboard* pRet = new Gameboard(_Size);
+        if (pRet && pRet->init()) {
             //TODO: correct
             //pRet->cleanup();
             return pRet;
@@ -284,7 +272,7 @@ namespace match3 {
 
     void Gameboard::cleanup() {
         if (board_) {
-            for (uint16_t y = 0; y < heigth_; y++) {
+            for (uint16_t y = 0; y < height_; y++) {
                 if (board_[y]) {
                     for (uint16_t x = 0; x < width_; x++) {
                         Coord pos(x, y);
@@ -304,55 +292,54 @@ namespace match3 {
     }
 
     bool Gameboard::validate() {
-        if (!factory_) {
-            CCLOGERROR("No piece factory given.");
+        if (!width_ || !height_) {
+            CCLOGERROR("Wrong size [%d x %d]", width_, height_);
             return false;
         }
 
-        if (!width_ || !heigth_) {
-            CCLOGERROR("Wrong size [%d x %d]", width_, heigth_);
-            return false;
-        }
-
-        if (!layer_) {
-            CCLOGERROR("No layer given.");
-            return false;
-        }
         return true;
     }
 
-    cocos2d::Vec2
-    Gameboard::cellToScreen(const Coord & _Coord) {
-        cocos2d::Vec2 pos = origin_;
-        const uint16_t & x = _Coord.X;
-        const uint16_t & y = _Coord.Y;
-        pos.x += (x * CellSize) + (x > 1 ? (x - 1) * CellPadding : 0) + CellSize / 2;
-        pos.y += (y * CellSize) + (y > 1 ? (y - 1) * CellPadding : 0) + CellSize / 2;
+    Vec2 Gameboard::coord2local(const Coord & _Coord) {
+        Vec2 pos;
+        const uint16_t & x = _Coord.x;
+        const uint16_t & y = _Coord.y;
+        pos.x = (x * CellSize) + HalfCellSize - center().x;
+        pos.y = (y * CellSize) + HalfCellSize - center().y;
         return pos;
     }
 
-    Coord
-    Gameboard::screenToCell(const cocos2d::Vec2 _TouchPos) {
-        Coord pos(0, 0);
-        pos.X = (_TouchPos.x - origin_.x) / (CellSize + CellPadding);
-        pos.Y = (_TouchPos.y - origin_.y) / (CellSize + CellPadding);
-        return pos;
+    Vec2 Gameboard::coord2world(const Coord & _Coord) {
+        Vec2 local = coord2local(_Coord);
+        return convertToWorldSpace(local);
+    }
+
+    Coord Gameboard::wolrd2coord(const cocos2d::Vec2& _TouchPos) {
+        Vec2 local = convertToNodeSpace(_TouchPos);
+        return local2coord(local);
+    }
+
+    Coord Gameboard::local2coord(const cocos2d::Vec2 & _Pos) {
+        Coord coord(0, 0);
+        coord.x = (_Pos.x + center().x) / CellSize;
+        coord.y = (_Pos.y + center().y) / CellSize;
+        return coord;
     }
 
     Piece* Gameboard::getPiece(Coord _Coord) {
-        if ((_Coord.X >= width_) || (_Coord.Y >= heigth_)) {
+        if ((_Coord.x >= width_) || (_Coord.y >= height_)) {
             // TODO
             return nullptr;
         }
 
-        return (board_[_Coord.Y][_Coord.X]);
+        return (board_[_Coord.y][_Coord.x]);
     }
 
     void Gameboard::setPiece(Coord _Coord, Piece* _Piece) {
-        if ((_Coord.X >= width_) || (_Coord.Y >= heigth_)) {
+        if ((_Coord.x >= width_) || (_Coord.y >= height_)) {
             // TODO
         }
-        board_[_Coord.Y][_Coord.X] = _Piece;
+        board_[_Coord.y][_Coord.x] = _Piece;
         if (_Piece) {
             _Piece->setPosition(_Coord);
         }

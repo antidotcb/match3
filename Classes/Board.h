@@ -11,14 +11,14 @@
 #include "common.h"
 
 namespace match3 {
-    class Gameboard {
+    class Gameboard: public cocos2d::Node {
     public:
         struct Size {
             uint16_t width;
             uint16_t height;
         };
 
-        static Gameboard* create(const cocos2d::Vec2 _Position,const Size& _Size, IAbstractPieceFactory* _Factory, cocos2d::Layer* _Layer);
+        static Gameboard* create(const Size& _Size);
         virtual void swap(const Coord& _Pos1, const Coord& _Pos2);
 
         virtual ~Gameboard();
@@ -26,10 +26,10 @@ namespace match3 {
         Piece* getPiece(Coord _Coord);
         void remove(Piece* piece);
 
-        Coord screenToCell(const cocos2d::Vec2 _TouchPos);
-        cocos2d::Vec2 cellToScreen(const Coord & _Coord);
+        Coord wolrd2coord(const cocos2d::Vec2& _TouchPos);
+        cocos2d::Vec2 coord2world(const Coord & _Coord);
 
-        float fillup();
+        float fillup(IAbstractPieceFactory* _PieceFactory);
         void getResultsOfLastFill(std::list<std::vector<Piece*> > &_Container);
 
         bool check();
@@ -42,9 +42,14 @@ namespace match3 {
         static const float FalldownSpeed;        // 0.2f
 
     protected:
-        Gameboard(const Size& _Size, IAbstractPieceFactory* _Factory, cocos2d::Layer * _Layer);
+        cocos2d::Vec2 center() const;
 
-        virtual bool init(const cocos2d::Vec2 & _Position);
+        Coord local2coord(const cocos2d::Vec2 & _Pos);
+        cocos2d::Vec2 coord2local(const Coord & _Coord);
+
+        Gameboard(const Size& _Size);
+
+        virtual bool init();
 
         void checkDirection(bool _Horizontal);
         void cleanup();
@@ -61,22 +66,13 @@ namespace match3 {
 
         BoardRow* board_;
         uint16_t width_;
-        uint16_t heigth_;
-        IAbstractPieceFactory* factory_;
-        cocos2d::Layer* layer_;
+        uint16_t height_;
+        //cocos2d::Layer* layer_;
         bool locked_;
-        cocos2d::Vec2 origin_;
-
-        std::vector<cocos2d::Sprite*> sprites_;
-
-        static const cocos2d::Vec2 DefaultOrigin;
-
         static const uint8_t FgSpriteLevel = 100;
         static const uint8_t BgSpriteLevel = 50;
-        static const uint8_t CellSize = 40;
-        static const uint8_t CellPadding = 0;
-
-
+        static const float CellSize;
+        static const float HalfCellSize;
 
         static const char* BgSpriteTextureName;        // "background.png"
     };

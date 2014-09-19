@@ -44,7 +44,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 }
 
 void AppDelegate::adaptResolution(float designW, float designH) {
-    Size screenSize =  Director::getInstance()->getOpenGLView()->getFrameSize();
+    Size screenSize = Director::getInstance()->getOpenGLView()->getFrameSize();
 
     float designRatio = designW / designH;
     float screenRatio = screenSize.height / screenSize.width;

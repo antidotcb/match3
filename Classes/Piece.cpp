@@ -121,7 +121,7 @@ namespace match3 {
             position_(_Position), type_(_Type) {
     }
 
-    const Coord& BasicPiece::position() const {
+    const Coord& BasicPiece::coord() const {
         return position_;
     }
 
@@ -134,11 +134,11 @@ namespace match3 {
     }
 
     bool BasicPiece::isNextTo(const BasicPiece* _Piece) const {
-        if (this->position().X == _Piece->position().X) {
-            return (this->position().Y - _Piece->position().Y == 1) || (this->position().Y - _Piece->position().Y == -1);
+        if (this->coord().x == _Piece->coord().x) {
+            return (this->coord().y - _Piece->coord().y == 1) || (this->coord().y - _Piece->coord().y == -1);
         } else
-        if (this->position().Y == _Piece->position().Y) {
-            return (this->position().X - _Piece->position().X == 1) || (this->position().X - _Piece->position().X == -1);
+        if (this->coord().y == _Piece->coord().y) {
+            return (this->coord().x - _Piece->coord().x == 1) || (this->coord().x - _Piece->coord().x == -1);
         } else {
             return false;
         }
