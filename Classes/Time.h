@@ -1,24 +1,14 @@
-/*
- * Time.h
- *
- *  Created on: Sep 11, 2014
- *      Author: antidotcb
- */
-
-#ifndef TIME_H_
-#define TIME_H_
+#ifndef MATCH3_CLASSES_TIME_H_
+#define MATCH3_CLASSES_TIME_H_
 
 namespace match3 {
 
-    class Time {
+    class Time: public cocos2d::Layer {
     public:
-        Time() {
 
-        }
-        virtual ~Time() {
-        }
+
     };
 
 } /* namespace match3 */
 
-#endif /* TIME_H_ */
+#endif /* MATCH3_CLASSES_TIME_H_ */

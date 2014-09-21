@@ -64,6 +64,8 @@ set(GAME_SRC
   Classes/Game.cpp
   Classes/Options.cpp
   Classes/Highscores.cpp
+  Classes/GameboardContainer.cpp
+  Classes/GameboardLayer.cpp
   Classes/Piece.cpp
   Classes/Round.cpp
   Classes/Score.cpp

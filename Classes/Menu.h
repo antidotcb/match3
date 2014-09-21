@@ -1,26 +1,26 @@
-/*
- * Menu.h
- *
- *  Created on: Sep 18, 2014
- *      Author: antidotcb
- */
+#ifndef MATCH3_CLASSES_MENU_H_
+#define MATCH3_CLASSES_MENU_H_
 
-#ifndef MENU_H_
-#define MENU_H_
+#include <2d/CCLayer.h>
+#include <base/CCPlatformMacros.h>
 
 namespace match3 {
 
-    class Menu {
+    class MenuLayer: public cocos2d::Layer
+    {
     public:
-        Menu() {
-            // TODO Auto-generated constructor stub
+        static cocos2d::Scene* createScene();
 
-        }
-        virtual ~Menu() {
-            // TODO Auto-generated destructor stub
-        }
+        virtual bool init();
+
+        void menuClose(cocos2d::Ref* pSender);
+        void menuPlay(cocos2d::Ref* pSender);
+        void menuHighscores(cocos2d::Ref* pSender);
+        void menuSettings(cocos2d::Ref* pSender);
+
+        CREATE_FUNC(MenuLayer);
     };
 
 } /* namespace match3 */
 
-#endif /* MENU_H_ */
+#endif /* MATCH3_CLASSES_MENU_H_ */

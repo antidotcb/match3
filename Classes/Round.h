@@ -1,37 +1,17 @@
-/*
- * Round.h
- *
- *  Created on: Sep 11, 2014
- *      Author: antidotcb
- */
-
-#ifndef ROUND_H_
-#define ROUND_H_
-
-#include "common.h"
+#ifndef MATCH3_CLASSES_ROUND_H_
+#define MATCH3_CLASSES_ROUND_H_
 
 namespace match3 {
 
-    class Board;
-    class Time;
-    class Score;
-
-    class BasicRound {
+    class Round {
     public:
-        BasicRound();
-        virtual ~BasicRound() {
+        Round() {
         }
 
-        void startNewRound();
-        bool isRoundFinished();
-        uint16_t resultScore();
-        uint16_t timeLeft();
-        private:
-        Board * board;
-        Score * score;
-        Time * time;
+        virtual ~Round() {
+        }
     };
 
 } /* namespace match3 */
 
-#endif /* ROUND_H_ */
+#endif /* MATCH3_CLASSES_ROUND_H_ */

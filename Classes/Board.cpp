@@ -7,20 +7,13 @@
 
 #include "Board.h"
 
-#include <2d/CCActionInstant.h>
+#include <2d/CCActionEase.h>
 #include <2d/CCActionInterval.h>
-#include <2d/CCLayer.h>
 #include <2d/CCSprite.h>
-#include <base/ccMacros.h>
 #include <base/CCPlatformMacros.h>
-#include <math/Vec2.h>
-#include <cstdint>
-#include <cstdio>
 #include <cstring>
-#include <list>
-#include <vector>
+#include <queue>
 
-#include "Piece.h"
 
 USING_NS_CC;
 
@@ -120,9 +113,9 @@ namespace match3 {
     }
 
     void Gameboard::remove(Piece* _Piece) {
-        Piece * piece = getPiece(_Piece->coord());
+        Piece * piece = getPiece(_Piece->getCoords());
         if (piece == _Piece) {
-            setPiece(piece->coord(), nullptr);
+            setPiece(piece->getCoords(), nullptr);
         }
     }
 
@@ -347,7 +340,7 @@ namespace match3 {
         }
         board_[_Coord.y][_Coord.x] = _Piece;
         if (_Piece) {
-            _Piece->setPosition(_Coord);
+            _Piece->setCoords(_Coord);
         }
     }
 

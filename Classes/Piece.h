@@ -1,41 +1,87 @@
-/*
- * Piece.h
- *
- *  Created on: Sep 11, 2014
- *      Author: antidotcb
- */
+#ifndef MATCH3_CLASSES_PIECE_H_
+#define MATCH3_CLASSES_PIECE_H_
 
-#ifndef PIECE_H_
-#define PIECE_H_
-
+#include <base/CCPlatformMacros.h>
+#include <renderer/CCTexture2D.h>
 #include <cstdint>
-#include <map>
+#include <vector>
 
-#include "common.h"
+namespace cocos2d {
+    class Sprite;
+} /* namespace cocos2d */
 
 namespace match3 {
+    struct Coord {
+        uint16_t x;
+        uint16_t y;
+        Coord(uint16_t X, uint16_t Y) :
 
-    class Piece: public cocos2d::Node {
+                x(X), y(Y) {
+        }
+    };
+
+    class IPiece {
     public:
-        static Piece* create(uint16_t _Type, const Coord& _Position);
+        virtual uint16_t type() const = 0;
+        virtual const Coord& getCoords() const = 0;
+        virtual void setCoords(const Coord& _Position) = 0;
+        virtual bool isSameTypeAs(const IPiece* _Piece) const = 0;
+        virtual bool isNextTo(const IPiece* _Piece) const = 0;
+
+        virtual ~IPiece() {
+            CCLOGINFO("IPiece::~IPiece()");
+        }
+    };
+
+    class Piece: public IPiece {
+    public:
+        virtual uint16_t type() const;
+
+        virtual const Coord& getCoords() const;
+        virtual void setCoords(const Coord& _Position);
+
+        virtual cocos2d::Sprite* sprite() const {
+            return nullptr;
+        }
+
+        virtual bool isSameTypeAs(const IPiece* _Piece) const;
+        virtual bool isNextTo(const IPiece* _Piece) const;
+
+        virtual ~Piece() {
+            CCLOGINFO("Piece::~Piece()");
+        }
+
+    protected:
+        Piece(uint16_t _Type, const Coord& _Position);
+
+    private:
+        Coord coord_;
+        uint16_t type_;
+    };
+
+    class SpritePiece: public Piece {
+    public:
+        virtual cocos2d::Sprite* sprite() const;
+
+        static SpritePiece* create(uint16_t _Type, const Coord& _Position);
 
         virtual bool init();
 
-        virtual uint16_t type() const;
-        virtual const Coord& coord() const;
-        virtual cocos2d::Sprite* sprite() const;
+        virtual ~SpritePiece() {
+            CCLOGINFO("SpritePiece::~SpritePiece()");
+        }
+    protected:
+        SpritePiece(uint16_t _Type, const Coord& _Position);
 
-        virtual void setPosition(const Coord& _Position);
-        virtual bool isSameTypeAs(const Piece* _Piece) const;
-        virtual bool isNextTo(const Piece* _Piece) const;
-
-        virtual ~Piece() {}
     private:
-        Piece(uint16_t _Type, const Coord& _Position);
-
-        Coord position_;
-        uint16_t type_;
         cocos2d::Sprite* sprite_ = nullptr;
+    };
+
+    class IAbstractPieceFactory {
+    public:
+        virtual Piece* createPiece(const Coord& _Position) const = 0;
+        virtual ~IAbstractPieceFactory() {
+        }
     };
 
     class PiecesManager: public IAbstractPieceFactory {
@@ -43,12 +89,12 @@ namespace match3 {
         static PiecesManager* getInstance();
         static void destroyInstance();
 
-        virtual Piece* createPiece(const Coord& _Position);
+        virtual Piece* createPiece(const Coord& _Position) const;
         cocos2d::Texture2D* texture(uint32_t _Value);
         bool loadTextures();
 
     protected:
-        uint32_t random();
+        uint32_t random() const;
 
     private:
         PiecesManager();
@@ -63,4 +109,4 @@ namespace match3 {
 
 } /* namespace match3 */
 
-#endif /* PIECE_H_ */
+#endif /* MATCH3_CLASSES_PIECE_H_ */

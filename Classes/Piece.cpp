@@ -1,30 +1,19 @@
-/*
- * Piece.cpp
- *
- *  Created on: Sep 11, 2014
- *      Author: antidotcb
- */
-
 #include "Piece.h"
 
 #include <2d/CCSprite.h>
 #include <base/CCDirector.h>
-#include <base/CCPlatformMacros.h>
 #include <math/CCGeometry.h>
 #include <renderer/CCTextureCache.h>
-#include <stddef.h>
 #include <stdlib.h>
-#include <cstdint>
-
-USING_NS_CC;
 
 namespace match3 {
+    USING_NS_CC;
 
-    cocos2d::Texture2D* PiecesManager::texture(uint32_t _Value) {
+    Texture2D* PiecesManager::texture(uint32_t _Value) {
         return _Value < textures_.size() ? textures_[_Value] : nullptr;
     }
 
-    uint32_t PiecesManager::random() {
+    uint32_t PiecesManager::random() const {
         /* not compatible with android :(
          static std::default_random_engine generator;
          static std::uniform_int_distribution<int> distribution(0, );
@@ -63,7 +52,7 @@ namespace match3 {
 
     bool PiecesManager::loadTextures() {
         for (uint32_t i = 0; i < sizeof(config) / sizeof(TextureConfig); i++) {
-            auto dir = cocos2d::Director::getInstance();
+            auto dir = Director::getInstance();
             textures_.push_back(dir->getTextureCache()->addImage(config[i].texture));
         }
 
@@ -71,27 +60,27 @@ namespace match3 {
     }
 
     Piece::Piece(uint16_t _Type, const Coord& _Position) :
-            position_(_Position), type_(_Type) {
+            coord_(_Position), type_(_Type) {
     }
 
-    const Coord& Piece::coord() const {
-        return position_;
+    const Coord& Piece::getCoords() const {
+        return coord_;
     }
 
-    void Piece::setPosition(const Coord& _Position) {
-        position_ = _Position;
+    void Piece::setCoords(const Coord& _Position) {
+        coord_ = _Position;
     }
 
-    bool Piece::isSameTypeAs(const Piece* _Piece) const {
+    bool Piece::isSameTypeAs(const IPiece* _Piece) const {
         return this->type() == _Piece->type();
     }
 
-    bool Piece::isNextTo(const Piece* _Piece) const {
-        if (this->coord().x == _Piece->coord().x) {
-            return (this->coord().y - _Piece->coord().y == 1) || (this->coord().y - _Piece->coord().y == -1);
+    bool Piece::isNextTo(const IPiece* _Piece) const {
+        if (this->getCoords().x == _Piece->getCoords().x) {
+            return (this->getCoords().y - _Piece->getCoords().y == 1) || (this->getCoords().y - _Piece->getCoords().y == -1);
         } else
-        if (this->coord().y == _Piece->coord().y) {
-            return (this->coord().x - _Piece->coord().x == 1) || (this->coord().x - _Piece->coord().x == -1);
+        if (this->getCoords().y == _Piece->getCoords().y) {
+            return (this->getCoords().x - _Piece->getCoords().x == 1) || (this->getCoords().x - _Piece->getCoords().x == -1);
         } else {
             return false;
         }
@@ -101,12 +90,12 @@ namespace match3 {
         return type_;
     }
 
-    Piece* PiecesManager::createPiece(const Coord& _Position) {
-        auto piece = Piece::create(random(), _Position);
+    Piece* PiecesManager::createPiece(const Coord& _Position) const {
+        auto piece = SpritePiece::create(random(), _Position);
         return piece;
     }
 
-    bool Piece::init() {
+    bool SpritePiece::init() {
         sprite_ = Sprite::create();
         auto dir = PiecesManager::getInstance();
         auto tex = dir->texture(type());
@@ -126,7 +115,7 @@ namespace match3 {
         return true;
     }
 
-    cocos2d::Sprite* Piece::sprite() const {
+    Sprite* SpritePiece::sprite() const {
         return sprite_;
     }
 
@@ -135,15 +124,8 @@ namespace match3 {
     PiecesManager::PiecesManager() {
     }
 
-//    PiecesManager::PiecesManager(PiecesManager&) {
-//    }
-//
-//    PiecesManager& PiecesManager::operator =(const PiecesManager&) {
-//        return *this;
-//    }
-
-    Piece* Piece::create(uint16_t _Type, const Coord& _Position) {
-        Piece *pRet = new Piece(_Type, _Position);
+    SpritePiece* SpritePiece::create(uint16_t _Type, const Coord& _Position) {
+        SpritePiece *pRet = new SpritePiece(_Type, _Position);
         if (pRet && pRet->init()) {
             return pRet;
         } else {
@@ -151,6 +133,10 @@ namespace match3 {
             pRet = NULL;
             return NULL;
         }
+    }
+
+    SpritePiece::SpritePiece(uint16_t _Type, const Coord& _Position) :
+            Piece(_Type, _Position) {
     }
 
 } /* namespace match3 */

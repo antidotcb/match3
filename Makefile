@@ -339,6 +339,54 @@ Classes/Game.cpp.s:
 	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/Game.cpp.s
 .PHONY : Classes/Game.cpp.s
 
+Classes/GameboardContainer.o: Classes/GameboardContainer.cpp.o
+.PHONY : Classes/GameboardContainer.o
+
+# target to build an object file
+Classes/GameboardContainer.cpp.o:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/GameboardContainer.cpp.o
+.PHONY : Classes/GameboardContainer.cpp.o
+
+Classes/GameboardContainer.i: Classes/GameboardContainer.cpp.i
+.PHONY : Classes/GameboardContainer.i
+
+# target to preprocess a source file
+Classes/GameboardContainer.cpp.i:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/GameboardContainer.cpp.i
+.PHONY : Classes/GameboardContainer.cpp.i
+
+Classes/GameboardContainer.s: Classes/GameboardContainer.cpp.s
+.PHONY : Classes/GameboardContainer.s
+
+# target to generate assembly for a file
+Classes/GameboardContainer.cpp.s:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/GameboardContainer.cpp.s
+.PHONY : Classes/GameboardContainer.cpp.s
+
+Classes/GameboardLayer.o: Classes/GameboardLayer.cpp.o
+.PHONY : Classes/GameboardLayer.o
+
+# target to build an object file
+Classes/GameboardLayer.cpp.o:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/GameboardLayer.cpp.o
+.PHONY : Classes/GameboardLayer.cpp.o
+
+Classes/GameboardLayer.i: Classes/GameboardLayer.cpp.i
+.PHONY : Classes/GameboardLayer.i
+
+# target to preprocess a source file
+Classes/GameboardLayer.cpp.i:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/GameboardLayer.cpp.i
+.PHONY : Classes/GameboardLayer.cpp.i
+
+Classes/GameboardLayer.s: Classes/GameboardLayer.cpp.s
+.PHONY : Classes/GameboardLayer.s
+
+# target to generate assembly for a file
+Classes/GameboardLayer.cpp.s:
+	$(MAKE) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/Classes/GameboardLayer.cpp.s
+.PHONY : Classes/GameboardLayer.cpp.s
+
 Classes/Highscores.o: Classes/Highscores.cpp.o
 .PHONY : Classes/Highscores.o
 
@@ -561,6 +609,12 @@ help:
 	@echo "... Classes/Game.o"
 	@echo "... Classes/Game.i"
 	@echo "... Classes/Game.s"
+	@echo "... Classes/GameboardContainer.o"
+	@echo "... Classes/GameboardContainer.i"
+	@echo "... Classes/GameboardContainer.s"
+	@echo "... Classes/GameboardLayer.o"
+	@echo "... Classes/GameboardLayer.i"
+	@echo "... Classes/GameboardLayer.s"
 	@echo "... Classes/Highscores.o"
 	@echo "... Classes/Highscores.i"
 	@echo "... Classes/Highscores.s"

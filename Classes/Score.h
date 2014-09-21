@@ -1,12 +1,5 @@
-/*
- * Score.h
- *
- *  Created on: Sep 11, 2014
- *      Author: antidotcb
- */
-
-#ifndef SCORE_H_
-#define SCORE_H_
+#ifndef MATCH3_CLASSES_SCORE_H_
+#define MATCH3_CLASSES_SCORE_H_
 
 #include <2d/CCActionInstant.h>
 #include <2d/CCActionInterval.h>
@@ -114,4 +107,4 @@ namespace match3 {
 
 } /* namespace match3 */
 
-#endif /* SCORE_H_ */
+#endif /* MATCH3_CLASSES_SCORE_H_ */

@@ -1,14 +1,10 @@
-#include "../Classes/AppDelegate.h"
+#include <base/CCPlatformMacros.h>
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <string>
+#include "../Classes/AppDelegate.h"
 
 USING_NS_CC;
 
-int main(int argc, char **argv)
-{
-    AppDelegate app;
+int main(int argc, char **argv) {
+    match3::App app;
     return Application::getInstance()->run();
 }

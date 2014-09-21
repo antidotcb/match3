@@ -1,40 +1,29 @@
-#ifndef  _APP_DELEGATE_H_
-#define  _APP_DELEGATE_H_
+#ifndef  MATCH3_CLASSES_APP_DELEGATE_H_
+#define  MATCH3_CLASSES_APP_DELEGATE_H_
 
-#include "cocos2d.h"
+#include <CCApplication.h>
 
-/**
- @brief    The cocos2d Application.
+namespace cocos2d {
+    class Scene;
+} /* namespace cocos2d */
 
- The reason for implement as private inheritance is to hide some interface call by Director.
- */
-class AppDelegate: private cocos2d::Application {
-public:
-    AppDelegate();
-    virtual ~AppDelegate();
+namespace match3 {
 
-    /**
-     @brief    Implement Director and Scene init code here.
-     @return true    Initialize success, app continue.
-     @return false   Initialize failed, app terminate.
-     */
-    virtual bool applicationDidFinishLaunching();
+    class App: private cocos2d::Application {
+    public:
+        static cocos2d::Scene* wrapIntoScene(cocos2d::Layer* _Layer);
 
-    /**
-     @brief  The function be called when the application enter background
-     @param  the pointer of the application
-     */
-    virtual void applicationDidEnterBackground();
+        App();
+        virtual ~App();
 
-    /**
-     @brief  The function be called when the application enter foreground
-     @param  the pointer of the application
-     */
-    virtual void applicationWillEnterForeground();
+        virtual bool applicationDidFinishLaunching();
+        virtual void applicationDidEnterBackground();
+        virtual void applicationWillEnterForeground();
 
-private:
-    void adaptResolution(float designW, float designH);
-};
+    private:
+        void adaptResolution(float _DesignW, float _DesignH);
+    };
 
-#endif // _APP_DELEGATE_H_
+} /* namespace match3 */
 
+#endif // MATCH3_CLASSES_APP_DELEGATE_H_

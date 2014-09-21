@@ -1,73 +1,76 @@
 #include "AppDelegate.h"
-#include "Game.h"
+
+#include <2d/CCScene.h>
+#include <base/CCDirector.h>
+#include <base/CCPlatformMacros.h>
+#include <CCGLView.h>
+#include <CCGLViewProtocol.h>
+#include <math/CCGeometry.h>
+#include <SimpleAudioEngine.h>
+
+#include "Menu.h"
 #include "Piece.h"
 
-USING_NS_CC;
+namespace match3 {
+    USING_NS_CC;
 
-using namespace match3;
-
-AppDelegate::AppDelegate() {
-    PiecesManager::getInstance();
-}
-
-AppDelegate::~AppDelegate() {
-    PiecesManager::destroyInstance();
-}
-
-bool AppDelegate::applicationDidFinishLaunching() {
-    // initialize director
-    auto director = Director::getInstance();
-    auto glview = director->getOpenGLView();
-    if (!glview) {
-        glview = GLView::create("match3");
-        //glview->setFrameSize(1920, 1080);
-        director->setOpenGLView(glview);
-        adaptResolution(640, 480);
+    Scene* App::wrapIntoScene(Layer* _Layer) {
+        auto scene = Scene::create();
+        scene->addChild(_Layer);
+        return scene;
     }
 
-    // turn on display FPS
-    director->setDisplayStats(false);
+    App::App() {
+        PiecesManager::getInstance();
+    }
 
-    // set FPS. the default value is 1.0/60 if you don't call this
-    director->setAnimationInterval(1.0 / 60);
+    App::~App() {
+        PiecesManager::destroyInstance();
+    }
 
-    // load images
-    PiecesManager::getInstance()->loadTextures();
+    bool App::applicationDidFinishLaunching() {
+        auto director = Director::getInstance();
+        auto glview = director->getOpenGLView();
+        if (!glview) {
+            glview = GLView::create("match3");
+            director->setOpenGLView(glview);
+            adaptResolution(640, 480);
+        }
 
-    // create a scene. it's an autorelease object
-    auto scene = GameLayer::wrapIntoScene();
+        // turn on display FPS
+        director->setDisplayStats(false);
 
-    // run
-    director->runWithScene(scene);
+        director->setAnimationInterval(1.0 / 60);
+        PiecesManager::getInstance()->loadTextures();
+        auto scene = wrapIntoScene(MenuLayer::create());
+        director->runWithScene(scene);
 
-    return true;
-}
+        return true;
+    }
 
-void AppDelegate::adaptResolution(float designW, float designH) {
-    Size screenSize = Director::getInstance()->getOpenGLView()->getFrameSize();
+    void App::adaptResolution(float _DesignW, float _DesignH) {
+        auto director = Director::getInstance();
+        Size screenSize = director->getOpenGLView()->getFrameSize();
 
-    float designRatio = designW / designH;
-    float screenRatio = screenSize.height / screenSize.width;
+        const float designRatio = _DesignW / _DesignH;
+        const float screenRatio = screenSize.height / screenSize.width;
 
-    ResolutionPolicy resolutionPolicy = screenRatio < designRatio ?
-                                                                    ResolutionPolicy::FIXED_HEIGHT :
-                                                                    ResolutionPolicy::FIXED_WIDTH;
+        ResolutionPolicy resolutionPolicy = ResolutionPolicy::FIXED_WIDTH;
+        if (screenRatio < designRatio) {
+            resolutionPolicy = ResolutionPolicy::FIXED_HEIGHT;
+        }
 
-    Director::getInstance()->getOpenGLView()->setDesignResolutionSize(designW, designH, resolutionPolicy);
-}
+        director->getOpenGLView()->setDesignResolutionSize(_DesignW, _DesignH, resolutionPolicy);
+    }
 
-// This function will be called when the app is inactive. When comes a phone call,it's be invoked too
-void AppDelegate::applicationDidEnterBackground() {
-    Director::getInstance()->stopAnimation();
+    void App::applicationDidEnterBackground() {
+        Director::getInstance()->stopAnimation();
+        CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    }
 
-    // if you use SimpleAudioEngine, it must be pause
-    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
-}
+    void App::applicationWillEnterForeground() {
+        Director::getInstance()->startAnimation();
+        CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    }
 
-// this function will be called when the app is active again
-void AppDelegate::applicationWillEnterForeground() {
-    Director::getInstance()->startAnimation();
-
-    // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
-}
+} /* namespace match3 */

@@ -169,6 +169,16 @@
 			<location>/home/antidotcb/workspace/match3/Classes/Highscores.cpp</location>
 		</link>
 		<link>
+			<name>[Targets]/[exe] MyGame/Source Files/GameboardContainer.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/Classes/GameboardContainer.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] MyGame/Source Files/GameboardLayer.cpp</name>
+			<type>1</type>
+			<location>/home/antidotcb/workspace/match3/Classes/GameboardLayer.cpp</location>
+		</link>
+		<link>
 			<name>[Targets]/[exe] MyGame/Source Files/Piece.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/Classes/Piece.cpp</location>

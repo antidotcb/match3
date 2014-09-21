@@ -8,9 +8,20 @@
 #ifndef BOARD_H_
 #define BOARD_H_
 
-#include "common.h"
+#include <2d/CCNode.h>
+#include <math/Vec2.h>
+#include <cstdint>
+#include <list>
+#include <vector>
+
+#include "Piece.h"
 
 namespace match3 {
+    class Coord;
+} /* namespace match3 */
+
+namespace match3 {
+
     class Gameboard: public cocos2d::Node {
     public:
         struct Size {

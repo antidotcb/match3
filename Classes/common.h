@@ -32,26 +32,6 @@ namespace match3 {
                 x(X), y(Y) {
         }
     };
-
-//    class IPiece {
-//    public:
-//        virtual const Coord& position() const = 0;
-//        virtual void setPosition(const Coord& _Position) = 0;
-//        virtual bool isSameTypeAs(const IPiece* _Piece) const = 0;
-//        virtual bool isNextTo(const IPiece* _Piece) const = 0;
-//        virtual uint16_t type() const = 0;
-//        virtual ~IPiece() {
-//        }
-//    };
-
-    class Piece;
-
-    class IAbstractPieceFactory {
-    public:
-        virtual Piece* createPiece(const Coord& _Position) = 0;
-        virtual ~IAbstractPieceFactory() {
-        }
-    };
 }
 
 #endif /* COMMON_H_ */
