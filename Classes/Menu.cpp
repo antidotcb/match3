@@ -16,10 +16,10 @@
 namespace match3 {
     USING_NS_CC;
 
-    Scene* MenuLayer::createScene() {
+    cocos2d::Scene* MenuLayer::wrapIntoScene()
+            {
         auto scene = Scene::create();
-        auto layer = MenuLayer::create();
-        scene->addChild(layer);
+        scene->addChild(MenuLayer::create());
         return scene;
     }
 
@@ -61,7 +61,7 @@ namespace match3 {
     }
 
     void MenuLayer::menuPlay(Ref* pSender) {
-        auto game = App::wrapIntoScene(GameLayer::create());
+        auto game = GameLayer::wrapIntoScene();
         auto transition = TransitionZoomFlipX::create(1, game);
         Director::getInstance()->pushScene(transition);
     }

@@ -159,24 +159,9 @@
 			<location>/home/antidotcb/workspace/match3/Classes/Menu.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] MyGame/Source Files/Options.cpp</name>
+			<name>[Targets]/[exe] MyGame/Source Files/Gameboard.cpp</name>
 			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/Classes/Options.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] MyGame/Source Files/Highscores.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/Classes/Highscores.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] MyGame/Source Files/GameboardContainer.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/Classes/GameboardContainer.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] MyGame/Source Files/GameboardLayer.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/Classes/GameboardLayer.cpp</location>
+			<location>/home/antidotcb/workspace/match3/Classes/Gameboard.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] MyGame/Source Files/Piece.cpp</name>
@@ -184,19 +169,9 @@
 			<location>/home/antidotcb/workspace/match3/Classes/Piece.cpp</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] MyGame/Source Files/Round.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/Classes/Round.cpp</location>
-		</link>
-		<link>
 			<name>[Targets]/[exe] MyGame/Source Files/Score.cpp</name>
 			<type>1</type>
 			<location>/home/antidotcb/workspace/match3/Classes/Score.cpp</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] MyGame/Source Files/Time.cpp</name>
-			<type>1</type>
-			<location>/home/antidotcb/workspace/match3/Classes/Time.cpp</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] MyGame/Header Files</name>

@@ -1,34 +1,23 @@
 #include "AppDelegate.h"
 
-#include <2d/CCScene.h>
-#include <base/CCDirector.h>
-#include <base/CCPlatformMacros.h>
-#include <CCGLView.h>
-#include <CCGLViewProtocol.h>
-#include <math/CCGeometry.h>
 #include <SimpleAudioEngine.h>
 
 #include "Menu.h"
 #include "Piece.h"
 
-namespace match3 {
+
     USING_NS_CC;
 
-    Scene* App::wrapIntoScene(Layer* _Layer) {
-        auto scene = Scene::create();
-        scene->addChild(_Layer);
-        return scene;
+
+    AppDelegate::AppDelegate() {
+        match3::PiecesManager::getInstance();
     }
 
-    App::App() {
-        PiecesManager::getInstance();
+    AppDelegate::~AppDelegate() {
+        match3::PiecesManager::destroyInstance();
     }
 
-    App::~App() {
-        PiecesManager::destroyInstance();
-    }
-
-    bool App::applicationDidFinishLaunching() {
+    bool AppDelegate::applicationDidFinishLaunching() {
         auto director = Director::getInstance();
         auto glview = director->getOpenGLView();
         if (!glview) {
@@ -41,14 +30,14 @@ namespace match3 {
         director->setDisplayStats(false);
 
         director->setAnimationInterval(1.0 / 60);
-        PiecesManager::getInstance()->loadTextures();
-        auto scene = wrapIntoScene(MenuLayer::create());
+        match3::PiecesManager::getInstance()->loadTextures();
+        auto scene = match3::MenuLayer::wrapIntoScene();
         director->runWithScene(scene);
 
         return true;
     }
 
-    void App::adaptResolution(float _DesignW, float _DesignH) {
+    void AppDelegate::adaptResolution(float _DesignW, float _DesignH) {
         auto director = Director::getInstance();
         Size screenSize = director->getOpenGLView()->getFrameSize();
 
@@ -63,14 +52,14 @@ namespace match3 {
         director->getOpenGLView()->setDesignResolutionSize(_DesignW, _DesignH, resolutionPolicy);
     }
 
-    void App::applicationDidEnterBackground() {
+    void AppDelegate::applicationDidEnterBackground() {
         Director::getInstance()->stopAnimation();
         CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
     }
 
-    void App::applicationWillEnterForeground() {
+    void AppDelegate::applicationWillEnterForeground() {
         Director::getInstance()->startAnimation();
         CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
     }
 
-} /* namespace match3 */
+

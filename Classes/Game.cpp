@@ -1,26 +1,41 @@
 #include "Game.h"
 
-#include <cocos2d.h>
+#include <2d/CCActionInstant.h>
+#include <2d/CCActionInterval.h>
+#include <2d/CCLabel.h>
+#include <2d/CCParticleExamples.h>
+#include <2d/CCProgressTimer.h>
+#include <2d/CCSprite.h>
+#include <2d/CCTransition.h>
+#include <2d/CCTransitionPageTurn.h>
+#include <base/ccMacros.h>
+#include <base/ccTypes.h>
+#include <base/CCDirector.h>
+#include <base/CCEventDispatcher.h>
+#include <base/CCEventListenerTouch.h>
+#include <renderer/CCTexture2D.h>
+#include <renderer/CCTextureCache.h>
+#include <SimpleAudioEngine.h>
 #include <cstdint>
-#include <iostream>
-#include <list>
-#include <string>
-#include <vector>
 
-#include "Board.h"
-#include "GameboardLayer.h"
-#include "Piece.h"
-#include "Score.h"
+#include "AppDelegate.h"
+#include "Gameboard.h"
+#include "Menu.h"
 
 USING_NS_CC;
 
 namespace match3 {
-    const float GameLayer::TotalGameTime = 108;
-
-    const int GameLayer::DefaultBoardSize = 8;
+    const float GameLayer::TotalGameTime = 8;
     const int GameLayer::BackgroundLayerLevel = -100;
 
     const char* GameLayer::BackgroundTextureName = "bg3.png";
+
+    cocos2d::Scene* GameLayer::wrapIntoScene()
+            {
+        auto scene = Scene::create();
+        scene->addChild(GameLayer::create());
+        return scene;
+    }
 
     bool GameLayer::init() {
         if (!Layer::init()) {
@@ -29,6 +44,8 @@ namespace match3 {
 
         CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("music.mp3");
         CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("move.aif");
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("remove.wav");
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("groovy.mp3");
 
         visibleSize_ = Director::getInstance()->getVisibleSize();
         origin_ = Director::getInstance()->getVisibleOrigin();
@@ -65,25 +82,19 @@ namespace match3 {
         scoreLabel_ = Label::createWithBMFont("fonts/font.fnt", "0", TextHAlignment::CENTER);
         scoreLabel_->setPosition(Vec2(visibleSize_.width / 2 + origin_.x,
                 visibleSize_.height - scoreLabel_->getContentSize().height - 2));
+        addChild(scoreLabel_, UILayerLevel);
 
-        addChild(scoreLabel_);
-
-        score_ = new Score();
-        score_->setLabel(scoreLabel_);
-
-        addChild(score_);
+        score_.setLabel(scoreLabel_);
     }
 
     void GameLayer::addGameboard() {
-        Gameboard::Size boardSize = { DefaultBoardSize, DefaultBoardSize };
         Vec2 pos(visibleSize_.width / 2 + origin_.x,
                 visibleSize_.height / 2 + origin_.y);
 
-        gameboard_ = Gameboard::create(boardSize);
+        gameboard_ = Gameboard::create(&score_);
+        gameboard_->setPosition(pos);
 
-        gameboardlayer = GameBoardLayer::create(gameboard_, score_);
-        gameboardlayer->setPosition(pos);
-        addChild(gameboardlayer);
+        addChild(gameboard_, 0);
     }
 
     void GameLayer::addInputDispatcher()
@@ -96,12 +107,26 @@ namespace match3 {
         _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
     }
 
+    GameLayer::~GameLayer()
+    {
+        CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect("music.mp3");
+        CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect("move.aif");
+        CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect("remove.wav");
+        CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect("groovy.mp3");
+    }
+
     bool GameLayer::onTouchBegan(cocos2d::Touch *_Touch, cocos2d::Event *_Event) {
         if (gameEnded_) {
-            // no any processing if game ended
+            if (highscore_) {
+                if (gameboard_ && !gameboard_->isActive()) {
+                    return true;
+                }
+                auto transition = TransitionPageTurn::create(2.f, MenuLayer::wrapIntoScene(), false);
+                Director::getInstance()->replaceScene(transition);
+            }
             return true;
         } else {
-            return gameboardlayer->onTouchBegan(_Touch, _Event);
+            return gameboard_->onTouchBegan(_Touch, _Event);
         }
     }
 
@@ -109,7 +134,7 @@ namespace match3 {
         if (gameEnded_) {
             return;
         } else {
-            gameboardlayer->onTouchMoved(_Touch, _Event);
+            gameboard_->onTouchMoved(_Touch, _Event);
         }
     }
 
@@ -122,7 +147,6 @@ namespace match3 {
     void GameLayer::onTimeExpires() {
         CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
         gameEnded_ = true;
-        //gameboard_->lock();
 
         if (!enlargedScoreOnce_) {
             auto center = Vec2(origin_.x + visibleSize_.width / 2.f,
@@ -136,7 +160,7 @@ namespace match3 {
             enlargedScoreOnce_ = true;
         }
 
-        if (!turnCompleted_) {
+        if (gameboard_->isActive()) {
             auto waitTillTurnCompleted = Sequence::create(
                     DelayTime::create(0.5f),
                     CallFunc::create(CC_CALLBACK_0(GameLayer::onTimeExpires, this)),
@@ -146,10 +170,10 @@ namespace match3 {
             return;
         }
 
-        //gameboard_->removeFromParentAndCleanup(true);
+        gameboard_->removeFromParentAndCleanup(true);
+        gameboard_ = nullptr;
 
         CocosDenshion::SimpleAudioEngine::getInstance()->stopAllEffects();
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("groovy.mp3");
 
         auto endThisGame = Sequence::create(
                 DelayTime::create(2.f),
@@ -161,26 +185,24 @@ namespace match3 {
         CCLOG("Time is out");
     }
 
-    void GameLayer::startTurn() {
-        turnCompleted_ = false;
-        //deselect();
-        //gameboard_->lock();
-        score_->newTurn();
-    }
-
-    void GameLayer::endTurn() {
-        if (!gameEnded_) {
-            //gameboard_->unlock();
-        }
-        turnCompleted_ = true;
-    }
-
     void GameLayer::endGame() {
+        static uint32_t maxScore = 0;
+        highscore_ = (score_.score() > maxScore);
         if (highscore_) {
-            // TODO: add some
-            //Director::
+            maxScore = score_.score();
+            Label* label = Label::createWithSystemFont("Highscore!!!", "Arial Bold", 36);
+            label->enableShadow();
+            label->setPosition(Vec2(origin_.x + visibleSize_.width / 2.f, origin_.y + visibleSize_.height - label->getContentSize().height - 10));
+            addChild(label, UILayerLevel);
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("groovy.mp3");
+
+            auto firework = ParticleFireworks::createWithTotalParticles(500);
+            firework->setPosition(Vec2(origin_.x + visibleSize_.width / 2.f, origin_.y + 10));
+            addChild(firework, UILayerLevel - 1);
+            // wait mouse click to exit
         } else {
-            Director::getInstance()->popToRootScene();
+            auto transition = TransitionRotoZoom::create(2.f, MenuLayer::wrapIntoScene());
+            Director::getInstance()->replaceScene(transition);
         }
     }
 
@@ -189,7 +211,7 @@ namespace match3 {
 
         timer_->setPosition(origin_.x + visibleSize_.width / 2.f, origin_.y + 10);
 
-        timer_->setType(ProgressTimerType::BAR);
+        timer_->setType(ProgressTimer::Type::BAR);
         timer_->setMidpoint( { 0, -1 });
         timer_->setBarChangeRate( { 1, 0 });
         timer_->setScale(visibleSize_.width, 0.5f);
@@ -211,15 +233,6 @@ namespace match3 {
                 nullptr);
 
         runAction(final_seq);
-    }
-
-    void GameLayer::cleanup()
-    {
-        if (gameboard_) {
-            delete gameboard_;
-            gameboard_ = nullptr;
-        }
-        Layer::cleanup();
     }
 
 }

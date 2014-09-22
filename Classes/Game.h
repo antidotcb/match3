@@ -1,11 +1,12 @@
 #ifndef __HELLOWORLD_SCENE_H__
 #define __HELLOWORLD_SCENE_H__
 
-#include <2d/CCLayer.h>
 #include <base/CCPlatformMacros.h>
 #include <math/CCGeometry.h>
 #include <math/Vec2.h>
-#include <sys/types.h>
+
+#include <memory>
+#include "Score.h"
 
 namespace cocos2d {
     class Label;
@@ -13,20 +14,22 @@ namespace cocos2d {
 }
 
 namespace match3 {
-    class GameBoardLayer;
     class Gameboard;
-    class Piece;
+    class Gameboard;
+    class IPiece;
     class Score;
 
     class GameLayer: public cocos2d::Layer {
     public:
-        virtual bool init();
-        virtual void cleanup();
+        static cocos2d::Scene* wrapIntoScene();
 
         CREATE_FUNC(GameLayer)
                 ;
 
     protected:
+        virtual bool init();
+        virtual ~GameLayer();
+
         bool onTouchBegan(cocos2d::Touch* _Touch, cocos2d::Event* _Event);
         void onTouchMoved(cocos2d::Touch* _Touch, cocos2d::Event* _Event);
 
@@ -44,9 +47,8 @@ namespace match3 {
         void addProgressTimer();
 
     private:
-        Score * score_ = nullptr;
-        Gameboard * gameboard_ = nullptr;
-        GameBoardLayer* gameboardlayer = nullptr;
+        Score score_;
+        Gameboard* gameboard_ = nullptr;
 
         cocos2d::ProgressTimer *timer_ = nullptr;
         cocos2d::Label *scoreLabel_ = nullptr;
@@ -58,19 +60,15 @@ namespace match3 {
 
         bool enlargedScoreOnce_ = false;
         bool turnCompleted_ = true;
-        bool highscore_ = false;
+        bool highscore_ = true;
         bool gameEnded_ = false;
 
         static const float TotalGameTime;
 
-        static const int DefaultBoardSize;
-
         static const int BackgroundLayerLevel;
         static const char* BackgroundTextureName;
-        static const int ScoreLabelsLayerLevel = 1000;
         static const int UILayerLevel = 2000;
     };
-
 
 }
 #endif // __HELLOWORLD_SCENE_H__

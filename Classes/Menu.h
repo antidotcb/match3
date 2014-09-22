@@ -9,7 +9,8 @@ namespace match3 {
     class MenuLayer: public cocos2d::Layer
     {
     public:
-        static cocos2d::Scene* createScene();
+        static cocos2d::Scene* wrapIntoScene();
+
 
         virtual bool init();
 

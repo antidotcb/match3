@@ -12,7 +12,7 @@
 
 namespace match3 {
 
-    class Score: public cocos2d::Layer {
+    class Score {
     public:
         virtual void setLabel(cocos2d::Label* _Label) {
             label_ = _Label;
@@ -42,6 +42,10 @@ namespace match3 {
             }
         }
 
+        uint32_t score () const {
+            return score_;
+        }
+
         virtual ~Score() {
         }
     protected:
@@ -67,6 +71,9 @@ namespace match3 {
                 }
             }
         }
+
+
+
 
         void step() {
             if (label_) {

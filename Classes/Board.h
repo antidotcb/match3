@@ -1,93 +1,77 @@
-/*
- * Board.h
- *
- *  Created on: Sep 11, 2014
- *      Author: antidotcb
- */
+#ifndef MATCH3_CLASSES_BOARD_H_
+#define MATCH3_CLASSES_BOARD_H_
 
-#ifndef BOARD_H_
-#define BOARD_H_
-
-#include <2d/CCNode.h>
-#include <math/Vec2.h>
 #include <cstdint>
-#include <list>
-#include <vector>
 
 #include "Piece.h"
 
 namespace match3 {
-    class Coord;
-} /* namespace match3 */
 
-namespace match3 {
+    struct BoardSize {
+        uint16_t width;
+        uint16_t height;
+        BoardSize(uint16_t _W, uint16_t _H);
+    };
 
-    class Gameboard: public cocos2d::Node {
+    class IBoard {
     public:
-        struct Size {
-            uint16_t width;
-            uint16_t height;
-        };
+        virtual void add(const Coord& _Coord, IPiece* _Piece) = 0;
+        virtual IPiece* pieceAt(const Coord& _Coord) const = 0;
+        virtual IPiece* remove(const Coord& _Coord) = 0;
+        virtual void swap(const Coord& _Pos1, const Coord& _Pos2) = 0;
 
-        static Gameboard* create(const Size& _Size);
+        virtual uint16_t width() const = 0;
+        virtual uint16_t height() const = 0;
+
+        virtual ~IBoard() {
+        }
+    };
+
+    class Board: public IBoard {
+    public:
+        static const BoardSize DefaultBoardSize;        // {8, 8};
+
+        static Board* create(const IAbstractPieceFactory& _Factory, const BoardSize& _Size = DefaultBoardSize) {
+            Board* pRet = new Board(_Factory, _Size);
+            if (pRet && pRet->init()) {
+                return pRet;
+            } else {
+                delete pRet;
+                pRet = nullptr;
+                return nullptr;
+            }
+        }
+
+        virtual void add(const Coord& _Coord, IPiece* _Piece);
+        virtual IPiece* pieceAt(const Coord& _Coord) const;
+        virtual IPiece* remove(const Coord& _Coord);
         virtual void swap(const Coord& _Pos1, const Coord& _Pos2);
 
-        virtual ~Gameboard();
+        virtual uint16_t width() const;
+        virtual uint16_t height() const;
 
-        Piece* getPiece(Coord _Coord);
-        void remove(Piece* piece);
-
-        Coord wolrd2coord(const cocos2d::Vec2& _TouchPos);
-        cocos2d::Vec2 coord2world(const Coord & _Coord);
-
-        float fillup(IAbstractPieceFactory* _PieceFactory, bool animate = true);
-        void getResultsOfLastFill(std::list<std::vector<Piece*> > &_Container);
-
-        bool check();
-        void getResultsOfLastCheck(std::list<std::vector<Piece*> > &_Container);
-
-        void lock();
-        void unlock();
-        bool locked() const;
-
-        static const float FalldownSpeed;        // 0.2f
+        virtual ~Board();
 
     protected:
-        cocos2d::Vec2 center() const;
-
-        Coord local2coord(const cocos2d::Vec2 & _Pos);
-        cocos2d::Vec2 coord2local(const Coord & _Coord);
-
-        Gameboard(const Size& _Size);
+        Board(const IAbstractPieceFactory& _Factory, const BoardSize& _Size);
 
         virtual bool init();
+        virtual void cleanup();
 
-        void checkDirection(bool _Horizontal);
-        void cleanup();
-        bool validate();
-
-        void setPiece(Coord _Coord, Piece* _Piece);
+        virtual void setPiece(const Coord& _Coord, IPiece* _Piece);
+        virtual bool initCell(const Coord& _Coord);
 
     private:
-        typedef Piece* BoardPiece;
+        typedef IPiece* BoardPiece;
         typedef BoardPiece* BoardRow;
 
-        std::list<std::vector<Piece*>> piecesToRemove_;
-        std::vector<Piece*> newPieces_;
+        const IAbstractPieceFactory& generator_;
 
-        BoardRow* board_;
-        uint16_t width_;
-        uint16_t height_;
-        //cocos2d::Layer* layer_;
-        bool locked_;
-        static const uint8_t FgSpriteLevel = 100;
-        static const uint8_t BgSpriteLevel = 50;
-        static const float CellSize;
-        static const float HalfCellSize;
-
-        static const char* BgSpriteTextureName;        // "background.png"
+        BoardRow* board_ = nullptr;
+        uint16_t width_ = 0;
+        uint16_t height_ = 0;
     };
 
 } /* namespace match3 */
 
-#endif /* BOARD_H_ */
+#endif /* MATCH3_CLASSES_BOARD_H_ */

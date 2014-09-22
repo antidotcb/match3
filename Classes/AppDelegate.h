@@ -1,20 +1,13 @@
 #ifndef  MATCH3_CLASSES_APP_DELEGATE_H_
 #define  MATCH3_CLASSES_APP_DELEGATE_H_
+#include <cocos2d.h>
 
-#include <CCApplication.h>
-
-namespace cocos2d {
-    class Scene;
-} /* namespace cocos2d */
-
-namespace match3 {
-
-    class App: private cocos2d::Application {
+    class AppDelegate: private cocos2d::Application {
     public:
-        static cocos2d::Scene* wrapIntoScene(cocos2d::Layer* _Layer);
 
-        App();
-        virtual ~App();
+
+        AppDelegate();
+        virtual ~AppDelegate();
 
         virtual bool applicationDidFinishLaunching();
         virtual void applicationDidEnterBackground();
@@ -24,6 +17,5 @@ namespace match3 {
         void adaptResolution(float _DesignW, float _DesignH);
     };
 
-} /* namespace match3 */
 
 #endif // MATCH3_CLASSES_APP_DELEGATE_H_

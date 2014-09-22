@@ -62,14 +62,9 @@ set(GAME_SRC
   Classes/Game.cpp
   Classes/Menu.cpp
   Classes/Game.cpp
-  Classes/Options.cpp
-  Classes/Highscores.cpp
-  Classes/GameboardContainer.cpp
-  Classes/GameboardLayer.cpp
+  Classes/Gameboard.cpp
   Classes/Piece.cpp
-  Classes/Round.cpp
   Classes/Score.cpp
-  Classes/Time.cpp
 )
 elseif ( WIN32 )
 set(GAME_SRC
@@ -81,12 +76,9 @@ set(GAME_SRC
   Classes/Game.cpp
   Classes/Menu.cpp
   Classes/Game.cpp
-  Classes/Options.cpp
-  Classes/Highscores.cpp
+  Classes/Gameboard.cpp
   Classes/Piece.cpp
-  Classes/Round.cpp
   Classes/Score.cpp
-  Classes/Time.cpp
 )
 endif()
 
