@@ -25,7 +25,7 @@
 USING_NS_CC;
 
 namespace match3 {
-    const float GameLayer::TotalGameTime = 8;
+    const float GameLayer::TotalGameTime = 108;
     const int GameLayer::BackgroundLayerLevel = -100;
 
     const char* GameLayer::BackgroundTextureName = "bg3.png";
